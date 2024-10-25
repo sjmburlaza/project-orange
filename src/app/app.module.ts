@@ -15,6 +15,7 @@ import { PaymentStepComponent } from './checkout/payment-step/payment-step.compo
 import { ItemComponent } from './cart/item/item.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductsComponent } from './products/products.component';
+import { MainComponent } from './main/main.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json')
@@ -31,7 +32,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     PaymentStepComponent,
     ItemComponent,
     ProductDetailComponent,
-    ProductsComponent
+    ProductsComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,

@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        const currentUrl = this.router.url
+        const currentUrl = this.router.url;
         const countryCode = currentUrl.split('/')[1] || 'uk';
         this.localeService.setLanguage(countryCode);
       }
