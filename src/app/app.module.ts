@@ -13,6 +13,8 @@ import { CustomerDetailsComponent } from './checkout/customer-details/customer-d
 import { DeliveryStepComponent } from './checkout/delivery-step/delivery-step.component';
 import { PaymentStepComponent } from './checkout/payment-step/payment-step.component';
 import { ItemComponent } from './cart/item/item.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { ProductsComponent } from './products/products.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json')
@@ -27,7 +29,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     CustomerDetailsComponent,
     DeliveryStepComponent,
     PaymentStepComponent,
-    ItemComponent
+    ItemComponent,
+    ProductDetailComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
