@@ -6,5 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent {
+  categories = [
+    'Shop',
+    'AI',
+    'Mobile',
+    'TV & AV',
+    'Home Appliances',
+    'Computing',
+    'Displays',
+    'Accessories',
+    'SmartThings'
+  ]
 
 }

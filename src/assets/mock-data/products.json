@@ -3,7 +3,7 @@
         {
             "productId":"A10",
             "name": "Galaxy S24+ (Online Exclusive)",
-            "group": "Mobile",
+            "category": "Mobile",
             "imageUrl": "https://d1rlzxa98cyc61.cloudfront.net/catalog/product/cache/1801c418208f9607a371e61f8d9184d9/1/9/190908_2024.jpg",
             "colorsAvailable": [
                 {
@@ -52,7 +52,7 @@
         {
             "productId":"A11",
             "name": "Galaxy Tab S10+ (12.4\", Wi-Fi)",
-            "group": "Tablet",
+            "category": "Tablet",
             "imageUrl": "",
             "colorsAvailable": [
                 {
@@ -84,7 +84,7 @@
         {
             "productId":"A12",
             "name": "HD TV",
-            "group": "Screen",
+            "category": "Screen",
             "imageUrl": "",
             "colorsAvailable": [
                 {
@@ -105,7 +105,7 @@
         {
             "productId":"A13",
             "name": "",
-            "group": "",
+            "category": "",
             "imageUrl": "",
             "colorsAvailable": [
                 {
@@ -126,7 +126,7 @@
         {
             "productId":"A14",
             "name": "",
-            "group": "",
+            "category": "",
             "imageUrl": "",
             "colorsAvailable": [
                 {
@@ -147,7 +147,7 @@
         {
             "productId":"A15",
             "name": "",
-            "group": "",
+            "category": "",
             "imageUrl": "",
             "colorsAvailable": [
                 {
@@ -168,7 +168,7 @@
         {
             "productId":"A16",
             "name": "",
-            "group": "",
+            "category": "",
             "imageUrl": "",
             "colorsAvailable": [
                 {
@@ -189,7 +189,7 @@
         {
             "productId":"A15",
             "name": "",
-            "group": "",
+            "category": "",
             "imageUrl": "",
             "colorsAvailable": [
                 {

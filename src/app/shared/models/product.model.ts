@@ -1,7 +1,7 @@
 export interface ProductModel {
     productId: string,
     name: string,
-    group: string,
+    category: string,
     imageUrl: string,
     colorsAvailable: ColorsAvailable[],
     storageAvailable: StorageAvailable[],

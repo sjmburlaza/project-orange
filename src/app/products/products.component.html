@@ -1,7 +1,6 @@
-<p>products works!</p>
 <div class="products-container">
     <div class="products-menu-container">
-        <app-products-menu></app-products-menu>
+        <app-products-menu [products]="products"></app-products-menu>
     </div>
     <div class="products-item-container">
         <ng-container *ngFor="let item of products">

@@ -1,0 +1,50 @@
+.nav-bar {
+    padding: 18px 0px;
+    background-color: rgb(180, 247, 225);
+    display: grid;
+    grid-template-columns: 1fr 5fr 2fr;
+    font-size: 14px;
+    font-family: "Roboto", sans-serif;
+
+    .shop-name {
+        font-size: 24px;
+    }
+
+    .shop-categories {
+        // display: flex;
+        padding-top: 8px;
+
+        .category {
+            padding: 0px 8px;
+        }
+    }
+
+    .shop-info {
+        display: flex;
+        gap: 12px;
+        justify-content: flex-end;
+
+        &-support {
+            padding-top: 8px;
+        }
+
+        &-business {
+            padding-top: 8px;
+        }
+
+        .bi {
+            font-size: 24px;
+            color: black;
+            padding-left: 10px;
+
+            &-search {
+                font-size: 22px;
+            }
+
+            &-person {
+                font-size: 26px;
+            }
+        }
+    }
+
+}

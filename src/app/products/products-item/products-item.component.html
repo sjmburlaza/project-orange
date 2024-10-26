@@ -1,4 +1,7 @@
 <div class="product">
+    <div class="product-add-to-wishlist">
+        <i class="bi bi-heart"></i>
+    </div>
     <p class="product-name">{{ product?.name || "Product Name Here" }}</p>
     <div class="product-image">
         <img *ngIf="product?.imageUrl; else placeholderImg" src="{{ product?.imageUrl }}" alt="">
@@ -22,11 +25,11 @@
     <p class="product-price">{{ product?.price || '0.00' }}</p>
     <div class="product-promotions"></div>
     <div class="product-cta">
-        <button>
+        <button class="cta-btn">
             {{
                 product?.isAvailable
                  ? "Add to cart"
-                 : "Get stock alert"
+                 : "Receive stock alerts"
             }}
         </button>
     </div>
