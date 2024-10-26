@@ -1,8 +1,33 @@
-<div class="container">
-    <p>{{ product?.name || "product" }}</p>
-    <img *ngIf="product?.imageUrl; else placeholderImg" src="{{ product?.imageUrl }}" alt="">
-    <ng-template #placeholderImg>
-        <img src="assets/images/image-placeholder.svg" alt="">
-    </ng-template>
-    <p>{{ product?.price }}</p>
+<div class="product">
+    <p class="product-name">{{ product?.name || "Product Name Here" }}</p>
+    <div class="product-image">
+        <img *ngIf="product?.imageUrl; else placeholderImg" src="{{ product?.imageUrl }}" alt="">
+        <ng-template #placeholderImg>
+            <img src="assets/images/image-placeholder.svg" alt="">
+        </ng-template>
+    </div>
+    <div class="product-colors">
+        <span *ngFor="let item of product?.colorsAvailable" 
+            class="dot"
+            [ngStyle]="{'background-color': item.name}">
+        </span>
+    </div>
+    <div class="product-storage">
+        <span *ngFor="let item of product?.storageAvailable" 
+            class="product-storage-size">
+            {{ item?.size }}
+        </span>
+    </div>
+    <div class="product-rating"></div>
+    <p class="product-price">{{ product?.price || '0.00' }}</p>
+    <div class="product-promotions"></div>
+    <div class="product-cta">
+        <button>
+            {{
+                product?.isAvailable
+                 ? "Add to cart"
+                 : "Get stock alert"
+            }}
+        </button>
+    </div>
 </div>

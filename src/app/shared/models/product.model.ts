@@ -4,6 +4,7 @@ export interface ProductModel {
     group: string,
     imageUrl: string,
     colorsAvailable: ColorsAvailable[],
+    storageAvailable: StorageAvailable[],
     rating: string,
     price: string,
     promotionText: string,
@@ -14,4 +15,8 @@ export interface ProductModel {
 interface ColorsAvailable {
     name: string,
     hexCode: string
+}
+
+interface StorageAvailable {
+    size: string
 }

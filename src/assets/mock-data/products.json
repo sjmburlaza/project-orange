@@ -13,6 +13,34 @@
                 {
                     "name": "grey",
                     "hexCode": ""
+                },
+                {
+                    "name": "brown",
+                    "hexCode": ""
+                },
+                {
+                    "name": "yellow",
+                    "hexCode": ""
+                },
+                {
+                    "name": "green",
+                    "hexCode": ""
+                }
+                ,
+                {
+                    "name": "black",
+                    "hexCode": ""
+                }
+            ],
+            "storageAvailable": [
+                {
+                    "size": "256 GB"
+                },
+                {
+                    "size": "512 GB"
+                },
+                {
+                    "size": "1 TB"
                 }
             ],
             "rating": "",
@@ -34,6 +62,17 @@
                 {
                     "name": "gold",
                     "hexCode": ""
+                }
+            ],
+            "storageAvailable": [
+                {
+                    "size": "256 GB"
+                },
+                {
+                    "size": "512 GB"
+                },
+                {
+                    "size": "1 TB"
                 }
             ],
             "rating": "",
@@ -61,7 +100,7 @@
             "price": "",
             "promotionText": "",
             "description": "",
-            "isAvailable": true
+            "isAvailable": false
         },
         {
             "productId":"A13",
@@ -86,6 +125,48 @@
         },
         {
             "productId":"A14",
+            "name": "",
+            "group": "",
+            "imageUrl": "",
+            "colorsAvailable": [
+                {
+                    "name": "",
+                    "hexCode": ""
+                },
+                {
+                    "name": "",
+                    "hexCode": ""
+                }
+            ],
+            "rating": "",
+            "price": "",
+            "promotionText": "",
+            "description": "",
+            "isAvailable": false
+        },
+        {
+            "productId":"A15",
+            "name": "",
+            "group": "",
+            "imageUrl": "",
+            "colorsAvailable": [
+                {
+                    "name": "",
+                    "hexCode": ""
+                },
+                {
+                    "name": "",
+                    "hexCode": ""
+                }
+            ],
+            "rating": "",
+            "price": "",
+            "promotionText": "",
+            "description": "",
+            "isAvailable": true
+        },
+        {
+            "productId":"A16",
             "name": "",
             "group": "",
             "imageUrl": "",
