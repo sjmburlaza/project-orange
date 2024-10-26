@@ -1,2 +1,11 @@
 <p>products works!</p>
-<app-products-menu></app-products-menu>
+<div class="products-container">
+    <div class="products-menu-container">
+        <app-products-menu></app-products-menu>
+    </div>
+    <div class="products-item-container">
+        <ng-container *ngFor="let item of products">
+            <app-products-item [product]="item"></app-products-item>
+        </ng-container>
+    </div>
+</div>

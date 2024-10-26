@@ -1,1 +1,8 @@
-<p>products-item works!</p>
+<div class="container">
+    <p>{{ product?.name || "product" }}</p>
+    <img *ngIf="product?.imageUrl; else placeholderImg" src="{{ product?.imageUrl }}" alt="">
+    <ng-template #placeholderImg>
+        <img src="assets/images/image-placeholder.svg" alt="">
+    </ng-template>
+    <p>{{ product?.price }}</p>
+</div>

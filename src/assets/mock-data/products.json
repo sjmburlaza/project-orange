@@ -1,0 +1,130 @@
+{
+    "products": [
+        {
+            "productId":"A10",
+            "name": "Galaxy S24+ (Online Exclusive)",
+            "group": "Mobile",
+            "imageUrl": "https://d1rlzxa98cyc61.cloudfront.net/catalog/product/cache/1801c418208f9607a371e61f8d9184d9/1/9/190908_2024.jpg",
+            "colorsAvailable": [
+                {
+                    "name": "white",
+                    "hexCode": ""
+                },
+                {
+                    "name": "grey",
+                    "hexCode": ""
+                }
+            ],
+            "rating": "",
+            "price": "26000",
+            "promotionText": "",
+            "description": "",
+            "isAvailable": true
+        },
+        {
+            "productId":"A11",
+            "name": "Galaxy Tab S10+ (12.4\", Wi-Fi)",
+            "group": "Tablet",
+            "imageUrl": "",
+            "colorsAvailable": [
+                {
+                    "name": "grey",
+                    "hexCode": ""
+                },
+                {
+                    "name": "gold",
+                    "hexCode": ""
+                }
+            ],
+            "rating": "",
+            "price": "45000",
+            "promotionText": "",
+            "description": "",
+            "isAvailable": true
+        },
+        {
+            "productId":"A12",
+            "name": "HD TV",
+            "group": "Screen",
+            "imageUrl": "",
+            "colorsAvailable": [
+                {
+                    "name": "black",
+                    "hexCode": ""
+                },
+                {
+                    "name": "grey",
+                    "hexCode": ""
+                }
+            ],
+            "rating": "",
+            "price": "",
+            "promotionText": "",
+            "description": "",
+            "isAvailable": true
+        },
+        {
+            "productId":"A13",
+            "name": "",
+            "group": "",
+            "imageUrl": "",
+            "colorsAvailable": [
+                {
+                    "name": "",
+                    "hexCode": ""
+                },
+                {
+                    "name": "",
+                    "hexCode": ""
+                }
+            ],
+            "rating": "",
+            "price": "",
+            "promotionText": "",
+            "description": "",
+            "isAvailable": true
+        },
+        {
+            "productId":"A14",
+            "name": "",
+            "group": "",
+            "imageUrl": "",
+            "colorsAvailable": [
+                {
+                    "name": "",
+                    "hexCode": ""
+                },
+                {
+                    "name": "",
+                    "hexCode": ""
+                }
+            ],
+            "rating": "",
+            "price": "",
+            "promotionText": "",
+            "description": "",
+            "isAvailable": true
+        },
+        {
+            "productId":"A15",
+            "name": "",
+            "group": "",
+            "imageUrl": "",
+            "colorsAvailable": [
+                {
+                    "name": "",
+                    "hexCode": ""
+                },
+                {
+                    "name": "",
+                    "hexCode": ""
+                }
+            ],
+            "rating": "",
+            "price": "",
+            "promotionText": "",
+            "description": "",
+            "isAvailable": true
+        }
+    ]
+}
