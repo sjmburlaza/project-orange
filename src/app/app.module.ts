@@ -12,10 +12,12 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { CustomerDetailsComponent } from './checkout/customer-details/customer-details.component';
 import { DeliveryStepComponent } from './checkout/delivery-step/delivery-step.component';
 import { PaymentStepComponent } from './checkout/payment-step/payment-step.component';
-import { ItemComponent } from './cart/item/item.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductsComponent } from './products/products.component';
 import { MainComponent } from './main/main.component';
+import { CartItemComponent } from './cart/cart-item/cart-item.component';
+import { ProductsItemComponent } from './products/products-item/products-item.component';
+import { ProductsMenuComponent } from './products/products-menu/products-menu.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json')
@@ -30,10 +32,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     CustomerDetailsComponent,
     DeliveryStepComponent,
     PaymentStepComponent,
-    ItemComponent,
     ProductDetailComponent,
     ProductsComponent,
-    MainComponent
+    MainComponent,
+    CartItemComponent,
+    ProductsItemComponent,
+    ProductsMenuComponent
   ],
   imports: [
     BrowserModule,
