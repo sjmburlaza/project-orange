@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { LocaleService } from './services/locale.service';
 
@@ -11,7 +11,6 @@ export class AppComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute,
     private localeService: LocaleService,
   ) {}
 
@@ -19,7 +18,7 @@ export class AppComponent implements OnInit {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         const currentUrl = this.router.url;
-        const countryCode = currentUrl.split('/')[1] || 'uk';
+        const countryCode = currentUrl.split('/')[1] || 'ph';
         this.localeService.setLanguage(countryCode);
       }
     });

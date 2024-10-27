@@ -29,8 +29,8 @@ const routes: Routes = [
       },
     ]
   },
-  { path: '', redirectTo: '/uk', pathMatch: 'full' },
-  { path: '**', redirectTo: '/uk' }
+  { path: '', redirectTo: '/ph', pathMatch: 'full' },
+  { path: '**', redirectTo: '/ph' }
 ];
 
 @NgModule({
