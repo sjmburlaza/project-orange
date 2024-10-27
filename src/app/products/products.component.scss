@@ -1,5 +1,9 @@
+@import 'src/assets/styles/spaceTokens.scss';
+
+
 .products-container {
     display: flex;
+    padding: $space-md 0;
 }
 
 .products-menu-container {
@@ -8,9 +12,9 @@
 
 .products-item-container {
     width: 75%;
-    padding: 0px 16px;
+    padding: 0px $space-md;
     display: grid;
-    gap: 16px;
+    gap: $space-md;
 }
 
 @media (min-width: 600px) {

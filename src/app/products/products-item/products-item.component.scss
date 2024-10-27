@@ -1,17 +1,19 @@
+@import 'src/assets/styles/spaceTokens.scss';
+
 .product {
     font-family: 'Montserrat', sans-serif;
     background-color: aquamarine;
     height: 550px;
-    padding: 24px;
+    padding: $space-lg;
     display: flex;
     flex-direction: column;
     align-items: center;
     min-width: 200px;
-    border-radius: 12px;
+    border-radius: $space-sm;
 
     &-add-to-wishlist {
         align-self: flex-end;
-        padding-bottom: 16px;
+        padding-bottom: $space-md;
 
         .bi {
             font-size: 20px;
@@ -27,7 +29,7 @@
     }
 
     &-image {
-        padding: 16px 0;
+        padding: $space-md 0;
 
         img {
             max-width: 200px;
@@ -36,7 +38,7 @@
     
     &-colors {
         display: flex;
-        padding: 8px;
+        padding: $space-xs;
 
         .dot {
             width: 20px;
@@ -48,10 +50,10 @@
     }
 
     &-storage {
-        padding: 8px;
+        padding: $space-xs;
 
         &-size {
-            padding: 8px;
+            padding: $space-xs;
         }
 
         &-clicked {
@@ -64,17 +66,17 @@
     }
 
     &-price {
-        padding: 8px;
+        padding: $space-xs;
 
     }
 
     &-cta {
-        padding-top: 24px;
+        padding-top: $space-lg;
     }
 
     .cta-btn {
-        padding: 12px 24px;
-        border-radius: 24px;
+        padding: 12px $space-lg;
+        border-radius: $space-lg;
         border: 0px;
     }
 }

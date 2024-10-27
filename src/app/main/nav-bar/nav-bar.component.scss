@@ -1,3 +1,5 @@
+@import 'src/assets/styles/spaceTokens.scss';
+
 .nav-bar {
     padding: 18px 0px;
     background-color: rgb(180, 247, 225);
@@ -7,33 +9,33 @@
     font-family: "Roboto", sans-serif;
 
     .shop-name {
-        font-size: 24px;
+        font-size: $space-lg;
     }
 
     .shop-categories {
         // display: flex;
-        padding-top: 8px;
+        padding-top: $space-xs;
 
         .category {
-            padding: 0px 8px;
+            padding: 0px $space-xs;
         }
     }
 
     .shop-info {
         display: flex;
-        gap: 12px;
+        gap: $space-sm;
         justify-content: flex-end;
 
         &-support {
-            padding-top: 8px;
+            padding-top: $space-xs;
         }
 
         &-business {
-            padding-top: 8px;
+            padding-top: $space-xs;
         }
 
         .bi {
-            font-size: 24px;
+            font-size: $space-lg;
             color: black;
             padding-left: 10px;
 
