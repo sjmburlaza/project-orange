@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { MainGroup } from 'src/app/shared/models/group.model';
 
 
 @Component({
@@ -7,6 +8,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./products-menu.component.scss']
 })
 export class ProductsMenuComponent {
+  @Input() groups!: MainGroup[];
 
   constructor() {}
 

@@ -1,17 +1,9 @@
 import { Component } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { ProductService } from '../services/product.service';
+import { Group, MainGroup, SubGroup } from '../shared/models/group.model';
 import { ProductModel } from '../shared/models/product.model';
 
-interface MainGroup {
-  groupName: string,
-  group: SubGroup[]
-}
-
-interface SubGroup {
-  name: string,
-  isSelected: boolean
-}
 
 enum Price {
   TEN_BELOW = "0 - 10,000",
@@ -30,7 +22,7 @@ enum Price {
 export class ProductsComponent {
   private destroy$ = new Subject<void>();
   products!: ProductModel[];
-  // colorsAvailable: string[] = [];
+  groups: MainGroup[] = [];
 
   constructor(private productService: ProductService) {}
 
@@ -39,10 +31,37 @@ export class ProductsComponent {
       .pipe(takeUntil(this.destroy$))
       .subscribe((data) => {
         this.products = data.products;
-        // console.log(this.products)
+        this.groups = this.getMainGroup(this.products);
       });
 
     
+  }
+
+  getMainGroup(products: ProductModel[]): MainGroup[] {
+    const mainGroup: MainGroup[] = [
+      {
+        groupName: Group.COLOR,
+        group: this.getSubGroup(this.getColorsAvailable(products))
+      },
+      {
+        groupName: Group.PRICE,
+        group: this.getSubGroup(this.getPrices())
+      },
+      {
+        groupName: Group.CATEGORY,
+        group: this.getSubGroup(this.getCategoriesAvailable(products))
+      }
+    ]
+    return mainGroup;
+  }
+
+  getSubGroup(names: string[]): SubGroup[] {
+    return names.map((name) => {
+      return {
+        name: name,
+        isSelected: false
+      }
+    });
   }
 
   getColorsAvailable(products: ProductModel[]) {
@@ -54,7 +73,7 @@ export class ProductsComponent {
         }
       })
     })
-    return colors
+    return colors;
   }
 
   getPrices() {
@@ -78,15 +97,6 @@ export class ProductsComponent {
     })
 
     return categories;
-  }
-
-  getSubGroup(names: string[]): SubGroup[] {
-    return names.map((name) => {
-      return {
-        name: name,
-        isSelected: false
-      }
-    });
   }
 
   ngOnDestory(): void {
