@@ -16,5 +16,12 @@ export class ProductsMenuComponent {
 
   }
 
+  toggleExpanded(groupName: string | undefined) {
+    this.groups.map(g => {
+      if (g.groupName === groupName) {
+        g.isExpanded = !g.isExpanded;
+      }
+    })
+  }
 
 }

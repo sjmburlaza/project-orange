@@ -33,23 +33,24 @@ export class ProductsComponent {
         this.products = data.products;
         this.groups = this.getMainGroup(this.products);
       });
-
-    
   }
 
   getMainGroup(products: ProductModel[]): MainGroup[] {
     const mainGroup: MainGroup[] = [
       {
         groupName: Group.COLOR,
-        group: this.getSubGroup(this.getColorsAvailable(products))
+        group: this.getSubGroup(this.getColorsAvailable(products)),
+        isExpanded: true
       },
       {
         groupName: Group.PRICE,
-        group: this.getSubGroup(this.getPrices())
+        group: this.getSubGroup(this.getPrices()),
+        isExpanded: true
       },
       {
         groupName: Group.CATEGORY,
-        group: this.getSubGroup(this.getCategoriesAvailable(products))
+        group: this.getSubGroup(this.getCategoriesAvailable(products)),
+        isExpanded: true
       }
     ]
     return mainGroup;
@@ -64,8 +65,9 @@ export class ProductsComponent {
     });
   }
 
-  getColorsAvailable(products: ProductModel[]) {
+  getColorsAvailable(products: ProductModel[]): string[] {
     const colors: string[] = [];
+
     products?.forEach(p => {
       p.colorsAvailable.forEach(color => {
         if (color?.name && !colors.includes(color?.name)) {
@@ -76,7 +78,7 @@ export class ProductsComponent {
     return colors;
   }
 
-  getPrices() {
+  getPrices(): string[] {
     return [
       Price.TEN_BELOW,
       Price.TWENTY_BELOW,
@@ -95,7 +97,6 @@ export class ProductsComponent {
         categories.push(p.category);
       }
     })
-
     return categories;
   }
 

@@ -1,6 +1,7 @@
 export interface MainGroup {
     groupName?: string,
     group?: SubGroup[]
+    isExpanded?: boolean;
 }
 
 export interface SubGroup {

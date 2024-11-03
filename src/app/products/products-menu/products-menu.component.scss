@@ -1,5 +1,22 @@
 .products-menu__container {
-    // width: 200px;
     background-color: aliceblue;
     padding: 24px 16px;
+}
+
+.group {
+
+    &-content {
+        padding: 8px 16px;
+        align-items: center;
+        background-color: rgb(230, 172, 172);
+
+        &-label {
+            padding-left: 4px;
+            text-align: center;
+            background-color: white;
+            width: 100%;
+        }
+    }
+
+    
 }
