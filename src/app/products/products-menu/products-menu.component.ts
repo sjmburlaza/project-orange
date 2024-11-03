@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MainGroup } from 'src/app/shared/models/group.model';
 
 
@@ -9,6 +9,7 @@ import { MainGroup } from 'src/app/shared/models/group.model';
 })
 export class ProductsMenuComponent {
   @Input() groups!: MainGroup[];
+  @Output() selectGroupEvent = new EventEmitter<MainGroup[]>();
 
   constructor() {}
 
@@ -16,12 +17,18 @@ export class ProductsMenuComponent {
 
   }
 
-  toggleExpanded(groupName: string | undefined) {
+  toggleAccordion(groupName: string | undefined) {
     this.groups.map(g => {
       if (g.groupName === groupName) {
         g.isExpanded = !g.isExpanded;
       }
     })
+  }
+
+  onSelect(event: Event) {
+    if (event) {
+      this.selectGroupEvent.emit(this.groups);
+    }
   }
 
 }

@@ -6,7 +6,8 @@ export interface ProductModel {
     colorsAvailable: ColorsAvailable[],
     storageAvailable: StorageAvailable[],
     rating: string,
-    price: string,
+    price: number,
+    priceGroup: string,
     promotionText: string,
     description: string,
     isAvailable: boolean

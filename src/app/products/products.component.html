@@ -1,10 +1,13 @@
 <div *ngIf="products" class="products-container">
     <div class="products-menu-container">
-        <app-products-menu [groups]="groups"></app-products-menu>
+        <app-products-menu 
+            [groups]="groups"
+            (selectGroupEvent)="onSelectGroup($event)">
+        </app-products-menu>
     </div>
     <div class="products-item-container">
-        <ng-container *ngFor="let item of products">
-            <app-products-item [product]="item"></app-products-item>
+        <ng-container *ngFor="let product of selectedProducts">
+            <app-products-item [product]="product"></app-products-item>
         </ng-container>
     </div>
 </div>

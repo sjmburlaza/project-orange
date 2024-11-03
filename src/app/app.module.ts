@@ -19,6 +19,7 @@ import { CartItemComponent } from './cart/cart-item/cart-item.component';
 import { ProductsItemComponent } from './products/products-item/products-item.component';
 import { ProductsMenuComponent } from './products/products-menu/products-menu.component';
 import { NavBarComponent } from './main/nav-bar/nav-bar.component';
+import { FormsModule } from '@angular/forms';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json')
@@ -45,6 +46,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

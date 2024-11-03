@@ -5,16 +5,42 @@
 
 .group {
 
+    &-header {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+
+        &-title {
+
+        }
+
+        &-icon {
+
+        }
+    }
+
     &-content {
         padding: 8px 16px;
-        align-items: center;
         background-color: rgb(230, 172, 172);
+        display: flex;
 
-        &-label {
-            padding-left: 4px;
-            text-align: center;
-            background-color: white;
+        &-item {
             width: 100%;
+            background-color: aquamarine;
+
+            input {
+                height: 16px;
+                width: 16px;
+            }
+
+            label {
+                padding-left: 8px;
+                text-align: left;
+                background-color: white;
+                width: calc(100% - 16px - 4px);
+                font-size: 16px;
+                display: inline-block;
+            }
         }
     }
 
