@@ -13,8 +13,8 @@ export interface ProductModel {
 }
 
 interface ColorsAvailable {
-    name: string,
-    hexCode: string
+    name?: string,
+    hexCode?: string
 }
 
 interface StorageAvailable {
