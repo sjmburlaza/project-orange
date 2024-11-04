@@ -13,18 +13,24 @@ export class ProductsComponent {
   private destroy$ = new Subject<void>();
   products!: ProductModel[];
   groups: MainGroup[] = [];
-  selectedProducts: ProductModel[] | undefined;
+  selectedProducts!: ProductModel[];
 
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
+    this.loadProducts();
+  }
+
+  loadProducts(): void {
     this.productService.getProducts()
       .pipe(takeUntil(this.destroy$))
-      .subscribe((data) => {
-        this.products = data.products;
-        this.groups = this.getMainGroup(this.products);
-        this.selectedProducts = [...this.products];
-      });
+      .subscribe((data) => this.handleProductData(data));
+  }
+
+  handleProductData(data: any): void {
+    this.products = data.products;
+    this.groups = this.getMainGroup(this.products);
+    this.selectedProducts = [...this.products];
   }
 
   getMainGroup(products: ProductModel[]): MainGroup[] {
@@ -92,12 +98,12 @@ export class ProductsComponent {
     return categories;
   }
 
-  onSelectGroup(groups: MainGroup[]) {
+  onSelectGroup(groups: MainGroup[]): void {
     const selected = this.getSelectedProducts(groups);
     this.selectedProducts = selected && selected?.length > 0 ? selected : this.products;
   }
 
-  getSelectedProducts(mainGroups: MainGroup[]) {
+  getSelectedProducts(mainGroups: MainGroup[]): ProductModel[] | undefined {
     if (mainGroups.length < 1) {
       return;
     }
@@ -120,8 +126,6 @@ export class ProductsComponent {
     return selectedProducts.filter((product, index) => 
       selectedProducts.findIndex(p => p.productId === product.productId) === index
     );
-
-
   }
 
   ngOnDestory(): void {

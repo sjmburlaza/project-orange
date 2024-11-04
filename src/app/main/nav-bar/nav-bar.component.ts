@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+// import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-nav-bar',
@@ -6,6 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent {
+  isMobile: boolean = false;
   categories = [
     'Shop',
     'AI',
@@ -16,6 +18,19 @@ export class NavBarComponent {
     'Displays',
     'Accessories',
     'SmartThings'
-  ]
+  ];
+
+  constructor() {
+    this.checkDeviceType();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    if (event) this.checkDeviceType();
+  }
+
+  checkDeviceType() {
+    this.isMobile = window.innerWidth < 768;
+  }
 
 }

@@ -1,13 +1,15 @@
 <div class="nav-bar">
     <div class="shop-name">ORANGE</div>
-    <div class="shop-categories">
+    <div *ngIf="!isMobile" class="shop-categories">
         <ng-container *ngFor="let category of categories">
             <span class="category">{{ category }}</span>
         </ng-container>
     </div>
     <div class="shop-info">
-        <div class="shop-info-support">Support</div>
-        <div class="shop-info-business">For Business</div>
+        <ng-container *ngIf="!isMobile">
+            <div class="shop-info-support">Support</div>
+            <div class="shop-info-business">For Business</div>
+        </ng-container>
         <div class="shop-info-search">
             <i class="bi bi-search"></i>
         </div>
