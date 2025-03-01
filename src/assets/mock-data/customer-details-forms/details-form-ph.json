@@ -1,0 +1,12 @@
+{
+    "fields": [
+      { "label": "Username", "type": "text", "required": true },
+      { "label": "Age", "type": "number", "required": false },
+      {
+        "label": "Gender",
+        "type": "select",
+        "options": ["Male", "Female"],
+        "required": true
+      }
+    ]
+}

@@ -10,7 +10,7 @@ import { ProductModel } from '../shared/models/product.model';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent {
-  private destroy$ = new Subject<void>();
+  private unsubscribe$ = new Subject<void>();
   products!: ProductModel[];
   groups: MainGroup[] = [];
   selectedProducts!: ProductModel[];
@@ -23,7 +23,7 @@ export class ProductsComponent {
 
   loadProducts(): void {
     this.productService.getProducts()
-      .pipe(takeUntil(this.destroy$))
+      .pipe(takeUntil(this.unsubscribe$))
       .subscribe((data) => this.handleProductData(data));
   }
 
@@ -129,8 +129,8 @@ export class ProductsComponent {
   }
 
   ngOnDestory(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
 }

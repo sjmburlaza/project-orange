@@ -19,7 +19,7 @@ import { CartItemComponent } from './cart/cart-item/cart-item.component';
 import { ProductsItemComponent } from './products/products-item/products-item.component';
 import { ProductsMenuComponent } from './products/products-menu/products-menu.component';
 import { NavBarComponent } from './main/nav-bar/nav-bar.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductListingComponent } from './cart/cart-item/product-listing/product-listing.component';
 import { AddedServiceComponent } from './cart/cart-item/added-service/added-service.component';
 import { TradeInComponent } from './cart/added-services/trade-in/trade-in.component';
@@ -28,50 +28,53 @@ import { InsuranceComponent } from './cart/added-services/insurance/insurance.co
 import { SimPlanComponent } from './cart/added-services/sim-plan/sim-plan.component';
 import { BroadbandPlanComponent } from './cart/added-services/broadband-plan/broadband-plan.component';
 import { AddOnsComponent } from './cart/added-services/add-ons/add-ons.component';
+import { DynamicFormComponent } from "./shared/components/dynamic-form/dynamic-form.component";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json')
 }
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CartComponent,
-    RightHandSideComponent,
-    CheckoutComponent,
-    CustomerDetailsComponent,
-    DeliveryStepComponent,
-    PaymentStepComponent,
-    ProductDetailComponent,
-    ProductsComponent,
-    MainComponent,
-    CartItemComponent,
-    ProductsItemComponent,
-    ProductsMenuComponent,
-    NavBarComponent,
-    ProductListingComponent,
-    AddedServiceComponent,
-    TradeInComponent,
-    TradeUpComponent,
-    InsuranceComponent,
-    SimPlanComponent,
-    BroadbandPlanComponent,
-    AddOnsComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    })
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        CartComponent,
+        RightHandSideComponent,
+        CheckoutComponent,
+        CustomerDetailsComponent,
+        DeliveryStepComponent,
+        PaymentStepComponent,
+        ProductDetailComponent,
+        ProductsComponent,
+        MainComponent,
+        CartItemComponent,
+        ProductsItemComponent,
+        ProductsMenuComponent,
+        NavBarComponent,
+        ProductListingComponent,
+        AddedServiceComponent,
+        TradeInComponent,
+        TradeUpComponent,
+        InsuranceComponent,
+        SimPlanComponent,
+        BroadbandPlanComponent,
+        AddOnsComponent
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        }),
+        DynamicFormComponent
+    ]
 })
 export class AppModule { }
