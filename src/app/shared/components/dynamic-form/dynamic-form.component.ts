@@ -1,11 +1,13 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-dynamic-form',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule], 
   templateUrl: './dynamic-form.component.html',
   styleUrls: ['./dynamic-form.component.scss'],
-  standalone: true,
 })
 export class DynamicFormComponent {
   dynamicForm!: FormGroup;
@@ -14,7 +16,10 @@ export class DynamicFormComponent {
   constructor(private fb: FormBuilder){}
 
   ngOnInit() {
-    this.fetchFormConfig()
+    this.fetchFormConfig().then((config) => {
+      this.formConfig = config;
+      this.buildForm(config.fields);
+    })
   }
 
   async fetchFormConfig() {

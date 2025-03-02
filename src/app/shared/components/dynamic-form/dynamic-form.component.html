@@ -1,2 +1,26 @@
 <p>dynamic-form works!</p>
-
+@if (dynamicForm) {
+    <form [formGroup]="dynamicForm" (ngSubmit)="submitForm()">
+        @for(field of formConfig.fields; track field) {
+            <label for="">{{ field.label }}</label>
+            @switch(field.type) {
+                @case('text') {
+                    <input type="text" [formControlName]="field.label">
+                }
+                @case('number') {
+                    <input type="number" [formControlName]="field.label">
+                }
+                @case('select') {
+                    <select [formControlName]="field.label">
+                        @for (option of field.options; track option) {
+                            <option [value]="option">
+                                {{ option }}
+                            </option>
+                        }
+                    </select>
+                }
+            }
+        }
+        <button type="submit">Submit</button>
+    </form>
+}
