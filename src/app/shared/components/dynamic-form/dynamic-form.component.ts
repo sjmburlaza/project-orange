@@ -25,10 +25,23 @@ export class DynamicFormComponent {
   async fetchFormConfig() {
     return {
       fields: [
-        { label: "Username", type: "text", required: true },
-        { label: "Age", type: "number", required: false },
+        { 
+          label: "Username", 
+          name: "username", 
+          type: "text", 
+          required: true,
+          isDisabled: false
+        },
+        { 
+          label: "Age", 
+          name: "age", 
+          type: "number", 
+          required: false,
+          isDisabled: false
+        },
         {
           label: "Gender",
+          name: "gender",
           type: "select",
           options: ["Male", "Female"],
           required: true,

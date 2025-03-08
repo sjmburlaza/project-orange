@@ -5,13 +5,13 @@
             <label for="">{{ field.label }}</label>
             @switch(field.type) {
                 @case('text') {
-                    <input type="text" [formControlName]="field.label">
+                    <input type="text" [formControlName]="field.name" [disabled]="field.isDisabled">
                 }
                 @case('number') {
-                    <input type="number" [formControlName]="field.label">
+                    <input type="number" [formControlName]="field.name" [disabled]="field.isDisabled">
                 }
                 @case('select') {
-                    <select [formControlName]="field.label">
+                    <select [formControlName]="field.name">
                         @for (option of field.options; track option) {
                             <option [value]="option">
                                 {{ option }}
@@ -20,6 +20,13 @@
                     </select>
                 }
             }
+            <span *ngIf="dynamicForm.get(field?.name)?.touched && 
+                    dynamicForm.get(field?.name)?.hasError('required')">
+                This is required
+            </span>
+            <span *ngIf="dynamicForm.get(field?.name)?.invalid && dynamicForm.get(field?.name)?.touched">
+                This is invalid
+            </span>
         }
         <button type="submit">Submit</button>
     </form>
