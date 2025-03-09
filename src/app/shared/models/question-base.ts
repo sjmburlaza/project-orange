@@ -6,8 +6,11 @@ export class QuestionBase<T> {
     order: number;
     controlType: string;
     type: string;
+    sizeMobile: number;
+    sizeDesktop: number;
+    regex: string;
     options: {key: string; value: string}[];
-    
+
     constructor(
       options: {
         value?: T;
@@ -17,6 +20,9 @@ export class QuestionBase<T> {
         order?: number;
         controlType?: string;
         type?: string;
+        sizeMobile?: number;
+        sizeDesktop?: number;
+        regex?: string;
         options?: {key: string; value: string}[];
       } = {},
     ) {
@@ -27,6 +33,9 @@ export class QuestionBase<T> {
       this.order = options.order === undefined ? 1 : options.order;
       this.controlType = options.controlType || '';
       this.type = options.type || '';
+      this.sizeMobile = options.sizeMobile || 0;
+      this.sizeDesktop = options.sizeDesktop || 0;
+      this.regex = options.regex || '';
       this.options = options.options || [];
     }
   }

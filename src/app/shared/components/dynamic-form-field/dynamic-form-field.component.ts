@@ -11,7 +11,7 @@ import { QuestionBase } from '../../models/question-base';
   styleUrl: './dynamic-form-field.component.scss'
 })
 export class DynamicFormFieldComponent {
-  @Input() question!: QuestionBase<string>;
+  @Input() question!: QuestionBase<any>;
   @Input() form!: FormGroup;
   get isValid() {
     return this.form.controls[this.question.key].valid;

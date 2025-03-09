@@ -9,7 +9,7 @@ import { QuestionBase } from 'src/app/shared/models/question-base';
   styleUrls: ['./customer-details.component.scss']
 })
 export class CustomerDetailsComponent {
-  questions$: Observable<QuestionBase<any>[]>;
+  questions$: Observable<any>;
 
   constructor(private cds: CustomerDetailsService) {
     this.questions$ = this.cds.getCustomerDetailsQuestions();

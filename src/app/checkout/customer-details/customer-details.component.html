@@ -1,4 +1,5 @@
-<p>customer-details works!</p>
 <ng-container *ngIf="questions$ | async as questions">
-    <app-dynamic-form [questions]="questions"></app-dynamic-form>
+    <ng-container *ngFor="let sections of questions">
+        <app-dynamic-form [questions]="sections.fields"></app-dynamic-form>
+    </ng-container>
 </ng-container>
