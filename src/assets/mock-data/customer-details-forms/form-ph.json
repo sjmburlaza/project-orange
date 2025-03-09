@@ -1,0 +1,30 @@
+[
+  { 
+    "value": "",
+    "key": "firstName",
+    "label": "First Name",
+    "required": false,
+    "order": 1,
+    "controlType": "text",
+    "type": "string"
+  },
+  { 
+    "value": "",
+    "key": "lastName",
+    "label": "Last Name",
+    "required": false,
+    "order": 2,
+    "controlType": "text",
+    "type": "string"
+  },
+  {
+    "value": "",
+    "key": "gender",
+    "label": "Gender",
+    "required": false,
+    "order": 3,
+    "controlType": "select",
+    "type": "string",
+    "options": [{"key": "male", "value": "male"}]
+  }
+]

@@ -1,65 +1,31 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {Component, Input, OnInit} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormGroup, ReactiveFormsModule} from '@angular/forms';
+import { QuestionControlService } from 'src/app/services/question-control.service';
+import { DynamicFormFieldComponent } from '../dynamic-form-field/dynamic-form-field.component';
+import { QuestionBase } from '../../models/question-base';
+
 
 @Component({
-  selector: 'app-dynamic-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule], 
+  selector: 'app-dynamic-form',
   templateUrl: './dynamic-form.component.html',
-  styleUrls: ['./dynamic-form.component.scss'],
+  providers: [QuestionControlService],
+  imports: [CommonModule, DynamicFormFieldComponent, ReactiveFormsModule],
 })
-export class DynamicFormComponent {
-  dynamicForm!: FormGroup;
-  formConfig: any;
+export class DynamicFormComponent implements OnInit {
+  @Input() questions: QuestionBase<string>[] | null = [];
+  form!: FormGroup;
+  payLoad = '';
 
-  constructor(private fb: FormBuilder){}
+  constructor(private qcs: QuestionControlService) {}
 
   ngOnInit() {
-    this.fetchFormConfig().then((config) => {
-      this.formConfig = config;
-      this.buildForm(config.fields);
-    })
+    console.log('this.questions', this.questions)
+    this.form = this.qcs.toFormGroup(this.questions as QuestionBase<string>[]);
   }
 
-  async fetchFormConfig() {
-    return {
-      fields: [
-        { 
-          label: "Username", 
-          name: "username", 
-          type: "text", 
-          required: true,
-          isDisabled: false
-        },
-        { 
-          label: "Age", 
-          name: "age", 
-          type: "number", 
-          required: false,
-          isDisabled: false
-        },
-        {
-          label: "Gender",
-          name: "gender",
-          type: "select",
-          options: ["Male", "Female"],
-          required: true,
-        },
-      ],
-    };
-  }
-
-  buildForm(fields: any[]) {
-    const controls: any = {};
-    fields.forEach((field) => {
-      const validators = field.required ? [Validators.required] : [];
-      controls[field.label] = ["", validators];
-    });
-    this.dynamicForm = this.fb.group(controls);
-  }
-
-  submitForm() {
-    console.log(this.dynamicForm.value);
+  onSubmit() {
+    this.payLoad = JSON.stringify(this.form.getRawValue());
   }
 }
