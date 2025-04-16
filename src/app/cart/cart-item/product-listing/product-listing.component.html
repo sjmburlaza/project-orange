@@ -1,1 +1,32 @@
-<p>product-listing works!</p>
+<div class="container">
+    <div class="product-col-1 product-image">
+        <img src="{{item.imageUrl}}" alt="">
+    </div>
+    <div class="product-col-2 product-details">
+        <p class="product-details-name">{{ item.name }}</p>
+        <p>{{ item.code }}</p>
+        <p>{{ item.color }}</p>
+        <p>{{ item.stockStatus }}</p>
+    </div>
+    <div class="product-col-3">
+        <div class="product-price">
+            <div class="product-price-now">
+                {{ item.price.nowPrice.amount }}
+            </div>
+            <del class="product-price-old">
+                {{ item.price.oldPrice.amount }}
+            </del>
+            <div class="product-price-discount">
+                {{ item.price.discount.amount }}
+            </div>
+        </div>
+        <div class="product-remove">
+            <button><i class="bi bi-trash"></i></button>
+        </div>
+        <div class="product-qty">
+            <button class="product-qty-decrement">-</button>
+            <input class="product-qty-input" type="text">
+            <button class="product-qty-increment">+</button>
+        </div>
+    </div>
+</div>

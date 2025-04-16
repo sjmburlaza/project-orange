@@ -1,3 +1,10 @@
-<p>cart works!</p>
-<app-cart-item></app-cart-item>
-<app-right-hand-side></app-right-hand-side>
+<div *ngIf="cart$ | async as cart" class="container">
+    <div class="left-side">
+        <ng-container *ngFor="let entry of cart?.entries">
+                <app-cart-item [item]="entry"></app-cart-item>
+        </ng-container>
+    </div>
+    <div class="right-side">
+        <app-right-hand-side></app-right-hand-side>
+    </div>
+</div>

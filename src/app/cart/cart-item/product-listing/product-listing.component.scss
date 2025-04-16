@@ -1,0 +1,71 @@
+@import 'src/styles/_globalStyles.scss';
+
+.container {
+    display: grid;
+    grid-template-columns: 3fr 4fr 2fr;
+
+    .product-image {
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+        }
+    }
+
+    .product-details {
+        font-size: 12px;
+        p {
+            margin-bottom: 4px;
+        }
+
+        &-name {
+            @extend %montserrat-bold;
+            font-size: $font18;
+            margin-bottom: 12px !important;
+        }
+
+
+    }
+
+    .product-remove {
+        button {
+            border: none;
+            background-color: $white;
+        }
+    }
+
+    .product-col-3 {
+        display: grid;
+        grid-template-rows: 4fr 1fr 1fr;
+        justify-items: end;
+
+        .product-qty {
+            &-decrement,
+            &-increment {
+                width: $space-xl;
+                height: $space-xl;
+                border-width: 1px;
+            }
+
+            &-input {
+                width: $space-4xl;
+                height: $space-xl;
+                border-left: none;
+                border-right: none;
+                border-width: 1px;
+                padding: 2px 8px;
+            }
+
+            &-decrement {
+                border-top-left-radius: $space-sm;
+                border-bottom-left-radius: $space-sm;
+            }
+
+            &-increment {
+                border-top-right-radius: $space-sm;
+                border-bottom-right-radius: $space-sm;
+            }
+        }
+    }
+
+}

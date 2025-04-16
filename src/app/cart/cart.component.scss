@@ -1,0 +1,17 @@
+@import 'src/styles/_globalStyles.scss';
+
+.container {
+    @extend %montserrat-regular;
+    display: grid;
+    grid-template-columns: 5fr 3fr;
+    gap: $space-3xl;
+    margin: $space-xxl $space-lg;
+
+    .left-side {
+        background-color: rgb(178, 236, 236);
+    }
+
+    .right-side {
+        background-color: rgb(133, 175, 175);
+    }
+}

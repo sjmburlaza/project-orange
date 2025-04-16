@@ -1,56 +1,69 @@
 {
-    "cart": {
-        "items": [
-            {
-                "productId":"A10",
-                "name": "Galaxy S24+ (Online Exclusive)",
-                "category": "Mobile",
-                "imageUrl": "https://d1rlzxa98cyc61.cloudfront.net/catalog/product/cache/1801c418208f9607a371e61f8d9184d9/1/9/190908_2024.jpg",
-                "colorsAvailable": [
-                    {
-                        "name": "white",
-                        "hexCode": ""
-                    },
-                    {
-                        "name": "grey",
-                        "hexCode": ""
-                    },
-                    {
-                        "name": "brown",
-                        "hexCode": ""
-                    },
-                    {
-                        "name": "yellow",
-                        "hexCode": ""
-                    },
-                    {
-                        "name": "green",
-                        "hexCode": ""
-                    }
-                    ,
-                    {
-                        "name": "black",
-                        "hexCode": ""
-                    }
-                ],
-                "storageAvailable": [
-                    {
-                        "size": "256 GB"
-                    },
-                    {
-                        "size": "512 GB"
-                    },
-                    {
-                        "size": "1 TB"
-                    }
-                ],
-                "rating": "",
-                "price": 26000,
-                "priceGroup": "20,001 - 30,000",
-                "promotionText": "",
-                "description": "",
-                "isAvailable": true
-            }
-        ]
-    }
+    "entries": [
+        {
+            "code":"SM-123456",
+            "name": "Galaxy S24+ (Online Exclusive)",
+            "category": "Mobile",
+            "color": "Gray",
+            "stockStatus": "In Stock",
+            "quantity": 2,
+            "price": {
+                "oldPrice": {
+                    "amount": 50000,
+                    "amountFormatted": "",
+                    "totalAmount": "",
+                    "totalAmountFormatted": ""
+                },
+                "nowPrice": {
+                    "amount": 40000,
+                    "amountFormatted": "",
+                    "totalAmount": "",
+                    "totalAmountFormatted": ""
+                },
+                "discountedPrice": {
+                    "amount": 0,
+                    "amountFormatted": "",
+                    "totalAmount": "",
+                    "totalAmountFormatted": ""
+                },
+                "specialPrice": {
+                    "amount": 0,
+                    "amountFormatted": "",
+                    "totalAmount": "",
+                    "totalAmountFormatted": ""
+                },
+                "discount": {
+                    "amount": 10000,
+                    "amountFormatted": "",
+                    "totalAmount": "",
+                    "totalAmountFormatted": ""
+                },
+                "specialSavings": {
+                    "amount": 0,
+                    "amountFormatted": "",
+                    "totalAmount": "",
+                    "totalAmountFormatted": ""
+                },
+                "discountAndSavings": {
+                    "amount": 10000,
+                    "amountFormatted": "",
+                    "totalAmount": "",
+                    "totalAmountFormatted": ""
+                }
+            },
+            "imageUrl": "https://d1rlzxa98cyc61.cloudfront.net/catalog/product/cache/1801c418208f9607a371e61f8d9184d9/1/9/190908_2024.jpg"
+        },
+        {
+            "code":"SM-123456",
+            "name": "Galaxy Watch7 (LTE, 40mm)",
+            "category": "Mobile",
+            "color": "Blue",
+            "stockStatus": "Low Stock",
+            "quantity": 1,
+            "price": {
+
+            },
+            "imageUrl": "https://d1rlzxa98cyc61.cloudfront.net/catalog/product/cache/1801c418208f9607a371e61f8d9184d9/1/9/190908_2024.jpg"
+        }
+    ]
 }
