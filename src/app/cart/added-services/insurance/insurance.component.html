@@ -1,1 +1,45 @@
-<p>insurance works!</p>
+<div *ngIf="insurance?.details as details" class="container">
+    <div class="title">
+        <img src="" alt="">
+        <p>
+            {{ details?.title }}
+        </p>
+        <button (click)="close()">
+            <i class="bi bi-x"></i>
+        </button>
+    </div>
+    <div class="subtitle">
+        {{ details?.subtitle }}
+    </div>
+    <div class="plans">
+        <div *ngFor="let plan of details?.plans" class="plan">
+            <div class="plan__selection">
+                <input type="radio" id="{{plan?.code}}" name="plan">
+            </div>
+            <label for="{{plan?.code}}">
+                <div class="plan__details">
+                    <div class="plan__details-name">
+                        {{ plan?.name }}
+                    </div>
+                    <div class="plan__details-code">
+                        {{ plan?.code }}
+                    </div>
+                </div>
+                <div class="plan__amount">
+                    {{ plan?.amount }}
+                </div>
+            </label>
+        </div>
+    </div>
+    <div class="tnc">
+        <div class="tnc__maintext">
+            {{ details.tnc.mainText }}
+        </div>
+        <div class="tnc__subtext">
+            <input type="radio" id="tnc">
+            <label for="tnc">
+                <span [innerHTML]="details.tnc.subtext"></span>
+            </label>
+        </div>
+    </div>
+</div>

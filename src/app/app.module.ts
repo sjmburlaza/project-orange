@@ -29,6 +29,8 @@ import { SimPlanComponent } from './cart/added-services/sim-plan/sim-plan.compon
 import { BroadbandPlanComponent } from './cart/added-services/broadband-plan/broadband-plan.component';
 import { AddOnsComponent } from './cart/added-services/add-ons/add-ons.component';
 import { DynamicFormComponent } from "./shared/components/dynamic-form/dynamic-form.component";
+import { OverlayModule } from '@angular/cdk/overlay';
+import { PortalModule } from '@angular/cdk/portal';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json')
@@ -67,6 +69,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
+        OverlayModule,
+        PortalModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,

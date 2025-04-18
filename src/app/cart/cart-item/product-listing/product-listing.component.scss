@@ -7,7 +7,7 @@
         "prod-image prod-controls";
     grid-template-columns: 3fr 2fr;
     grid-template-rows: 120px 120px;
-    row-gap: 16px;
+    row-gap: $space-md;
 
     @include respond-to(xl) {
         grid-template-areas:
@@ -29,15 +29,15 @@
     .product-details {
         grid-area: prod-details;
 
-        font-size: 12px;
+        font-size: $font12;
         p {
-            margin-bottom: 4px;
+            margin-bottom: $space-xxs;
         }
 
         &-name {
             @extend %montserrat-bold;
             font-size: $font18;
-            margin-bottom: 12px !important;
+            margin-bottom: $space-sm !important;
         }
 
     }
@@ -46,7 +46,7 @@
         grid-area: prod-controls;
 
         display: grid;
-        grid-template-rows: 4fr 1fr 1fr;
+        grid-template-rows: 2fr 1fr 2fr;
         justify-items: end;
 
         .product-remove {
@@ -70,7 +70,7 @@
                 border-left: none;
                 border-right: none;
                 border-width: 1px;
-                padding: 2px 8px;
+                padding: $space-3xs $space-xs;
             }
 
             &-decrement {

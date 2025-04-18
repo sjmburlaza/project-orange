@@ -1,0 +1,73 @@
+@import 'src/styles/_globalStyles.scss';
+
+.container {
+    @extend %montserrat-regular;
+    background: $white;
+    max-width: 900px;
+    padding: $space-lg;
+    border-radius: 24px
+}
+
+.title {
+    @extend %montserrat-bold;
+    padding-bottom: 16px;
+    font-size: $font24;
+    display: grid;
+    grid-template-columns: 1fr 10fr 1fr;
+
+    p {
+        align-self: center;
+    }
+
+    button {
+        border: none;
+        background-color: $white;
+
+        i {
+            font-size: $font36;
+        }
+    }
+}
+
+.plans {
+    padding: $space-md 0;
+}
+
+.plan {
+    margin: $space-md 0;
+    padding: $space-md;
+    display: grid;
+    grid-template-columns: 1fr 14fr;
+    background-color: $lightblue;
+
+    &__selection {
+        justify-self: center;
+        align-self: center;
+    }
+
+    label {
+        display: grid;
+        grid-template-columns: 10fr 2fr;
+
+        .plan__details {
+            display: grid;
+            row-gap: $space-xs;
+        }
+
+        .plan__amount {
+            justify-self: end;
+        }
+    }
+}
+
+.tnc {
+    &__maintext {
+        @extend %montserrat-bold;
+    }
+
+    &__subtext {
+        input {
+            margin: $space-md;
+        }
+    }
+}

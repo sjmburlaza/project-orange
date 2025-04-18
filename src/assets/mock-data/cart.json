@@ -68,7 +68,32 @@
             "skuApplicable": [
                 "SM-123000",
                 "SM-123456"
-            ]
+            ],
+            "details": {
+                "title": "Insurance+",
+                "subtitle": "Insurance+ covers you with up to 2 years of peace of mind from device breakdown, and damage from accidents and/or liquids (up to 2 times). Also enjoy the convenience of FREE pick-up and delivery of your covered device.",
+                "plans": [
+                    {
+                        "name": "Insurance 1 year plan",
+                        "code": "INS-1Y-PH-B",
+                        "amount": "₱3,999.00"
+                    },
+                    {
+                        "name": "Insurance Lite 1 Year Plan - Cracked screen",
+                        "code": "INS-1Y-PH-CS",
+                        "amount": "₱3,999.00"
+                    },
+                    {
+                        "name": "Insurance 2 year plan",
+                        "code": "INS-2Y-PH-B",
+                        "amount": "₱7,099.00"
+                    }
+                ],
+                "tnc": {
+                    "mainText": "Insurance+ Terms and Conditions",
+                    "subtext": "I have read and agree to the Insurance+ <a href='https://www.samsung.com/ph/offer/samsung-care-plus/#tnc'>General Terms and Conditions</a>"
+                }
+            }
         }
     ],
     "servicesSelected": [
@@ -81,7 +106,12 @@
             "insuranceCategory": "",
             "skuApplicable": [
                 "SM-123000"
-            ]
+            ],
+            "plan": {
+                "name":"",
+                "code": "",
+                "amount": ""
+            }
         }
     ]
 }
