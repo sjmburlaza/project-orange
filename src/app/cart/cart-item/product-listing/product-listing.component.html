@@ -8,16 +8,16 @@
         <p>{{ item.color }}</p>
         <p>{{ item.stockStatus }}</p>
     </div>
-    <div class="product-col-3">
+    <div class="product-controls">
         <div class="product-price">
             <div class="product-price-now">
-                {{ item.price.nowPrice.amount }}
+                {{ item.priceNow?.amount }}
             </div>
             <del class="product-price-old">
-                {{ item.price.oldPrice.amount }}
+                {{ item.priceOld?.amount }}
             </del>
             <div class="product-price-discount">
-                {{ item.price.discount.amount }}
+                {{ item.priceDiscount?.amount }}
             </div>
         </div>
         <div class="product-remove">

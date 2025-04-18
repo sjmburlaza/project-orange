@@ -1,0 +1,48 @@
+@import 'src/styles/_globalStyles.scss';
+
+.container {
+    background-color: $lightblue;
+    margin: 16px 0;
+    padding: 16px;
+    display: grid;
+    font-size: $font12;
+    grid-template-columns: 1fr 10fr 2fr;
+
+    // column-gap: 8px;
+
+    @include respond-to(xl) {
+        font-size: $font12;
+        grid-template-columns: 1fr 8fr 1fr;
+
+    }
+
+    .service {
+        &-details {
+            display: grid;
+            row-gap: 16px;
+
+            .name {
+                font-size: $font16;
+            }
+
+        }
+
+        &-controls {
+            display: grid;
+            row-gap: 16px;
+        }
+
+        &-amount {
+            justify-self: end;
+        }
+
+        &-remove {
+            justify-self: end;
+        }
+    }
+}
+
+button {
+    border: none;
+    background-color: $lightblue;
+}

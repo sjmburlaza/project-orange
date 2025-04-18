@@ -1,1 +1,32 @@
-<p>added-service works!</p>
+<div class="container">
+    <div class="service-icon">
+        <img src="assets/images/insurance-icon.png" alt="">
+    </div>
+    <div class="service-details">
+        <div class="name">
+            {{ service?.name }}
+        </div>
+        <div class="description">
+            {{ service?.description }}
+        </div>
+    </div>
+    <div class="service-controls">
+        <ng-container *ngIf="service?.amount; else add">
+            <div class="service-amount">
+                {{ service?.amount }}
+            </div>
+            <div class="service-remove">
+                <button (click)="deleteService()">
+                    <i class="bi bi-trash"></i>
+                </button>
+            </div>
+        </ng-container>
+        <ng-template #add>
+            <div class="service-add">
+                <button (click)="addService()">
+                    + <span> Add </span>
+                </button>
+            </div>
+        </ng-template>
+    </div>
+</div>

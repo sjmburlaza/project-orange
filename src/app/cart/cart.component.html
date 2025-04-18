@@ -1,7 +1,12 @@
 <div *ngIf="cart$ | async as cart" class="container">
     <div class="left-side">
         <ng-container *ngFor="let entry of cart?.entries">
-                <app-cart-item [item]="entry"></app-cart-item>
+                <app-cart-item 
+                    [item]="entry"
+                    [servicesAvailable]="cart?.servicesAvailable"
+                    [servicesSelected]="cart?.servicesSelected"
+                >
+                </app-cart-item>
         </ng-container>
     </div>
     <div class="right-side">

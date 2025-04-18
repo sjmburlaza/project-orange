@@ -1,4 +1,6 @@
 <div class="cart-item-container">
     <app-product-listing [item]="item"></app-product-listing>
-    <app-added-service></app-added-service>
+    <ng-container *ngFor="let service of itemServices">
+        <app-added-service [service]="service"></app-added-service>
+    </ng-container>
 </div>
