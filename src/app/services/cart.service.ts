@@ -6,10 +6,15 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CartService {
+  private API_URL = '/api/cart';
 
   constructor(private http: HttpClient) {}
 
+  // getCart(): Observable<any> {
+  //   return this.http.get<any>('assets/mock-data/cart.json');
+  // }
+
   getCart(): Observable<any> {
-    return this.http.get<any>('assets/mock-data/cart.json');
+    return this.http.get(this.API_URL );
   }
 }

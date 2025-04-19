@@ -1,117 +1,120 @@
 {
-    "entries": [
-        {
-            "code":"SM-123000",
-            "name": "Galaxy S24+ (Online Exclusive)",
-            "category": "Mobile",
-            "color": "Gray",
-            "stockStatus": "In Stock",
-            "quantity": 2,
-            "priceOld": {
-                "amount": 50000,
-                "amountFormatted": "",
-                "totalAmount": "",
-                "totalAmountFormatted": ""
+    "cart": {
+        "entries": [
+            {
+                "code":"SM-123000",
+                "name": "Galaxy S24+ (Online Exclusive)",
+                "category": "Mobile",
+                "color": "Gray",
+                "stockStatus": "In Stock",
+                "quantity": 2,
+                "priceOld": {
+                    "amount": 50000,
+                    "amountFormatted": "",
+                    "totalAmount": "",
+                    "totalAmountFormatted": ""
+                },
+                "priceNow": {
+                    "amount": 40000,
+                    "amountFormatted": "",
+                    "totalAmount": "",
+                    "totalAmountFormatted": ""
+                },
+                "priceDiscounted": {
+                    "amount": 0,
+                    "amountFormatted": "",
+                    "totalAmount": "",
+                    "totalAmountFormatted": ""
+                },
+                "priceSpecial": {
+                    "amount": 0,
+                    "amountFormatted": "",
+                    "totalAmount": "",
+                    "totalAmountFormatted": ""
+                },
+                "priceSavings": {
+                    "amount": 10000,
+                    "amountFormatted": "",
+                    "totalAmount": "",
+                    "totalAmountFormatted": ""
+                },
+                "imageUrl": "https://images.samsung.com/is/image/samsung/p6pim/de/2401/gallery/de-galaxy-s24-sm-s921bzygeub-539311718?$ORIGIN_PNG$?$450_450_PNG$"
             },
-            "priceNow": {
-                "amount": 40000,
-                "amountFormatted": "",
-                "totalAmount": "",
-                "totalAmountFormatted": ""
+            {
+                "code":"SM-123456",
+                "name": "Galaxy Watch7 (LTE, 40mm)",
+                "category": "Mobile",
+                "color": "Blue",
+                "stockStatus": "Low Stock",
+                "quantity": 1,
+                "imageUrl": "https://images.samsung.com/is/image/samsung/p6pim/de/2401/gallery/de-galaxy-s24-sm-s921bzygeub-539311718?$ORIGIN_PNG$?$450_450_PNG$"
+            }
+        ],
+        "servicesAvailable": [
+            {
+                "code": "tradeIn",
+                "name": "Trade-in",
+                "description": "Add trade-in & get extra discount for your order",
+                "iconUrl": "",
+                "skuApplicable": [
+                    "SM-123456"
+                ]
             },
-            "priceDiscounted": {
-                "amount": 0,
-                "amountFormatted": "",
-                "totalAmount": "",
-                "totalAmountFormatted": ""
-            },
-            "priceSpecial": {
-                "amount": 0,
-                "amountFormatted": "",
-                "totalAmount": "",
-                "totalAmountFormatted": ""
-            },
-            "priceSavings": {
-                "amount": 10000,
-                "amountFormatted": "",
-                "totalAmount": "",
-                "totalAmountFormatted": ""
-            },
-            "imageUrl": "https://images.samsung.com/is/image/samsung/p6pim/de/2401/gallery/de-galaxy-s24-sm-s921bzygeub-539311718?$ORIGIN_PNG$?$450_450_PNG$"
-        },
-        {
-            "code":"SM-123456",
-            "name": "Galaxy Watch7 (LTE, 40mm)",
-            "category": "Mobile",
-            "color": "Blue",
-            "stockStatus": "Low Stock",
-            "quantity": 1,
-            "imageUrl": "https://images.samsung.com/is/image/samsung/p6pim/de/2401/gallery/de-galaxy-s24-sm-s921bzygeub-539311718?$ORIGIN_PNG$?$450_450_PNG$"
-        }
-    ],
-    "servicesAvailable": [
-        {
-            "code": "tradeIn",
-            "name": "Trade-in",
-            "description": "Add trade-in & get extra discount for your order",
-            "iconUrl": "",
-            "skuApplicable": [
-                "SM-123456"
-            ]
-        },
-        {
-            "code": "insurance",
-            "name": "Insurance",
-            "description": "Add mobile insurance",
-            "iconUrl": "",
-            "insuranceCategory": "",
-            "skuApplicable": [
-                "SM-123000",
-                "SM-123456"
-            ],
-            "details": {
-                "title": "Insurance+",
-                "subtitle": "Insurance+ covers you with up to 2 years of peace of mind from device breakdown, and damage from accidents and/or liquids (up to 2 times). Also enjoy the convenience of FREE pick-up and delivery of your covered device.",
-                "plans": [
-                    {
-                        "name": "Insurance 1 year plan",
-                        "code": "INS-1Y-PH-B",
-                        "amount": "₱3,999.00"
-                    },
-                    {
-                        "name": "Insurance Lite 1 Year Plan - Cracked screen",
-                        "code": "INS-1Y-PH-CS",
-                        "amount": "₱3,999.00"
-                    },
-                    {
-                        "name": "Insurance 2 year plan",
-                        "code": "INS-2Y-PH-B",
-                        "amount": "₱7,099.00"
-                    }
+            {
+                "code": "insurance",
+                "name": "Insurance",
+                "description": "Add mobile insurance",
+                "iconUrl": "",
+                "insuranceCategory": "",
+                "skuApplicable": [
+                    "SM-123000",
+                    "SM-123456"
                 ],
-                "tnc": {
-                    "mainText": "Insurance+ Terms and Conditions",
-                    "subtext": "I have read and agree to the Insurance+ <a href='https://www.samsung.com/ph/offer/samsung-care-plus/#tnc'>General Terms and Conditions</a>"
+                "details": {
+                    "title": "Insurance+",
+                    "subtitle": "Insurance+ covers you with up to 2 years of peace of mind from device breakdown, and damage from accidents and/or liquids (up to 2 times). Also enjoy the convenience of FREE pick-up and delivery of your covered device.",
+                    "plans": [
+                        {
+                            "name": "Insurance 1 year plan",
+                            "code": "INS-1Y-PH-B",
+                            "amount": "₱3,999.00"
+                        },
+                        {
+                            "name": "Insurance Lite 1 Year Plan - Cracked screen",
+                            "code": "INS-1Y-PH-CS",
+                            "amount": "₱3,999.00"
+                        },
+                        {
+                            "name": "Insurance 2 year plan",
+                            "code": "INS-2Y-PH-B",
+                            "amount": "₱7,099.00"
+                        }
+                    ],
+                    "tnc": {
+                        "mainText": "Insurance+ Terms and Conditions",
+                        "subtext": "I have read and agree to the Insurance+ <a href='https://www.samsung.com/ph/offer/samsung-care-plus/#tnc'>General Terms and Conditions</a>"
+                    }
                 }
             }
-        }
-    ],
-    "servicesSelected": [
-        {
-            "code": "insurance",
-            "name": "Insurance",
-            "amount": "100.00",
-            "description": "You have added a mobile insurance",
-            "iconUrl": "",
-            "insuranceCategory": "",
-            "skuApplicable": [
-                "SM-123000"
-            ],
-            "plan": {
-                "name":"",
-                "code": "",
-                "amount": ""
+        ],
+        "servicesSelected": [
+            {
+                "code": "insurance",
+                "name": "Insurance",
+                "amount": "100.00",
+                "description": "You have added a mobile insurance",
+                "iconUrl": "",
+                "insuranceCategory": "",
+                "skuApplicable": [
+                    "SM-123000"
+                ],
+                "plan": {
+                    "name":"",
+                    "code": "",
+                    "amount": ""
+                }
             }
-        }
-    ]
+        ]
+    }
+
 }
