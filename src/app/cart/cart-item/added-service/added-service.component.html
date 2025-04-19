@@ -11,9 +11,9 @@
         </div>
     </div>
     <div class="service-controls">
-        <ng-container *ngIf="service?.amount; else add">
+        <ng-container *ngIf="service?.plan?.amount; else add">
             <div class="service-amount">
-                {{ service?.amount }}
+                {{ service?.plan?.amount }}
             </div>
             <div class="service-remove">
                 <button (click)="deleteService()">
@@ -23,7 +23,7 @@
         </ng-container>
         <ng-template #add>
             <div class="service-add">
-                <button (click)="addService()">
+                <button (click)="addService(service?.code)">
                     + <span> Add </span>
                 </button>
             </div>

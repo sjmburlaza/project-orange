@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { Observable} from 'rxjs';
 import { CartService } from '../services/cart.service';
 import { Cart } from '../shared/models/cart.model';
 
@@ -8,7 +8,7 @@ import { Cart } from '../shared/models/cart.model';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
-export class CartComponent {
+export class CartComponent implements OnInit {
   cart$!: Observable<Cart>;
 
   constructor(public cartService: CartService) {}

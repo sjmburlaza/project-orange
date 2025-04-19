@@ -1,6 +1,6 @@
 <div class="cart-item-container">
     <app-product-listing [item]="item"></app-product-listing>
     <ng-container *ngFor="let service of itemServices">
-        <app-added-service [service]="service"></app-added-service>
+        <app-added-service [service]="service" [sku]="item?.sku"></app-added-service>
     </ng-container>
 </div>

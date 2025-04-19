@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { getUniqueObjects } from 'src/app/shared/helpers/utils';
 import { Service } from 'src/app/shared/models/cart.model';
 
@@ -29,6 +29,6 @@ export class CartItemComponent implements OnInit {
   }
 
   getItemServices(services: Service[]): Service[] {
-    return services.filter((s: Service) => s.skuApplicable.includes(this.item.code));
+    return services.filter((s: Service) => s.skuApplicable.includes(this.item.sku));
   }
 }

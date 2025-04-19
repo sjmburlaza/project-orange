@@ -10,7 +10,6 @@
 
 .title {
     @extend %montserrat-bold;
-    padding-bottom: 16px;
     font-size: $font24;
     display: grid;
     grid-template-columns: 1fr 10fr 1fr;
@@ -29,7 +28,7 @@
     }
 }
 
-.plans {
+.subtitle {
     padding: $space-md 0;
 }
 
@@ -41,8 +40,12 @@
     background-color: $lightblue;
 
     &__selection {
-        justify-self: center;
         align-self: center;
+
+        input {
+            height: 20px;
+            width: 20px;
+        }
     }
 
     label {
@@ -61,13 +64,43 @@
 }
 
 .tnc {
+    padding: $space-md 0;
+
     &__maintext {
         @extend %montserrat-bold;
     }
 
     &__subtext {
+        display: grid;
+        grid-template-columns: 1fr 23fr;
+
         input {
             margin: $space-md;
+            height: 20px;
+            width: 20px;
         }
+
+        label {
+            align-self: center;
+        }
+    }
+}
+
+.controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: $space-md;
+
+    button {
+        padding: 12px;
+        border-radius: 24px;
+        border-width: 1px;
+        background-color: $white;
+    }
+
+    &__submit:not(:disabled) {
+        background-color: $blue !important;
+        border: none;
+        color: $white;
     }
 }

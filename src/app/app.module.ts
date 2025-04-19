@@ -31,6 +31,7 @@ import { AddOnsComponent } from './cart/added-services/add-ons/add-ons.component
 import { DynamicFormComponent } from "./shared/components/dynamic-form/dynamic-form.component";
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
+import { SafeHtmlPipe } from './shared/pipes/safe-html.pipe';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json')
@@ -59,7 +60,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         InsuranceComponent,
         SimPlanComponent,
         BroadbandPlanComponent,
-        AddOnsComponent
+        AddOnsComponent,
+        SafeHtmlPipe,
     ],
     providers: [],
     bootstrap: [AppComponent],

@@ -1,20 +1,30 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  private API_URL = '/api/cart';
+  private API_URL = '/api';
 
   constructor(private http: HttpClient) {}
 
-  // getCart(): Observable<any> {
-  //   return this.http.get<any>('assets/mock-data/cart.json');
-  // }
-
   getCart(): Observable<any> {
-    return this.http.get(this.API_URL );
+    return forkJoin({
+      entries: this.http.get(`${this.API_URL}/entries`),
+      servicesAvailable: this.http.get(`${this.API_URL}/servicesAvailable`),
+      servicesSelected: this.http.get(`${this.API_URL}/servicesSelected`)
+    });
   }
+
+  addEntry(entry: any): Observable<any> {
+    return this.http.post(`${this.API_URL}/entries`, entry);
+  }
+  
+  addSelectedService(service: any): Observable<any> {
+    console.log(service)
+    return this.http.post(`${this.API_URL}/servicesSelected`, service);
+  }
+
 }

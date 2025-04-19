@@ -33,5 +33,28 @@ export interface Service {
     iconUrl: string;
     insuranceCategory?: string;
     skuApplicable: string[];
+    details?: InsuranceDetails | any;
+    plan?: InsurancePlan;
+}
+
+export interface InsuranceDetails {
+    title: string,
+    subtitle: string,
+    plans: InsurancePlan[],
+    tnc: { mainText: string, subtext: string}
+}
+
+export interface InsurancePlan {
+    name: string,
+    code: string,
+    amount: string
+}
+
+export interface AvailableService {
+
+}
+
+export interface selectedService {
+
 }
 

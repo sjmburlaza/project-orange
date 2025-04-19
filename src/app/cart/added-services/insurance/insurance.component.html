@@ -11,12 +11,12 @@
     <div class="subtitle">
         {{ details?.subtitle }}
     </div>
-    <div class="plans">
+    <form [formGroup]="form" (ngSubmit)="addToCart()">
         <div *ngFor="let plan of details?.plans" class="plan">
             <div class="plan__selection">
-                <input type="radio" id="{{plan?.code}}" name="plan">
+                <input type="radio" [id]="plan?.code" formControlName="selectedPlan" [value]="plan?.code">
             </div>
-            <label for="{{plan?.code}}">
+            <label [for]="plan?.code">
                 <div class="plan__details">
                     <div class="plan__details-name">
                         {{ plan?.name }}
@@ -30,16 +30,20 @@
                 </div>
             </label>
         </div>
-    </div>
-    <div class="tnc">
-        <div class="tnc__maintext">
-            {{ details.tnc.mainText }}
+        <div class="tnc">
+            <div class="tnc__maintext">
+                {{ details.tnc.mainText }}
+            </div>
+            <div class="tnc__subtext">
+                <input type="checkbox" id="tnc" formControlName="tnc">
+                <label for="tnc">
+                    <span [innerHTML]="details?.tnc?.subtext | safeHtml"></span>
+                </label>
+            </div>
         </div>
-        <div class="tnc__subtext">
-            <input type="radio" id="tnc">
-            <label for="tnc">
-                <span [innerHTML]="details.tnc.subtext"></span>
-            </label>
+        <div class="controls">
+            <button class="controls__cancel" (click)="close()">Cancel</button>
+            <button class="controls__submit" type="submit" [disabled]="form.invalid">Add to cart</button>
         </div>
-    </div>
+    </form>
 </div>

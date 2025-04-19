@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { OverlayService } from './overlay.service';
+import { ModalService } from './modal.service';
 
 describe('OverlayService', () => {
-  let service: OverlayService;
+  let service: ModalService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(OverlayService);
+    service = TestBed.inject(ModalService);
   });
 
   it('should be created', () => {
