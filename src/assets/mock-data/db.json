@@ -102,21 +102,7 @@
   ],
   "servicesSelected": [
     {
-      "id": "bd9b",
-      "code": "insurance",
-      "name": "Insurance",
-      "plan": {
-        "name": "Insurance 2 year plan",
-        "code": "INS-2Y-PH-B",
-        "amount": "₱7,099.00"
-      },
-      "skuApplicable": [
-        "SM-123456"
-      ],
-      "selectedId": "insurance-SM-123456"
-    },
-    {
-      "id": "4207",
+      "id": "eb40",
       "code": "insurance",
       "name": "Insurance",
       "plan": {

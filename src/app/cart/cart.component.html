@@ -1,10 +1,10 @@
-<div *ngIf="cart$ | async as cart" class="container">
+<div *ngIf="entries$ | async as entries" class="container">
     <div class="left-side">
-        <ng-container *ngFor="let entry of cart?.entries">
+        <ng-container *ngFor="let entry of entries">
                 <app-cart-item 
                     [item]="entry"
-                    [servicesAvailable]="cart?.servicesAvailable"
-                    [servicesSelected]="cart?.servicesSelected"
+                    [servicesAvailable]="servicesAvailable$ | async"
+                    [servicesSelected]="servicesSelected$ | async"
                 >
                 </app-cart-item>
         </ng-container>

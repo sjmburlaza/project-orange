@@ -23,7 +23,6 @@ export class CartService {
   }
   
   addSelectedService(service: any): Observable<any> {
-    console.log(service)
     return this.http.post(`${this.API_URL}/servicesSelected`, service);
   }
 

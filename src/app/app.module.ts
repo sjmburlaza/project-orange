@@ -32,6 +32,10 @@ import { DynamicFormComponent } from "./shared/components/dynamic-form/dynamic-f
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
 import { SafeHtmlPipe } from './shared/pipes/safe-html.pipe';
+import { StoreModule } from '@ngrx/store';
+import { cartReducer } from './store/reducers/cart.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { CartEffects } from './store/effects/cart.effects';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json')
@@ -67,6 +71,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     bootstrap: [AppComponent],
     imports: [
         BrowserModule,
+        StoreModule.forRoot({ cart: cartReducer }),
+        EffectsModule.forRoot([CartEffects]),
         AppRoutingModule,
         HttpClientModule,
         FormsModule,

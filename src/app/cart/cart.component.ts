@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Observable} from 'rxjs';
-import { CartService } from '../services/cart.service';
-import { Cart } from '../shared/models/cart.model';
+import { CartState } from '../store/reducers/cart.reducer';
+import * as CartActions from '../store/actions/cart.actions';
+import * as CartSelectors from '../store/selectors/cart.selectors';
 
 @Component({
   selector: 'app-cart',
@@ -9,11 +11,21 @@ import { Cart } from '../shared/models/cart.model';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-  cart$!: Observable<Cart>;
+  entries$: Observable<any[]>;
+  servicesAvailable$: Observable<any[]>;
+  servicesSelected$: Observable<any[]>;
+  loading$: Observable<boolean>;
+  error$: Observable<any>;
 
-  constructor(public cartService: CartService) {}
+  constructor(private store: Store<CartState>) {
+    this.entries$ = this.store.select(CartSelectors.selectEntries);
+    this.servicesAvailable$ = this.store.select(CartSelectors.selectServicesAvailable);
+    this.servicesSelected$ = this.store.select(CartSelectors.selectServicesSelected);
+    this.loading$ = this.store.select(CartSelectors.selectLoading);
+    this.error$ = this.store.select(CartSelectors.selectError);
+  }
 
   ngOnInit(): void {
-    this.cart$ = this.cartService.getCart();
+    this.store.dispatch(CartActions.loadCart());
   }
 }
