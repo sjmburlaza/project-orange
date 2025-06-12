@@ -1,10 +1,10 @@
-export interface MainGroup {
+export interface RightMenuGroup {
     groupName?: string,
-    group?: SubGroup[]
+    group?: RightMenuSubGroup[]
     isExpanded?: boolean;
 }
 
-export interface SubGroup {
+export interface RightMenuSubGroup {
     name: string,
     isSelected: boolean
 }

@@ -1,59 +1,58 @@
 @import 'src/styles/globalStyles.scss';
 
 .nav-bar {
-    padding: 18px 0px;
-    background-color: rgb(180, 247, 225);
-    display: grid;
-    grid-template-columns: 1fr 5fr 2fr;
-    font-size: 14px;
-    font-family: "Roboto", sans-serif;
+  padding: 24px;
+  background-color: rgb(180, 247, 225);
+  display: grid;
+  grid-template-columns: 1fr 5fr 2fr;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
 
-    .shop-name {
-        font-size: $space-lg;
+  .shop-name {
+    font-size: $space-lg;
+  }
+
+  .shop-categories {
+    padding-top: $space-xs;
+
+    .category {
+      padding: 0px $space-xs;
+    }
+  }
+
+  .shop-info {
+    display: flex;
+    gap: $space-sm;
+    justify-content: flex-end;
+
+    &-support {
+      padding-top: $space-xs;
     }
 
-    .shop-categories {
-        // display: flex;
-        padding-top: $space-xs;
-
-        .category {
-            padding: 0px $space-xs;
-        }
+    &-business {
+      padding-top: $space-xs;
     }
 
-    .shop-info {
-        display: flex;
-        gap: $space-sm;
-        justify-content: flex-end;
+    .bi {
+      font-size: $space-lg;
+      color: black;
+      padding-left: 10px;
 
-        &-support {
-            padding-top: $space-xs;
-        }
+      &-search {
+        font-size: 22px;
+      }
 
-        &-business {
-            padding-top: $space-xs;
-        }
-
-        .bi {
-            font-size: $space-lg;
-            color: black;
-            padding-left: 10px;
-
-            &-search {
-                font-size: 22px;
-            }
-
-            &-person {
-                font-size: 26px;
-            }
-        }
+      &-person {
+        font-size: 26px;
+      }
     }
+  }
 
-    .desktop {
-        display: none;
-        
-        @include respond-to(lg) {
-            display: unset;
-        }
+  .desktop {
+    display: none;
+    
+    @include respond-to(lg) {
+      display: unset;
     }
+  }
 }

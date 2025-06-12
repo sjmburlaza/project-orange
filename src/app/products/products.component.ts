@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { ProductService } from '../services/product.service';
-import { Group, MainGroup, Price, SubGroup } from '../shared/models/group.model';
+import { RightMenuGroup } from '../shared/models/group.model';
 import { ProductModel } from '../shared/models/product.model';
 
 @Component({
@@ -12,7 +12,7 @@ import { ProductModel } from '../shared/models/product.model';
 export class ProductsComponent {
   private unsubscribe$ = new Subject<void>();
   products!: ProductModel[];
-  groups: MainGroup[] = [];
+  groups: RightMenuGroup[] = [];
   filteredProducts!: ProductModel[];
 
   constructor(private productService: ProductService) {}
@@ -28,7 +28,6 @@ export class ProductsComponent {
   }
 
   handleProductData(data: any): void {
-    console.log('data', data)
     this.filteredProducts = data;
   }
 

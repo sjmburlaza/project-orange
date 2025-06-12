@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { MainGroup } from 'src/app/shared/models/group.model';
+import { RightMenuGroup } from 'src/app/shared/models/group.model';
 
 
 @Component({
@@ -8,8 +8,8 @@ import { MainGroup } from 'src/app/shared/models/group.model';
   styleUrls: ['./products-menu.component.scss']
 })
 export class ProductsMenuComponent {
-  @Input() groups!: MainGroup[];
-  @Output() selectGroupEvent = new EventEmitter<MainGroup[]>();
+  @Input() groups!: RightMenuGroup[];
+  @Output() selectGroupEvent = new EventEmitter<RightMenuGroup[]>();
 
   constructor() {}
 
