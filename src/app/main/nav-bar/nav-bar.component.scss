@@ -49,4 +49,11 @@
         }
     }
 
+    .desktop {
+        display: none;
+        
+        @include respond-to(lg) {
+            display: unset;
+        }
+    }
 }

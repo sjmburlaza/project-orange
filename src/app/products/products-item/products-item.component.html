@@ -1,36 +1,43 @@
-<div class="product">
-    <div class="product-add-to-wishlist">
-        <i class="bi bi-heart"></i>
-    </div>
-    <p class="product-name">{{ product?.name || "Product Name Here" }}</p>
-    <div class="product-image">
-        <img *ngIf="product?.imageUrl; else placeholderImg" src="{{ product?.imageUrl }}" alt="">
-        <ng-template #placeholderImg>
-            <img src="assets/images/image-placeholder.svg" alt="">
-        </ng-template>
-    </div>
-    <div class="product-colors">
-        <span *ngFor="let item of product?.colorsAvailable" 
-            class="dot"
-            [ngStyle]="{'background-color': item.name}">
-        </span>
-    </div>
-    <div class="product-storage">
-        <span *ngFor="let item of product?.storageAvailable" 
-            class="product-storage-size">
-            {{ item?.size }}
-        </span>
-    </div>
-    <div class="product-rating"></div>
-    <p class="product-price">{{ product?.price || '0.00' }}</p>
-    <div class="product-promotions"></div>
-    <div class="product-cta">
-        <button class="cta-btn">
-            {{
-                product?.isAvailable
-                 ? "Add to cart"
-                 : "Receive stock alerts"
-            }}
-        </button>
-    </div>
+
+<div *ngIf="product" class="product">
+  <div class="product__add-to-wishlist">
+    <i class="bi bi-heart"></i>
+  </div>
+  <div class="product__name">
+    {{ product.name }}
+  </div>
+  <div class="product__image">
+    @if (product.imageUrl) {
+      <img src="{{ product.imageUrl }}" alt="">
+    } @else {
+      <img src="assets/images/image-placeholder.svg" alt="">
+    }
+  </div>
+  <div class="product__colors">
+    @for (color of product.colorsAvailable; track color) {
+      <span class="product__colors__dot" [ngStyle]="{'background-color': color}"></span>
+    }
+  </div>
+  <div class="product__storage">
+
+  </div>
+  <div class="product__rating">
+
+  </div>
+  <div class="product__price">
+    <del *ngIf="product.priceOld">{{ product.priceOld.amountFormatted }}</del>
+    <span>{{ product.priceNow.amountFormatted }}</span>
+  </div>
+  <div class="product__promotions">
+
+  </div>
+  <div class="product__cta">
+    <button class="product__cta-btn">
+      {{
+        product.isAvailable
+          ? "Add to cart"
+          : "Receive stock alerts"
+      }}
+    </button>
+  </div>
 </div>

@@ -1,25 +1,35 @@
 @import 'src/styles/globalStyles.scss';
 
-.products-container {
-    display: flex;
-    padding: $space-md 0;
-}
+.products {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-areas:
+    "title title title title"
+    "menu items items items"
+    ;
 
-.products-menu-container {
-    width: 25%;
-}
+  padding: 24px 0;
+  gap: 24px;
 
-.products-item-container {
-    width: 75%;
-    padding: 0px $space-md;
+  &__title {
+    grid-area: title;
+    text-align: center;
+  }
+
+  &__menu-container {
+    grid-area: menu;
+    display: none;
+    background-color: red !important;
+
+    @include respond-to(lg) {
+      display: unset;
+    }
+  }
+
+  &__items-container {
+    grid-area: items;
     display: grid;
-    gap: $space-md;
-}
-
-@media (min-width: 600px) {
-    .products-item-container { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (min-width: 900px) {
-    .products-item-container { grid-template-columns: repeat(3, 1fr); }
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+  }
 }

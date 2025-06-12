@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { forkJoin, Observable } from 'rxjs';
+import { catchError, forkJoin, Observable, throwError } from 'rxjs';
 import { Service } from '../shared/models/cart.model';
 
 @Injectable({
@@ -27,8 +27,20 @@ export class CartService {
     return this.http.post(`${this.API_URL}/servicesSelected`, service);
   }
 
-  deleteService(serviceId: string) {
-    return this.http.delete(`${this.API_URL}/servicesSelected/${serviceId}`);
+  deleteService(serviceId: string): Observable<any> {
+    return this.http.delete(`${this.API_URL}/servicesSelected/${serviceId}`)
+      .pipe(catchError(this.handleError));
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    // Client-side or network error
+    if (error.error instanceof ErrorEvent) {
+      console.error('Client-side error:', error.error.message);
+    } else {
+      // Backend error
+      console.error(`Server returned code ${error.status}, body was:`, error.error);
+    }
+    return throwError(() => new Error('Something went wrong. Please try again later.'));
   }
 
 }

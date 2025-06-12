@@ -1,21 +1,26 @@
+
 export interface ProductModel {
     productId: string,
     name: string,
     category: string,
     imageUrl: string,
-    colorsAvailable: ColorsAvailable[],
+    colorsAvailable: string[],
     storageAvailable: StorageAvailable[],
     rating: string,
-    price: number,
-    priceGroup: string,
+    priceOld: Price,
+    priceNow: Price,
+    priceDiscounted: Price,
+    priceSpecial: Price,
     promotionText: string,
     description: string,
     isAvailable: boolean
 }
 
-interface ColorsAvailable {
-    name?: string,
-    hexCode?: string
+export interface Price {
+    amount: number;
+    amountFormatted: string;
+    totalAmount: number;
+    totalAmountFormatted: string;
 }
 
 interface StorageAvailable {

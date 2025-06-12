@@ -7,6 +7,10 @@ import { ProductModel } from 'src/app/shared/models/product.model';
   styleUrls: ['./products-item.component.scss']
 })
 export class ProductsItemComponent {
-  @Input() product: ProductModel | undefined;
+  @Input() product!: ProductModel;
+
+  ngOnInit() {
+    console.log('product', this.product)
+  }
 
 }
