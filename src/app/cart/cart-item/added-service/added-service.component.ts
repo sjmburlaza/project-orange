@@ -11,16 +11,19 @@ import { TradeUpComponent } from '../../added-services/trade-up/trade-up.compone
   styleUrls: ['./added-service.component.scss']
 })
 export class AddedServiceComponent {
-  @Input() service: Service | undefined;
-  @Input() sku: string | undefined;
+  @Input() service!: Service;
+  @Input() sku!: string;
+  @Output() deleteServiceEvent: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(private modalService: ModalService) {}
 
-  deleteService() {
-    
+  deleteService(serviceId: string) {
+    if (serviceId) {
+      this.deleteServiceEvent.emit(serviceId);
+    }
   }
 
-  addService(code: string | undefined): void {
+  addService(code: string): void {
     switch(code) {
       case 'insurance':
         const modalRef: any = this.modalService.openWithComponent(InsuranceComponent);

@@ -4,26 +4,26 @@
     </div>
     <div class="service-details">
         <div class="name">
-            {{ service?.name }}
+            {{ service.name }}
         </div>
         <div class="description">
-            {{ service?.description }}
+            {{ service.description }}
         </div>
     </div>
     <div class="service-controls">
         <ng-container *ngIf="service?.plan?.amount; else add">
             <div class="service-amount">
-                {{ service?.plan?.amount }}
+                {{ service.plan?.amount }}
             </div>
             <div class="service-remove">
-                <button (click)="deleteService()">
+                <button (click)="deleteService(service.id)">
                     <i class="bi bi-trash"></i>
                 </button>
             </div>
         </ng-container>
         <ng-template #add>
             <div class="service-add">
-                <button (click)="addService(service?.code)">
+                <button (click)="addService(service.code)">
                     + <span> Add </span>
                 </button>
             </div>

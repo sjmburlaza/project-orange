@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { forkJoin, Observable } from 'rxjs';
+import { Service } from '../shared/models/cart.model';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,10 @@ export class CartService {
   
   addSelectedService(service: any): Observable<any> {
     return this.http.post(`${this.API_URL}/servicesSelected`, service);
+  }
+
+  deleteService(serviceId: string) {
+    return this.http.delete(`${this.API_URL}/servicesSelected/${serviceId}`);
   }
 
 }

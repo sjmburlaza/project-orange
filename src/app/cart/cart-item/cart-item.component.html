@@ -1,6 +1,11 @@
 <div class="cart-item-container">
     <app-product-listing [item]="item"></app-product-listing>
-    <ng-container *ngFor="let service of itemServices">
-        <app-added-service [service]="service" [sku]="item?.sku"></app-added-service>
-    </ng-container>
+    @for (service of itemServices; track service) {
+        <app-added-service 
+        [service]="service" 
+        [sku]="item?.sku"
+        (deleteServiceEvent)="deleteService($event)"
+        >
+        </app-added-service>
+    }
 </div>
