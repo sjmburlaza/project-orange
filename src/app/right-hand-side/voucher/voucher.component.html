@@ -1,0 +1,50 @@
+<div class="vouchers">
+    <div class="vouchers__form">
+        <form [formGroup]="vf">
+            <div class="vouchers__form__voucher">
+                <p>Vouchers</p>
+                <div class="voucher-input">
+                    <input formControlName="voucherCode" placeholder="Enter Voucher Code">
+                    <button *ngIf="voucherCode?.value" (click)="removeInputCode()"> 
+                        <i class="bi bi-x"></i> 
+                    </button>
+                </div>
+                <div *ngIf="voucherCode?.touched && voucherCode?.invalid">
+                    @if (voucherCode?.errors?.['required']) {
+                        <small class="error-message">Voucher code is required.</small>
+                    } @else if (voucherCode?.errors?.['duplicate']) {
+                        <small class="error-message">Voucher code has already been applied.</small>
+                    } @else if (voucherCode?.errors?.['invalid']) {
+                        <small class="error-message">Voucher code is invalid.</small>
+                    } @else if (voucherCode?.errors?.['expired']) {
+                        <small class="error-message">Voucher code is already expired.</small>
+                    } @else {
+                        <small class="info-message">Voucher code has been successfully applied.</small>
+                    }
+                </div>
+            </div>
+            <div class="vouchers__form__apply">
+                <button type="submit" (click)="applyVoucher()">Apply</button>
+            </div>
+        </form>
+    </div>
+    @if (appliedVouchers.length) {
+        <div class="vouchers__applied">
+            @for (voucher of appliedVouchers; track voucher) {
+                <div class="voucher">
+                    <div class="voucher__code">
+                        {{ voucher?.code }}
+                    </div>
+                    <div class="voucher__description">
+                        {{ voucher?.description }}
+                    </div>
+                    <div class="voucher__remove">
+                        <button (click)="removeVoucher(voucher?.code)"> 
+                            <i class="bi bi-x"></i> 
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

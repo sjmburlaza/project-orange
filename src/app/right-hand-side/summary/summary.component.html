@@ -1,0 +1,17 @@
+<div class="summary">
+    <div class="summary__header">
+        Summary
+    </div>
+    <div class="summary__items">
+        @for (item of items; track item) {
+            <div class="item">
+                <div class="item__label">
+                    {{ item.name }}
+                </div>
+                <div class="item__amount">
+                    {{ item.amount.formattedValue | currency:'PHP' }}
+                </div>
+            </div>
+        }
+    </div>
+</div>

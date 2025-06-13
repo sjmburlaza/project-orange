@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ProductModel } from 'src/app/shared/models/product.model';
+import { ProductModel } from 'src/app/shared/models/cart.model';
 
 @Component({
   selector: 'app-product-listing',

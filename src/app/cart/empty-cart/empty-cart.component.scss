@@ -1,0 +1,49 @@
+@import 'src/styles/_globalStyles.scss';
+
+.empty-cart {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+    padding: 48px 0;
+
+    &__icon {
+        .bi-cart2 {
+            font-size: 72px;
+        }
+    }
+
+    &__header-text {
+        font-size: 36px;
+        font-weight: bold;
+    }
+
+    &__controls {
+        display: flex;
+        gap: 24px;
+
+        button {
+            padding: 12px;
+            width: 240px;
+            border-radius: 24px;
+            border: none;
+        }
+
+        &__shopping {
+            button:hover {
+                background-color: lightgrey;
+            }
+        }
+
+        &__sign-in {
+            button {
+                background-color: $darkblue;
+                color: $white;
+            }
+
+            button:hover {
+                background-color: $blue;
+            }
+        }
+    }
+}

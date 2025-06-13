@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { CountryService } from 'src/app/services/country.service';
 
 @Component({
   selector: 'app-empty-cart',
@@ -6,5 +8,19 @@ import { Component } from '@angular/core';
   styleUrl: './empty-cart.component.scss'
 })
 export class EmptyCartComponent {
+
+  constructor(
+    private router: Router,
+    public countryService: CountryService,
+  ) {}
+
+  continueShopping(): void {
+    const c = this.countryService.countryCode;
+    this.router.navigate(['/', c, 'products']);
+  }
+
+  signIn(): void {
+
+  }
 
 }

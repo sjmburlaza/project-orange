@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { Subject, take, takeUntil } from 'rxjs';
 import { ProductService } from '../services/product.service';
 import { Group, Price, RightMenuGroup, RightMenuSubGroup } from '../shared/models/group.model';
-import { ProductModel } from '../shared/models/product.model';
 import { CartService } from 'src/app/services/cart.service';
 import * as CartActions from '../store/actions/cart.actions';
 import { CartState } from '../store/reducers/cart.reducer';
 import { Store } from '@ngrx/store';
+import { ProductModel } from '../shared/models/cart.model';
 
 @Component({
   selector: 'app-products',

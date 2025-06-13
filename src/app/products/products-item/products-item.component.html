@@ -25,8 +25,8 @@
     Product Rating
   </div>
   <div class="product__price">
-    <del *ngIf="product.priceOld">{{ product.priceOld.amountFormatted }}</del>
-    <span>{{ product.priceNow?.amountFormatted }}</span>
+    <del *ngIf="product.priceOld">{{ product.priceOld.amountFormatted | currency:'PHP'}}</del>
+    <span>{{ product.priceNow?.amountFormatted | currency:'PHP'}}</span>
   </div>
   <div class="product__promotions">
     Promo

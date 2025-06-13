@@ -1,22 +1,18 @@
 @import 'src/styles/_globalStyles.scss';
 
-.cart-container {
+.cart {
     max-width: 1200px;
     margin: 48px auto;
     @extend %montserrat-regular;
-    display: grid;
-    grid-template-columns: 1fr;
 
-    @include respond-to(xl) {
-        grid-template-columns: 5fr 3fr;
-        gap: $space-3xl;
-    }
-
-    .left-side {
-        // background-color: rgb(178, 236, 236);
-    }
-
-    .right-side {
-        background-color: rgb(133, 175, 175);
+    &__container {
+        display: grid;
+        grid-template-columns: 1fr;
+        padding: 24px;
+    
+        @include respond-to(xl) {
+            grid-template-columns: 5fr 3fr;
+            gap: $space-3xl;
+        }
     }
 }

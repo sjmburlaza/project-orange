@@ -11,13 +11,13 @@
     <div class="product-controls">
         <div class="product-price">
             <div class="product-price__now">
-                {{ item.priceNow?.amountFormatted }}
+                {{ item.priceNow?.amountFormatted | currency:'PHP' }}
             </div>
             <del class="product-price__old">
-                {{ item.priceOld?.amountFormatted }}
+                {{ item.priceOld?.amountFormatted | currency:'PHP' }}
             </del>
             <div class="product-price__discount">
-                {{ item.priceDiscounted?.amountFormatted }}
+                {{ item.priceDiscounted?.amountFormatted | currency:'PHP'}}
             </div>
         </div>
         <div class="product-remove">

@@ -1,0 +1,15 @@
+.rhs {
+    border: 1px solid lightgray;
+    border-radius: 12px;
+    padding: 24px;
+
+    &__voucher {
+        padding-bottom: 24px;
+        border-bottom: 1px solid lightgrey;
+    }
+
+    &__summary {
+        padding: 24px 0;
+        border-bottom: 1px solid lightgrey;
+    }
+}

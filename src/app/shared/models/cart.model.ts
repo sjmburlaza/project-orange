@@ -1,21 +1,31 @@
 export interface Cart {
-    entries?: Entry[];
+    entries?: ProductModel[];
     servicesAvailable?: Service[];
     servicesSelected?: Service[];
 }
 
-export interface Entry {
-    code: string;
+export interface ProductModel {
+    id: string;
+    sku: string;
     name: string;
     category: string;
-    color: string;
+    imageUrl: string;
+    colorSelected: string;
+    colorsAvailable: string[];
+    storageAvailable: StorageAvailable[];
+    rating: string;
+    priceOld?: Price;
+    priceNow?: Price;
+    priceDiscounted?: Price;
+    priceSpecial?: Price;
+    promotionText: string;
+    description: string;
     stockStatus: string;
-    quantity: number;
-    priceOld: Price;
-    priceNow: Price;
-    priceDiscounted: Price;
-    priceSpecial: Price;
-    priceSavings: Price;
+    stockLevel: number;
+}
+
+interface StorageAvailable {
+    size: string;
 }
 
 interface Price {

@@ -1,19 +1,23 @@
-<div *ngIf="entries$ | async as entries" class="cart-container">
+<div *ngIf="entries$ | async as entries" class="cart">
     @if (entries?.length) {
-        <div class="left-side">
-            <ng-container *ngFor="let entry of entries">
-                    <app-cart-item 
-                        [item]="entry"
-                        [servicesAvailable]="servicesAvailable$ | async"
-                        [servicesSelected]="servicesSelected$ | async"
-                    >
-                    </app-cart-item>
-            </ng-container>
-        </div>
-        <div class="right-side">
-            <app-right-hand-side></app-right-hand-side>
+        <div class="cart__container">
+            <div class="left-side">
+                <ng-container *ngFor="let entry of entries">
+                        <app-cart-item 
+                            [item]="entry"
+                            [servicesAvailable]="servicesAvailable$ | async"
+                            [servicesSelected]="servicesSelected$ | async"
+                        >
+                        </app-cart-item>
+                </ng-container>
+            </div>
+            <div class="right-side">
+                <app-right-hand-side></app-right-hand-side>
+            </div>
         </div>
     } @else {
-        <app-empty-cart></app-empty-cart>
+        <div class="cart__empty">
+            <app-empty-cart></app-empty-cart>
+        </div>
     }
 </div>

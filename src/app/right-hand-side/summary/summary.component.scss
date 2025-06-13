@@ -1,0 +1,22 @@
+.summary {
+    &__header {
+        padding-bottom: 20px;
+        font-weight: bold;
+        font-size: 20px;
+    }
+    &__items {
+        display: flex;
+        flex-direction: column;
+        row-gap: 8px;
+        font-size: 12px;
+
+        .item {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+
+            &__amount {
+                justify-self: end;
+            }
+        }
+    }
+}
