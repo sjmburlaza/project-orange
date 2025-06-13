@@ -6,15 +6,16 @@
         </ng-container>
     </div>
     <div class="shop-info">
-        <div class="shop-info-support desktop">Support</div>
-        <div class="shop-info-business desktop">For Business</div>
-        <div class="shop-info-search">
+        <div class="shop-info__support desktop">Support</div>
+        <div class="shop-info__business desktop">For Business</div>
+        <div class="shop-info__search">
             <i class="bi bi-search"></i>
         </div>
-        <div class="shop-info-cart">
+        <div class="shop-info__cart"
+            (click)="goToCart()">
             <i class="bi bi-cart2"></i>
         </div>
-        <div class="shop-info-account">
+        <div class="shop-info__account">
             <i class="bi bi-person"></i>
         </div>
     </div>

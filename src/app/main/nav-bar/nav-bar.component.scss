@@ -1,58 +1,60 @@
 @import 'src/styles/globalStyles.scss';
 
 .nav-bar {
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
   padding: 24px;
-  background-color: rgb(180, 247, 225);
   display: grid;
   grid-template-columns: 1fr 5fr 2fr;
   font-size: 14px;
   font-family: "Roboto", sans-serif;
 
+  @include respond-to(lg, down) {
+    padding: 16px;
+    grid-template-columns: 1fr 1fr;
+  }
+
   .shop-name {
-    font-size: $space-lg;
+    font-size: 24px;
   }
 
   .shop-categories {
-    padding-top: $space-xs;
-
-    .category {
-      padding: 0px $space-xs;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    @include respond-to(lg, down) {
+      display: none;
     }
   }
 
   .shop-info {
     display: flex;
-    gap: $space-sm;
+    gap: 24px;
     justify-content: flex-end;
-
-    &-support {
-      padding-top: $space-xs;
-    }
-
-    &-business {
-      padding-top: $space-xs;
-    }
+    align-items: center;
 
     .bi {
-      font-size: $space-lg;
       color: black;
-      padding-left: 10px;
+    }
 
-      &-search {
-        font-size: 22px;
-      }
+    .bi-search {
+      font-size: 22px;
+    }
 
-      &-person {
-        font-size: 26px;
-      }
+    .bi-cart2 {
+      font-size: 24px;
+    }
+
+    .bi-person {
+      font-size: 26px;
     }
   }
 
-  .desktop {
-    display: none;
-    
-    @include respond-to(lg) {
-      display: unset;
+  .shop-info__support,
+  .shop-info__business {
+    @include respond-to(xl, down) {
+      display: none;
     }
   }
 }

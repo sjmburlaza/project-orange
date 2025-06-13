@@ -14,7 +14,7 @@ export class ProductsMenuComponent {
   constructor() {}
 
   ngOnInit() {
-
+    console.log('groups', this.groups)
   }
 
   toggleAccordion(groupName: string | undefined) {

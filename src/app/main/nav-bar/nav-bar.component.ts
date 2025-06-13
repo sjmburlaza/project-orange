@@ -1,5 +1,7 @@
 // import { Component } from '@angular/core';
 import { Component, HostListener } from '@angular/core';
+import { Router } from '@angular/router';
+import { CountryService } from 'src/app/services/country.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -19,4 +21,13 @@ export class NavBarComponent {
     'SmartThings'
   ];
 
+  constructor(
+    private router: Router,
+    public countryService: CountryService,
+  ) {}
+
+  goToCart(): void {
+    const c = this.countryService.countryCode;
+    this.router.navigate(['/', c, 'cart']);
+  }
 }

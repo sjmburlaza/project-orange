@@ -1,14 +1,18 @@
-<div *ngIf="filteredProducts" class="products">
+<div *ngIf="selectedProducts.length && groups.length" class="products">
     <h1 class="products__title">Products</h1>
     <div class="products__menu-container">
-        <app-products-menu 
+        <app-products-menu
             [groups]="groups"
             (selectGroupEvent)="onSelectGroup($event)">
         </app-products-menu>
     </div>
     <div class="products__items-container">
-        @for (product of filteredProducts; track product) {
-            <app-products-item [product]="product"></app-products-item>
+        @for (product of selectedProducts; track product) {
+            <app-products-item 
+                [product]="product"
+                (addToCartEvent)="addToCart($event)"
+            >
+          </app-products-item>
         }
     </div>
 </div>

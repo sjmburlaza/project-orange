@@ -1,5 +1,36 @@
 @import 'src/styles/globalStyles.scss';
 
-.menu {
+.menu-groups {
   background-color: $offwhite;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  .group__header {
+    display: flex;
+    margin-bottom: 12px;
+    border-bottom: 1px solid lightgray;
+    line-height: 28px;
+    justify-content: space-between;
+
+    &__icon {
+      i {
+        font-size: 24px;
+      }
+    }
+  }
+
+  .group__items {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    input {
+      margin-right: 12px;
+      height: 16px;
+      width: 16px;
+    }
+  }
+
 }

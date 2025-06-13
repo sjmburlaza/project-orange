@@ -1,12 +1,12 @@
 export interface RightMenuGroup {
-    groupName?: string,
-    group?: RightMenuSubGroup[]
+    groupName?: string;
+    group?: RightMenuSubGroup[];
     isExpanded?: boolean;
 }
 
 export interface RightMenuSubGroup {
-    name: string,
-    isSelected: boolean
+    name: string;
+    isSelected: boolean;
 }
 
 export enum Group {

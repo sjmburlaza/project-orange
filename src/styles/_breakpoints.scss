@@ -5,18 +5,30 @@ $breakpoint-lg: 992px;
 $breakpoint-xl: 1200px;
 $breakpoint-xxl: 1400px;
 
-@mixin respond-to($breakpoint) {
-    @if $breakpoint == xs {
-      @media (max-width: $breakpoint-xs) { @content; }
-    } @else if $breakpoint == sm {
-      @media (min-width: $breakpoint-sm) { @content; }
-    } @else if $breakpoint == md {
-      @media (min-width: $breakpoint-md) { @content; }
-    } @else if $breakpoint == lg {
-      @media (min-width: $breakpoint-lg) { @content; }
-    } @else if $breakpoint == xl {
-      @media (min-width: $breakpoint-xl) { @content; }
-    } @else if $breakpoint == xxl {
-      @media (min-width: $breakpoint-xxl) { @content; }
+@mixin respond-to($breakpoint, $direction: up) {
+  $value: null;
+
+  @if $breakpoint == xs {
+    $value: $breakpoint-xs;
+  } @else if $breakpoint == sm {
+    $value: $breakpoint-sm;
+  } @else if $breakpoint == md {
+    $value: $breakpoint-md;
+  } @else if $breakpoint == lg {
+    $value: $breakpoint-lg;
+  } @else if $breakpoint == xl {
+    $value: $breakpoint-xl;
+  } @else if $breakpoint == xxl {
+    $value: $breakpoint-xxl;
+  }
+
+  @if $direction == up {
+    @media (min-width: $value) {
+      @content;
     }
+  } @else if $direction == down {
+    @media (max-width: $value) {
+      @content;
+    }
+  }
 }

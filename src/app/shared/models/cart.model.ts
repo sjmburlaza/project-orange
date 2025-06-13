@@ -1,7 +1,7 @@
 export interface Cart {
-    entries?: Entry[],
-    servicesAvailable?: Service[],
-    servicesSelected?: Service[]
+    entries?: Entry[];
+    servicesAvailable?: Service[];
+    servicesSelected?: Service[];
 }
 
 export interface Entry {
@@ -39,16 +39,16 @@ export interface Service {
 }
 
 export interface InsuranceDetails {
-    title: string,
-    subtitle: string,
-    plans: InsurancePlan[],
-    tnc: { mainText: string, subtext: string}
+    title: string;
+    subtitle: string;
+    plans: InsurancePlan[];
+    tnc: { mainText: string, subtext: string};
 }
 
 export interface InsurancePlan {
-    name: string,
-    code: string,
-    amount: string
+    name: string;
+    code: string;
+    amount: string;
 }
 
 export interface AvailableService {

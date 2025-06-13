@@ -1,10 +1,11 @@
 @import 'src/styles/_globalStyles.scss';
 
-.container {
+.cart-container {
+    max-width: 1200px;
+    margin: 48px auto;
     @extend %montserrat-regular;
     display: grid;
     grid-template-columns: 1fr;
-    margin: $space-xxl $space-lg;
 
     @include respond-to(xl) {
         grid-template-columns: 5fr 3fr;

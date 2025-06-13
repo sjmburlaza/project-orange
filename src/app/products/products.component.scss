@@ -10,6 +10,9 @@
 
   padding: 24px;
   gap: 24px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 
   @include respond-to(lg) {
     grid-template-columns: 1fr 3fr;

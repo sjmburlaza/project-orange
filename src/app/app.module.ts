@@ -30,6 +30,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { CartEffects } from './store/effects/cart.effects';
 import { ProductsModule } from './products/products.module';
 import { CheckoutModule } from './checkout/checkout.module';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json')
@@ -38,6 +39,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
     declarations: [
         AppComponent,
+        ProductDetailComponent,
         CartComponent,
         RightHandSideComponent,
         MainComponent,

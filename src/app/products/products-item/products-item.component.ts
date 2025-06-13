@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ProductModel } from 'src/app/shared/models/product.model';
 
 @Component({
@@ -8,9 +8,14 @@ import { ProductModel } from 'src/app/shared/models/product.model';
 })
 export class ProductsItemComponent {
   @Input() product!: ProductModel;
+  @Output() addToCartEvent = new EventEmitter<ProductModel>();
 
-  ngOnInit() {
-    console.log('product', this.product)
+  ngOnInit() {}
+
+  addToCart(product: ProductModel): void {
+    if (product) {
+      this.addToCartEvent.emit(product);
+    }
   }
 
 }

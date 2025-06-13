@@ -1,36 +1,33 @@
-<!-- <div class="products-menu__container">
-    <div class="group" *ngFor="let group of groups">
-        <div class="group-header">
-            <p class="group-header-title">
-                {{ group.groupName }}
-            </p>
-            <span class="group-header-icon"
-                (click)="toggleAccordion(group?.groupName)">
-                <i 
-                    *ngIf="group.isExpanded; else collapsed"
-                    class="bi bi-plus">
-                </i>
-                <ng-template #collapsed>
-                    <i class="bi bi-dash"></i>
-                </ng-template>
-            </span>
+<div class="menu-groups">
+  @for (group of groups; track group) {
+    <div class="group">
+      <div class="group__header">
+        <div class="group__header__name">
+          {{ group.groupName }}
         </div>
-        <ng-container *ngIf="group.isExpanded">
-            <div *ngFor="let item of group.group"
-                class="group-content">
-                <div class="group-content-item">
-                    <input 
-                        type="checkbox" 
-                        id="{{ item.name }}"
-                        [(ngModel)]="item.isSelected"
-                        (change)="onSelect($event)">
-                    <label for="{{ item.name }}">{{ item.name }}</label>
-                </div>
+        <span class="group__header__icon" (click)="toggleAccordion(group?.groupName)">
+          @if (group.isExpanded) {
+            <i class="bi bi-plus"></i>
+          } @else {
+            <i class="bi bi-dash"></i>
+          }
+        </span>
+      </div>
+      @if (group.isExpanded) {
+        <div class="group__items">
+          @for (item of group.group; track item) {
+            <div class="item">
+              <input 
+                type="checkbox"
+                [id]="item.name"
+                [(ngModel)]="item.isSelected"
+                (change)="onSelect($event)"
+                >
+              <label [for]="item.name">{{ item.name }}</label>
             </div>
-        </ng-container>
-    </div>    
-</div> -->
-<div class="menu">
-  
-
+          }
+        </div>
+      }
+    </div>
+  }
 </div>
