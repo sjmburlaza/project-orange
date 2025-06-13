@@ -1,32 +1,34 @@
-<div class="container">
+<div *ngIf="item" class="product-container">
     <div class="product-col-1 product-image">
         <img src="{{item.imageUrl}}" alt="">
     </div>
     <div class="product-col-2 product-details">
         <p class="product-details-name">{{ item.name }}</p>
-        <p>{{ item.code }}</p>
-        <p>{{ item.color }}</p>
+        <p>{{ item.sku }}</p>
+        <p>{{ item.colorSelected }}</p>
         <p>{{ item.stockStatus }}</p>
     </div>
     <div class="product-controls">
         <div class="product-price">
-            <div class="product-price-now">
-                {{ item.priceNow?.amount }}
+            <div class="product-price__now">
+                {{ item.priceNow?.amountFormatted }}
             </div>
-            <del class="product-price-old">
-                {{ item.priceOld?.amount }}
+            <del class="product-price__old">
+                {{ item.priceOld?.amountFormatted }}
             </del>
-            <div class="product-price-discount">
-                {{ item.priceDiscount?.amount }}
+            <div class="product-price__discount">
+                {{ item.priceDiscounted?.amountFormatted }}
             </div>
         </div>
         <div class="product-remove">
-            <button><i class="bi bi-trash"></i></button>
+            <button (click)="deleteEntry(item.id)">
+                <i class="bi bi-trash"></i>
+            </button>
         </div>
         <div class="product-qty">
-            <button class="product-qty-decrement">-</button>
-            <input class="product-qty-input" type="text">
-            <button class="product-qty-increment">+</button>
+            <button class="product-qty__decrement">-</button>
+            <input class="product-qty__input" type="text">
+            <button class="product-qty__increment">+</button>
         </div>
     </div>
 </div>

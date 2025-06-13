@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, take, takeUntil } from 'rxjs';
 import { ProductService } from '../services/product.service';
 import { Group, Price, RightMenuGroup, RightMenuSubGroup } from '../shared/models/group.model';
 import { ProductModel } from '../shared/models/product.model';
@@ -126,12 +126,12 @@ export class ProductsComponent {
     })
 
     return selectedProducts.filter((product, index) => 
-      selectedProducts.findIndex(p => p.productId === product.productId) === index
+      selectedProducts.findIndex(p => p.sku === product.sku) === index
     );
   }
 
   addToCart(product: ProductModel): void {
-    this.cartService.addEntry(product).subscribe({
+    this.cartService.addEntry(product).pipe(take(1)).subscribe({
       next: () => this.store.dispatch(CartActions.loadCart()),
       error: (err) => console.error('Adding failed', err)
     });

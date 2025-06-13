@@ -46,4 +46,11 @@ export class CartItemComponent implements OnInit {
       error: (err) => console.error('Delete failed', err)
     });
   }
+
+  deleteEntry(entryId: string): void {
+    this.cartService.deleteEntry(entryId).pipe(take(1)).subscribe({
+      next: () => this.store.dispatch(CartActions.loadCart()),
+      error: (err) => console.error('Delete entry failed', err)
+    })
+  }
 }

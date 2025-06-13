@@ -1,6 +1,6 @@
 @import 'src/styles/_globalStyles.scss';
 
-.container {
+.product-container {
     display: grid;
     grid-template-areas:
         "prod-details prod-controls"
@@ -57,14 +57,14 @@
         }
 
         .product-qty {
-            &-decrement,
-            &-increment {
+            &__decrement,
+            &__increment {
                 width: $space-xl;
                 height: $space-xl;
                 border-width: 1px;
             }
 
-            &-input {
+            &__input {
                 width: $space-4xl;
                 height: $space-xl;
                 border-left: none;
@@ -73,12 +73,12 @@
                 padding: $space-3xs $space-xs;
             }
 
-            &-decrement {
+            &__decrement {
                 border-top-left-radius: $space-sm;
                 border-bottom-left-radius: $space-sm;
             }
 
-            &-increment {
+            &__increment {
                 border-top-right-radius: $space-sm;
                 border-bottom-right-radius: $space-sm;
             }

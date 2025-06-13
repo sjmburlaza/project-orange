@@ -1,5 +1,9 @@
 <div class="cart-item-container">
-    <app-product-listing [item]="item"></app-product-listing>
+    <app-product-listing 
+        [item]="item"
+        (deleteEntryEvent)="deleteEntry($event)"
+    >
+    </app-product-listing>
     @for (service of itemServices; track service) {
         <app-added-service 
         [service]="service" 

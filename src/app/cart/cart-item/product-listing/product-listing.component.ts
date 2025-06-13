@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ProductModel } from 'src/app/shared/models/product.model';
 
 @Component({
   selector: 'app-product-listing',
@@ -6,5 +7,10 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./product-listing.component.scss']
 })
 export class ProductListingComponent {
-  @Input() item: any;
+  @Input() item!: ProductModel;
+  @Output() deleteEntryEvent = new EventEmitter<string>();
+
+  deleteEntry(itemId: string): void {
+    this.deleteEntryEvent.emit(itemId);
+  }
 }

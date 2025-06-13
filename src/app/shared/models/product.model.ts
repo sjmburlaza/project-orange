@@ -1,9 +1,11 @@
 
 export interface ProductModel {
-    productId: string;
+    id: string;
+    sku: string;
     name: string;
     category: string;
     imageUrl: string;
+    colorSelected: string;
     colorsAvailable: string[];
     storageAvailable: StorageAvailable[];
     rating: string;
@@ -13,6 +15,7 @@ export interface ProductModel {
     priceSpecial?: Price;
     promotionText: string;
     description: string;
+    stockStatus: string;
     stockLevel: number;
 }
 

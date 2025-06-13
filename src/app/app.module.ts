@@ -31,6 +31,7 @@ import { CartEffects } from './store/effects/cart.effects';
 import { ProductsModule } from './products/products.module';
 import { CheckoutModule } from './checkout/checkout.module';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { EmptyCartComponent } from './cart/empty-cart/empty-cart.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json')
@@ -41,6 +42,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         AppComponent,
         ProductDetailComponent,
         CartComponent,
+        EmptyCartComponent,
         RightHandSideComponent,
         MainComponent,
         CartItemComponent,

@@ -22,6 +22,11 @@ export class CartService {
   addEntry(entry: any): Observable<any> {
     return this.http.post(`${this.API_URL}/entries`, entry);
   }
+
+  deleteEntry(entryId: string): Observable<any> {
+    return this.http.delete(`${this.API_URL}/entries/${entryId}`)
+      .pipe(catchError(this.handleError));
+  }
   
   addSelectedService(service: any): Observable<any> {
     return this.http.post(`${this.API_URL}/servicesSelected`, service);
