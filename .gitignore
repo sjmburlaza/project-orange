@@ -43,3 +43,4 @@ Thumbs.db
 
 # DB
 /src/assets/mock-data/db.json
+/src/assets/mock-data/products.json
