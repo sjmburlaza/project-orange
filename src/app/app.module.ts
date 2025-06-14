@@ -38,6 +38,7 @@ import { RewardsComponent } from './right-hand-side/rewards/rewards.component';
 import { SummaryComponent } from './right-hand-side/summary/summary.component';
 import { ReasonsToBuyComponent } from './right-hand-side/reasons-to-buy/reasons-to-buy.component';
 import { CurrencyBySitePipe } from "./shared/pipes/currency-by-site.pipe";
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json')
@@ -62,7 +63,9 @@ export function HttpLoaderFactory(http: HttpClient) {
         BroadbandPlanComponent,
         AddOnsComponent,
     ],
-    providers: [],
+    providers: [
+    provideAnimationsAsync()
+  ],
     bootstrap: [AppComponent],
     imports: [
         BrowserModule,
