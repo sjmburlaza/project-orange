@@ -37,6 +37,7 @@ import { CtaComponent } from './right-hand-side/cta/cta.component';
 import { RewardsComponent } from './right-hand-side/rewards/rewards.component';
 import { SummaryComponent } from './right-hand-side/summary/summary.component';
 import { ReasonsToBuyComponent } from './right-hand-side/reasons-to-buy/reasons-to-buy.component';
+import { CurrencyBySitePipe } from "./shared/pipes/currency-by-site.pipe";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json')
@@ -60,7 +61,6 @@ export function HttpLoaderFactory(http: HttpClient) {
         SimPlanComponent,
         BroadbandPlanComponent,
         AddOnsComponent,
-        SafeHtmlPipe,
     ],
     providers: [],
     bootstrap: [AppComponent],
@@ -89,6 +89,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         ReasonsToBuyComponent,
         RewardsComponent,
         SummaryComponent,
+        SafeHtmlPipe,
+        CurrencyBySitePipe,
     ]
 })
 export class AppModule { }

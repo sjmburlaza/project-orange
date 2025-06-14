@@ -13,12 +13,13 @@ const routes: Routes = [
         path: 'products',
         loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
       },
+      { path: 'p/:id', component: ProductDetailComponent },
+
+      { path: 'cart', component: CartComponent },
       {
         path: 'checkout',
         loadChildren: () => import('./checkout/checkout.module').then(m => m.CheckoutModule)
       },
-      { path: 'cart', component: CartComponent },
-      { path: 'p/:id', component: ProductDetailComponent },
     ]
   },
   { path: '', redirectTo: '/ph', pathMatch: 'full' },

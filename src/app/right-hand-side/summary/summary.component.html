@@ -1,17 +1,25 @@
-<div class="summary">
+<div *ngIf="summary$ | async as summary" class="summary">
     <div class="summary__header">
         Summary
     </div>
     <div class="summary__items">
-        @for (item of items; track item) {
+        @for (item of summary.items; track item) {
             <div class="item">
                 <div class="item__label">
                     {{ item.name }}
                 </div>
                 <div class="item__amount">
-                    {{ item.amount.formattedValue | currency:'PHP' }}
+                    {{ item.amount.formattedValue | currencyBySite }}
                 </div>
             </div>
         }
+    </div>
+    <div class="summary__total">
+        <div class="summary__total__label">
+            Total
+        </div>
+        <div class="summary__total__amount">
+            {{ summary.total.formattedValue | currencyBySite }}
+        </div>
     </div>
 </div>

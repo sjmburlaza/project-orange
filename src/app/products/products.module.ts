@@ -6,6 +6,7 @@ import { ProductsItemComponent } from './products-item/products-item.component';
 import { ProductsMenuComponent } from './products-menu/products-menu.component';
 import { ProductsRoutingModule } from './products-routing.module';
 import { FormsModule } from '@angular/forms';
+import { CurrencyBySitePipe } from '../shared/pipes/currency-by-site.pipe';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     ProductsRoutingModule,
     FormsModule,
+    CurrencyBySitePipe,
   ]
 })
 export class ProductsModule { }
