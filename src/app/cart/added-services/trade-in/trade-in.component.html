@@ -1,1 +1,29 @@
-<p>trade-in works!</p>
+<div *ngIf="tradeIn$ | async as tradeIn" class="tradein-container">
+  <div class="stepper-container">
+    <div class="title"> {{ steps[currentStep-1].title }}</div>
+    <div class="step-indicators">
+      @for (step of steps; let i = $index; track step) {
+        <div class="step" [class.active]="i+1 === currentStep" [class.completed]="i+1 < currentStep"></div>
+      }
+    </div>
+    <div class="step-content">
+      <div class="step-component">
+        @if (currentStep === 1) {
+          <app-trade-in-step-one [stepOne]="tradeIn.stepOne">
+          </app-trade-in-step-one>
+        } @else if (currentStep === 2) {
+          <app-trade-in-step-two>
+          </app-trade-in-step-two>
+        } @else if (currentStep === 3) {
+          <app-trade-in-step-three></app-trade-in-step-three>
+        } @else {
+          <app-trade-in-step-four></app-trade-in-step-four>
+        }
+      </div>
+      <div class="step-buttons">
+        <button (click)="prevStep()" [disabled]="currentStep === 1">Back</button>
+        <button (click)="nextStep()" [disabled]="currentStep === steps.length">Next</button>
+      </div>
+    </div>
+  </div>
+</div>

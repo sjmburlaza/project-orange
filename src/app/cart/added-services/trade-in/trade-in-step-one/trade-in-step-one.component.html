@@ -1,0 +1,65 @@
+<div class="step-one-container">
+  <form [formGroup]="stepOneForm" class="step-one-form">
+    @for (step of stepOne; track $index) {
+      @switch (step.field) {
+        @case ('postalCode') {
+          <div class="postal-code">
+            <div class="postal-code__title">
+              {{ step.title }}
+            </div>
+            <div class="postal-code__input">
+              <input formControlName="postalCode" [placeholder]="step.placeholder">
+              <button (click)="checkPostalCode()">
+                Check
+              </button>
+            </div>
+            <div
+              *ngIf="postalCode?.touched && postalCode?.invalid"
+             class="postal-code-validation"
+            >
+              <small class="error-message">Trade-in is not available in your area.</small>
+            </div>
+          </div>
+        }
+        @case ('category') {
+          <div class="category"> 
+            <div class="category__title">
+              {{ step.title }}
+            </div>
+            <div class="category__items">
+              @for (item of step.content.categories; track $index) {
+                <label class="item"
+                  [class.item--selected]="item.code === stepOneForm.get('category')?.value"
+                  [for]="item.code"
+                >
+                  <i class="item__icon" [class]="item.icon"></i>
+                  <p>{{ item.code | uppercase }}</p>
+                </label>
+                <input class="item__input" 
+                  type="radio" 
+                  formControlName="category" 
+                  [value]="item.code" 
+                  [id]="item.code"
+                >
+              }
+            </div>
+          </div>
+        }
+        @case ('brand') {
+          <div class="brand">
+            <div class="brand__title">
+              {{ step.title }}
+            </div>
+            <app-trade-in-accordion 
+              [fieldData]="step"
+              [form]="stepOneForm"
+            ></app-trade-in-accordion>
+          </div>
+        }
+        @default {
+          <p>Unknown.</p>
+        }
+      }
+    }
+  </form>
+</div>

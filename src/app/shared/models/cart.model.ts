@@ -69,3 +69,51 @@ export interface selectedService {
 
 }
 
+export interface TradeIn {
+    stepsHeader: StepHeader[];
+    stepOne: Step[];
+    stepTwo: Step[];
+    stepThree: Step[];
+    stepFour: Step[];
+}
+
+export interface StepHeader {
+    label: string;
+    title: string;
+}
+
+export interface Step {
+    title: string;
+    field: string;
+    placeholder?: string;
+    content: any;
+}
+
+export interface StepOne {
+
+}
+
+export interface Category {
+    code: string;
+    name: String;
+    icon: string;
+}
+
+export interface Brand {
+    code: string;
+    categoryApplicable: string[];
+    amount: {formattedValue: string};
+}
+
+export interface StepTwo {
+
+}
+
+export interface StepThree {
+
+}
+
+export interface StepFour {
+
+}
+

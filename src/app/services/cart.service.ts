@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, forkJoin, Observable, throwError } from 'rxjs';
-import { Service } from '../shared/models/cart.model';
+import { Service, TradeIn } from '../shared/models/cart.model';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +35,10 @@ export class CartService {
   deleteService(serviceId: string): Observable<any> {
     return this.http.delete(`${this.API_URL}/servicesSelected/${serviceId}`)
       .pipe(catchError(this.handleError));
+  }
+
+  getTradeIn(): Observable<TradeIn> {
+    return this.http.get<TradeIn>(`${this.API_URL}/tradeIn`);
   }
 
   private handleError(error: HttpErrorResponse) {

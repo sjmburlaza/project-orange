@@ -1,0 +1,19 @@
+
+  .brand {
+    &__items {
+      .item {
+        input {
+          display: none;
+        }
+
+        label {
+          display: flex;
+          justify-content: space-between;
+        }
+
+        label:hover {
+          background-color: gray;
+        }
+      }
+    }
+  }

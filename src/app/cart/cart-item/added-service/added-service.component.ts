@@ -24,13 +24,14 @@ export class AddedServiceComponent {
   }
 
   addService(code: string): void {
+    let modalRef: any;
+
     switch(code) {
       case 'insurance':
-        const modalRef: any = this.modalService.openWithComponent(InsuranceComponent);
-        modalRef.instance.sku = this.sku;
+        modalRef = this.modalService.openWithComponent(InsuranceComponent);
         break;
       case 'tradeIn':
-        this.modalService.openWithComponent(TradeInComponent);
+        modalRef = this.modalService.openWithComponent(TradeInComponent);
         break;
       case 'tradeUp':
           this.modalService.openWithComponent(TradeUpComponent);
@@ -38,6 +39,8 @@ export class AddedServiceComponent {
       default:
         console.error('No service code');
     }
+
+    modalRef.instance.sku = this.sku;
   }
 
 }

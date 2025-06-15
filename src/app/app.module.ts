@@ -39,6 +39,17 @@ import { SummaryComponent } from './right-hand-side/summary/summary.component';
 import { ReasonsToBuyComponent } from './right-hand-side/reasons-to-buy/reasons-to-buy.component';
 import { CurrencyBySitePipe } from "./shared/pipes/currency-by-site.pipe";
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatButtonModule } from '@angular/material/button';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { TradeInStepOneComponent } from './cart/added-services/trade-in/trade-in-step-one/trade-in-step-one.component';
+import { TradeInStepTwoComponent } from './cart/added-services/trade-in/trade-in-step-two/trade-in-step-two.component';
+import { TradeInStepThreeComponent } from './cart/added-services/trade-in/trade-in-step-three/trade-in-step-three.component';
+import { TradeInStepFourComponent } from './cart/added-services/trade-in/trade-in-step-four/trade-in-step-four.component';
+import { TradeInAccordionComponent } from './cart/added-services/trade-in/trade-in-accordion/trade-in-accordion.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json')
@@ -57,6 +68,11 @@ export function HttpLoaderFactory(http: HttpClient) {
         ProductListingComponent,
         AddedServiceComponent,
         TradeInComponent,
+        TradeInAccordionComponent,
+        TradeInStepOneComponent,
+        TradeInStepTwoComponent,
+        TradeInStepThreeComponent,
+        TradeInStepFourComponent,
         TradeUpComponent,
         InsuranceComponent,
         SimPlanComponent,
@@ -94,6 +110,12 @@ export function HttpLoaderFactory(http: HttpClient) {
         SummaryComponent,
         SafeHtmlPipe,
         CurrencyBySitePipe,
+        MatDialogModule,
+        MatButtonModule,
+        MatStepperModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatExpansionModule,
     ]
 })
 export class AppModule { }
