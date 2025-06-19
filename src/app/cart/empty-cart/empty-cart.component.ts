@@ -3,9 +3,10 @@ import { Router } from '@angular/router';
 import { CountryService } from 'src/app/services/country.service';
 
 @Component({
-  selector: 'app-empty-cart',
-  templateUrl: './empty-cart.component.html',
-  styleUrl: './empty-cart.component.scss'
+    selector: 'app-empty-cart',
+    templateUrl: './empty-cart.component.html',
+    styleUrl: './empty-cart.component.scss',
+    standalone: false
 })
 export class EmptyCartComponent {
 

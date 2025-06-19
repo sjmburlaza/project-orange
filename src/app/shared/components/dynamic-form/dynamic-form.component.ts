@@ -7,11 +7,10 @@ import { QuestionBase } from '../../models/question-base';
 
 
 @Component({
-  standalone: true,
-  selector: 'app-dynamic-form',
-  templateUrl: './dynamic-form.component.html',
-  providers: [QuestionControlService],
-  imports: [CommonModule, DynamicFormFieldComponent, ReactiveFormsModule],
+    selector: 'app-dynamic-form',
+    templateUrl: './dynamic-form.component.html',
+    providers: [QuestionControlService],
+    imports: [CommonModule, DynamicFormFieldComponent, ReactiveFormsModule]
 })
 export class DynamicFormComponent implements OnInit {
   @Input() questions: QuestionBase<string>[] | null = [];

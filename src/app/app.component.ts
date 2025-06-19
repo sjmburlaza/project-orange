@@ -3,9 +3,10 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { LocaleService } from './services/locale.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    standalone: false
 })
 export class AppComponent implements OnInit {
 

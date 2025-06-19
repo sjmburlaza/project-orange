@@ -9,9 +9,10 @@ import * as CartActions from 'src/app/store/actions/cart.actions';
 import * as CartSelectors from 'src/app/store/selectors/cart.selectors';
 
 @Component({
-  selector: 'app-insurance',
-  templateUrl: './insurance.component.html',
-  styleUrls: ['./insurance.component.scss']
+    selector: 'app-insurance',
+    templateUrl: './insurance.component.html',
+    styleUrls: ['./insurance.component.scss'],
+    standalone: false
 })
 export class InsuranceComponent implements OnInit {
   private formBuilder = inject(FormBuilder);

@@ -5,9 +5,10 @@ import { CartService } from 'src/app/services/cart.service';
 import { StepHeader, TradeIn } from 'src/app/shared/models/cart.model';
 
 @Component({
-  selector: 'app-trade-in',
-  templateUrl: './trade-in.component.html',
-  styleUrls: ['./trade-in.component.scss']
+    selector: 'app-trade-in',
+    templateUrl: './trade-in.component.html',
+    styleUrls: ['./trade-in.component.scss'],
+    standalone: false
 })
 export class TradeInComponent implements OnInit {
   currentStep = 1;

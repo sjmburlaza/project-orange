@@ -4,9 +4,10 @@ import { CustomerDetailsService } from 'src/app/services/customer-details.servic
 import { QuestionBase } from 'src/app/shared/models/question-base';
 
 @Component({
-  selector: 'app-customer-details',
-  templateUrl: './customer-details.component.html',
-  styleUrls: ['./customer-details.component.scss']
+    selector: 'app-customer-details',
+    templateUrl: './customer-details.component.html',
+    styleUrls: ['./customer-details.component.scss'],
+    standalone: false
 })
 export class CustomerDetailsComponent {
   questions$: Observable<any>;

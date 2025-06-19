@@ -4,9 +4,10 @@ import { CountryService } from 'src/app/services/country.service';
 import { ProductModel } from 'src/app/shared/models/cart.model';
 
 @Component({
-  selector: 'app-products-item',
-  templateUrl: './products-item.component.html',
-  styleUrls: ['./products-item.component.scss']
+    selector: 'app-products-item',
+    templateUrl: './products-item.component.html',
+    styleUrls: ['./products-item.component.scss'],
+    standalone: false
 })
 export class ProductsItemComponent {
   @Input() product!: ProductModel;

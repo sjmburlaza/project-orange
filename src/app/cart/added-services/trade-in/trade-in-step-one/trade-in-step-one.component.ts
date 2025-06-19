@@ -3,9 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Step } from 'src/app/shared/models/cart.model';
 
 @Component({
-  selector: 'app-trade-in-step-one',
-  templateUrl: './trade-in-step-one.component.html',
-  styleUrl: './trade-in-step-one.component.scss'
+    selector: 'app-trade-in-step-one',
+    templateUrl: './trade-in-step-one.component.html',
+    styleUrl: './trade-in-step-one.component.scss',
+    standalone: false
 })
 export class TradeInStepOneComponent {
   @Input() stepOne!: Step[];

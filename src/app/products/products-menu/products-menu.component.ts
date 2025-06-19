@@ -3,9 +3,10 @@ import { RightMenuGroup } from 'src/app/shared/models/group.model';
 
 
 @Component({
-  selector: 'app-products-menu',
-  templateUrl: './products-menu.component.html',
-  styleUrls: ['./products-menu.component.scss']
+    selector: 'app-products-menu',
+    templateUrl: './products-menu.component.html',
+    styleUrls: ['./products-menu.component.scss'],
+    standalone: false
 })
 export class ProductsMenuComponent {
   @Input() groups!: RightMenuGroup[];

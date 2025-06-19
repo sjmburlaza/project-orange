@@ -9,9 +9,10 @@ import { Store } from '@ngrx/store';
 import { ProductModel } from '../shared/models/cart.model';
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+    selector: 'app-products',
+    templateUrl: './products.component.html',
+    styleUrls: ['./products.component.scss'],
+    standalone: false
 })
 export class ProductsComponent {
   private unsubscribe$ = new Subject<void>();

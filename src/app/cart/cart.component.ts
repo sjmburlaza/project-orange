@@ -6,9 +6,10 @@ import * as CartActions from '../store/actions/cart.actions';
 import * as CartSelectors from '../store/selectors/cart.selectors';
 
 @Component({
-  selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss']
+    selector: 'app-cart',
+    templateUrl: './cart.component.html',
+    styleUrls: ['./cart.component.scss'],
+    standalone: false
 })
 export class CartComponent implements OnInit {
   entries$: Observable<any[]>;

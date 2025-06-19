@@ -7,11 +7,10 @@ import { Voucher } from 'src/app/shared/models/voucher.model';
 
 
 @Component({
-  selector: 'app-voucher',
-  standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
-  templateUrl: './voucher.component.html',
-  styleUrl: './voucher.component.scss'
+    selector: 'app-voucher',
+    imports: [ReactiveFormsModule, CommonModule],
+    templateUrl: './voucher.component.html',
+    styleUrl: './voucher.component.scss'
 })
 export class VoucherComponent {
   vf: FormGroup;

@@ -3,9 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { CountryService } from '../services/country.service';
 
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+    selector: 'app-main',
+    templateUrl: './main.component.html',
+    styleUrls: ['./main.component.scss'],
+    standalone: false
 })
 export class MainComponent {
   

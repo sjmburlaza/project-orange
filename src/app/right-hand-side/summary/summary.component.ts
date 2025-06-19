@@ -6,11 +6,10 @@ import { Summary, SummaryItem } from 'src/app/shared/models/summary.model';
 import { CurrencyBySitePipe } from 'src/app/shared/pipes/currency-by-site.pipe';
 
 @Component({
-  selector: 'app-summary',
-  standalone: true,
-  imports: [ CommonModule, CurrencyBySitePipe ],
-  templateUrl: './summary.component.html',
-  styleUrl: './summary.component.scss'
+    selector: 'app-summary',
+    imports: [CommonModule, CurrencyBySitePipe],
+    templateUrl: './summary.component.html',
+    styleUrl: './summary.component.scss'
 })
 export class SummaryComponent {
   summary$: Observable<Summary>;

@@ -8,9 +8,10 @@ import { CartState } from 'src/app/store/reducers/cart.reducer';
 import * as CartActions from '../../store/actions/cart.actions';
 
 @Component({
-  selector: 'app-cart-item',
-  templateUrl: './cart-item.component.html',
-  styleUrls: ['./cart-item.component.scss']
+    selector: 'app-cart-item',
+    templateUrl: './cart-item.component.html',
+    styleUrls: ['./cart-item.component.scss'],
+    standalone: false
 })
 export class CartItemComponent implements OnInit {
   @Input() item: any;

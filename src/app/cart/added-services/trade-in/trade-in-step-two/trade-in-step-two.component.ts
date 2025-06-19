@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-trade-in-step-two',
-  templateUrl: './trade-in-step-two.component.html',
-  styleUrl: './trade-in-step-two.component.scss'
+    selector: 'app-trade-in-step-two',
+    templateUrl: './trade-in-step-two.component.html',
+    styleUrl: './trade-in-step-two.component.scss',
+    standalone: false
 })
 export class TradeInStepTwoComponent {
 

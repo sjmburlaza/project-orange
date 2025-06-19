@@ -6,9 +6,10 @@ import { TradeInComponent } from '../../added-services/trade-in/trade-in.compone
 import { TradeUpComponent } from '../../added-services/trade-up/trade-up.component';
 
 @Component({
-  selector: 'app-added-service',
-  templateUrl: './added-service.component.html',
-  styleUrls: ['./added-service.component.scss']
+    selector: 'app-added-service',
+    templateUrl: './added-service.component.html',
+    styleUrls: ['./added-service.component.scss'],
+    standalone: false
 })
 export class AddedServiceComponent {
   @Input() service!: Service;
