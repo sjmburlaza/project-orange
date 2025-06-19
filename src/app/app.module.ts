@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { BrowserModule } from '@angular/platform-browser';
@@ -55,8 +55,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json')
 }
 
-@NgModule({
-    declarations: [
+@NgModule({ declarations: [
         AppComponent,
         ProductDetailComponent,
         CartComponent,
@@ -79,16 +78,10 @@ export function HttpLoaderFactory(http: HttpClient) {
         BroadbandPlanComponent,
         AddOnsComponent,
     ],
-    providers: [
-    provideAnimationsAsync()
-  ],
-    bootstrap: [AppComponent],
-    imports: [
-        BrowserModule,
+    bootstrap: [AppComponent], imports: [BrowserModule,
         StoreModule.forRoot({ cart: cartReducer }),
         EffectsModule.forRoot([CartEffects]),
         AppRoutingModule,
-        HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
         OverlayModule,
@@ -115,7 +108,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         MatStepperModule,
         MatFormFieldModule,
         MatInputModule,
-        MatExpansionModule,
-    ]
-})
+        MatExpansionModule], providers: [
+        provideAnimationsAsync(),
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class AppModule { }
