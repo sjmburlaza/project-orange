@@ -1,0 +1,34 @@
+$breakpoint-xs: 480px;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;
+
+@mixin respond-to($breakpoint, $direction: up) {
+  $value: null;
+
+  @if $breakpoint == xs {
+    $value: $breakpoint-xs;
+  } @else if $breakpoint == sm {
+    $value: $breakpoint-sm;
+  } @else if $breakpoint == md {
+    $value: $breakpoint-md;
+  } @else if $breakpoint == lg {
+    $value: $breakpoint-lg;
+  } @else if $breakpoint == xl {
+    $value: $breakpoint-xl;
+  } @else if $breakpoint == xxl {
+    $value: $breakpoint-xxl;
+  }
+
+  @if $direction == up {
+    @media (min-width: $value) {
+      @content;
+    }
+  } @else if $direction == down {
+    @media (max-width: $value) {
+      @content;
+    }
+  }
+}

@@ -1,0 +1,41 @@
+$space-3xs: 2px;
+$space-xxs: 4px;
+$space-xs: 8px;
+$space-sm: 12px;
+$space-md: 16px;
+$space-lg: 24px;
+$space-xl: 32px;
+$space-xxl: 40px;
+$space-3xl: 48px;
+$space-4xl: 56px;
+
+$offwhite: #F2F0EF; 
+$white: #fdfdfd;
+$lightblue: #f5f7fe;
+$blue: #2089ff;
+$darkblue: #016bea;
+
+%montserrat-base {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+%montserrat-regular {
+  @extend %montserrat-base;
+  font-weight: 400;
+}
+
+%montserrat-bold {
+  @extend %montserrat-base;
+  font-weight: 700;
+}
+
+$font10: 10px;
+$font12: 12px;
+$font14: 14px;
+$font16: 16px;
+$font18: 18px;
+$font20: 20px;
+$font24: 24px;
+$font36: 36px;

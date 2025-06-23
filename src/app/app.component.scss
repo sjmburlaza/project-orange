@@ -1,4 +1,4 @@
-@import 'src/styles/_globalStyles.scss';
+@use 'abstracts' as *;
 
 .main-container {
     background-color: $white;

@@ -1,4 +1,4 @@
-@import 'src/styles/globalStyles.scss';
+@use 'abstracts' as *;
 
 .product {
   display: flex;
