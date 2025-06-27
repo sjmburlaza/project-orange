@@ -1,5 +1,9 @@
 
-  .brand {
+.accordion-container {
+  max-height: 200px;
+  overflow-y: auto;
+
+  .field {
     &__items {
       .item {
         input {
@@ -17,3 +21,4 @@
       }
     }
   }
+}

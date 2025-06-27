@@ -7,9 +7,9 @@
       }
     </div>
     <div class="step-content">
-      <div class="step-component">
+      <div class="step-content__component">
         @if (currentStep === 1) {
-          <app-trade-in-step-one [stepOne]="tradeIn.stepOne">
+          <app-trade-in-step-one [stepOneFields]="tradeIn.stepOne">
           </app-trade-in-step-one>
         } @else if (currentStep === 2) {
           <app-trade-in-step-two>
@@ -20,7 +20,10 @@
           <app-trade-in-step-four></app-trade-in-step-four>
         }
       </div>
-      <div class="step-buttons">
+      <div class="step-content__footer">
+        {{ tradeIn.footerText }}
+      </div>
+      <div class="step-content__buttons">
         <button (click)="prevStep()" [disabled]="currentStep === 1">Back</button>
         <button (click)="nextStep()" [disabled]="currentStep === steps.length">Next</button>
       </div>

@@ -1,22 +1,30 @@
-<mat-accordion *ngIf="fieldData as field" >
-  <mat-expansion-panel [expanded]="true">
-    <mat-expansion-panel-header>
-      <mat-panel-title> {{ placeholder }} </mat-panel-title>
-    </mat-expansion-panel-header>
-    <div [formGroup]="form" class="brand__items">
-      @for (item of field.content.brands; track item.code) {
-        <div class="item">
-          <input type="radio" 
-            formControlName="brand" 
-            [value]="item.code" 
-            [id]="item.code"
-            >
-          <label [for]="item.code">
-            <p>{{ item.code }}</p>
-            <p>{{ item.amount.formattedValue }}</p>
-          </label>
+@if (field && form) {
+  <div class="accordion-container">
+    <mat-accordion>
+      <mat-expansion-panel 
+        [expanded]="panelOpenState()" 
+        (opened)="panelOpenState.set(true)" 
+        (closed)="panelOpenState.set(false)"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title> {{ field.placeholder }} </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div [formGroup]="form" class="field__items">
+          @for (item of field.content; track item.code) {
+            <div class="item" (click)="onSelect(item)">
+              <input type="radio" 
+                formControlName="{{ field.field }}" 
+                [value]="item.code" 
+                [id]="item.code"
+              >
+              <label [for]="item.code">
+                <p>{{ item.name }}</p>
+                <p>{{ item.value }}</p>
+              </label>
+            </div>
+          }
         </div>
-      }
-    </div>
-  </mat-expansion-panel>
-</mat-accordion>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+}

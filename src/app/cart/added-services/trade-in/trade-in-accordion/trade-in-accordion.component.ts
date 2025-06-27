@@ -1,26 +1,34 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, signal, SimpleChange, SimpleChanges } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Step } from 'src/app/shared/models/cart.model';
+import { Field } from 'src/app/shared/models/tradein.model';
 
 @Component({
-    selector: 'app-trade-in-accordion',
-    templateUrl: './trade-in-accordion.component.html',
-    styleUrl: './trade-in-accordion.component.scss',
-    standalone: false
+  selector: 'app-trade-in-accordion',
+  templateUrl: './trade-in-accordion.component.html',
+  styleUrl: './trade-in-accordion.component.scss',
+  standalone: false
 })
 export class TradeInAccordionComponent implements OnInit {
-  @Input() fieldData!: Step;
+  @Input() field!: Field;
   @Input() form!: FormGroup;
-  placeholder: string = '';
+  @Input() category = '';
+  @Output() onSelectItemEvent: EventEmitter<any> = new EventEmitter();
+  readonly panelOpenState = signal(true);
 
   constructor() {}
 
   ngOnInit() {
-    this.placeholder = this.fieldData?.placeholder ?? '';
-    console.log('fielddata', this.fieldData)
+
   }
 
-  onSelect(itemName: string): void {
-    this.placeholder = itemName;
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['category']) {
+      this.panelOpenState.set(true);
+    }
+  }
+
+  onSelect(item: any): void {
+    this.onSelectItemEvent.emit(item);
+    this.panelOpenState.set(false);
   }
 }

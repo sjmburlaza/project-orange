@@ -1,12 +1,13 @@
 .tradein-container {
   position: fixed;
-  top: 48px;
+  top: 64px;
   left: 50%;
   transform: translateX(-50%);
   padding: 24px;
   background-color: white;
-  // max-width: 600px;
   border-radius: 12px;
+  max-height: 80vh;
+  overflow-y: auto;
 
   .stepper-container {
     display: flex;
@@ -31,6 +32,16 @@
     .active,
     .completed {
       border-bottom: 4px solid black
+    }
+  }
+
+  .step-content {
+    &__footer {
+      margin: 24px;
+      padding: 12px;
+      background-color: lightgray;
+      font-size: 12px;
+      border-radius: 8px;
     }
   }
 }

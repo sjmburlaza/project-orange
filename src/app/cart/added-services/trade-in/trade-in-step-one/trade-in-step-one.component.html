@@ -1,14 +1,14 @@
 <div class="step-one-container">
   <form [formGroup]="stepOneForm" class="step-one-form">
-    @for (step of stepOne; track $index) {
-      @switch (step.field) {
+    @for (field of fields; track $index) {
+      @switch (field.field) {
         @case ('postalCode') {
           <div class="postal-code">
             <div class="postal-code__title">
-              {{ step.title }}
+              {{ field.title }}
             </div>
             <div class="postal-code__input">
-              <input formControlName="postalCode" [placeholder]="step.placeholder">
+              <input formControlName="postalCode" [placeholder]="field.placeholder">
               <button (click)="checkPostalCode()">
                 Check
               </button>
@@ -24,10 +24,10 @@
         @case ('category') {
           <div class="category"> 
             <div class="category__title">
-              {{ step.title }}
+              {{ field.title }}
             </div>
             <div class="category__items">
-              @for (item of step.content.categories; track $index) {
+              @for (item of field.content; track $index) {
                 <label class="item"
                   [class.item--selected]="item.code === stepOneForm.get('category')?.value"
                   [for]="item.code"
@@ -46,13 +46,39 @@
           </div>
         }
         @case ('brand') {
-          <div class="brand">
-            <div class="brand__title">
-              {{ step.title }}
+          <div class="field">
+            <div class="field__title">
+              {{ field.title }}
             </div>
             <app-trade-in-accordion 
-              [fieldData]="step"
+              [field]="field"
               [form]="stepOneForm"
+              [category]="category"
+              (onSelectItemEvent)="onSelectItem($event)"
+            ></app-trade-in-accordion>
+          </div>
+        }
+        @case ('device') {
+          <div class="field">
+            <div class="field__title">
+              {{ field.title }}
+            </div>
+            <app-trade-in-accordion 
+              [field]="field"
+              [form]="stepOneForm"
+              (onSelectItemEvent)="onSelectItem($event)"
+            ></app-trade-in-accordion>
+          </div>
+        }
+        @case ('storage') {
+          <div class="field">
+            <div class="field__title">
+              {{ field.title }}
+            </div>
+            <app-trade-in-accordion 
+              [field]="field"
+              [form]="stepOneForm"
+              (onSelectItemEvent)="onSelectItem($event)"
             ></app-trade-in-accordion>
           </div>
         }

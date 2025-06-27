@@ -1,8 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { CartService } from 'src/app/services/cart.service';
-import { StepHeader, TradeIn } from 'src/app/shared/models/cart.model';
+import { TradeInService } from 'src/app/services/trade-in.service';
+import { TradeIn, StepHeader } from 'src/app/shared/models/tradein.model';
 
 @Component({
     selector: 'app-trade-in',
@@ -11,12 +10,13 @@ import { StepHeader, TradeIn } from 'src/app/shared/models/cart.model';
     standalone: false
 })
 export class TradeInComponent implements OnInit {
+  tradeInService = inject(TradeInService);
   currentStep = 1;
   tradeIn$: Observable<TradeIn>;
   steps: StepHeader[] = [];
 
-  constructor(public cartService: CartService) {
-    this.tradeIn$ = this.cartService.getTradeIn();
+  constructor() {
+    this.tradeIn$ = this.tradeInService.getTradeIn();
     this.tradeIn$.subscribe(res => this.steps = res.stepsHeader);
   }
 
