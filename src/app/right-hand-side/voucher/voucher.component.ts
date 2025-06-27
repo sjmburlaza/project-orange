@@ -61,12 +61,12 @@ export class VoucherComponent {
     } else {
       this.voucherCode?.setErrors({ valid: true });
       const voucherId = this.vouchers?.find(v => v.code === code)?.id;
-      if (voucherId) this.updateIsApplied(voucherId, true);
+      if (voucherId) this.updateVoucherStatus(voucherId, true);
     }
   }
 
-  updateIsApplied(id: string, isApplied: boolean): void {
-    this.voucherService.updateIsApplied(id, isApplied).subscribe({
+  updateVoucherStatus(id: string, isApplied: boolean): void {
+    this.voucherService.updateVoucherStatus(id, isApplied).subscribe({
       next: () => {
         this.fetchVouchers();
       },
@@ -77,7 +77,7 @@ export class VoucherComponent {
   }
 
   removeVoucher(voucherId: string | undefined): void {
-    if (voucherId) this.updateIsApplied(voucherId, false);
+    if (voucherId) this.updateVoucherStatus(voucherId, false);
     this.voucherCode?.reset();
   }
 }

@@ -78,7 +78,9 @@ export function HttpLoaderFactory(http: HttpClient) {
         BroadbandPlanComponent,
         AddOnsComponent,
     ],
-    bootstrap: [AppComponent], imports: [BrowserModule,
+    bootstrap: [AppComponent], 
+    imports: [
+        BrowserModule,
         StoreModule.forRoot({ cart: cartReducer }),
         EffectsModule.forRoot([CartEffects]),
         AppRoutingModule,
@@ -108,7 +110,9 @@ export function HttpLoaderFactory(http: HttpClient) {
         MatStepperModule,
         MatFormFieldModule,
         MatInputModule,
-        MatExpansionModule], providers: [
+        MatExpansionModule
+    ], 
+    providers: [
         provideAnimationsAsync(),
         provideHttpClient(withInterceptorsFromDi())
     ] })

@@ -1,6 +1,6 @@
 <div class="vouchers">
     <div class="vouchers__form">
-        <form [formGroup]="vf">
+        <form [formGroup]="vf" (ngSubmit)="applyVoucher()">
             <div class="vouchers__form__voucher">
                 <p>Vouchers</p>
                 <div class="voucher-input">
@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div class="vouchers__form__apply">
-                <button type="submit" (click)="applyVoucher()">Apply</button>
+                <button type="submit">Apply</button>
             </div>
         </form>
     </div>

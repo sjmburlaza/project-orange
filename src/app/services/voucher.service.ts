@@ -15,7 +15,7 @@ export class VoucherService {
     return this.http.get<Voucher[]>(`${this.API_URL}`);
   }
 
-  updateIsApplied(id: string, isApplied: boolean): Observable<Voucher> {
+  updateVoucherStatus(id: string, isApplied: boolean): Observable<Voucher> {
     return this.http.patch<Voucher>(`${this.API_URL}/${id}`, { isApplied });
   }
 }
