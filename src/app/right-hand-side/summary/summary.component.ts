@@ -9,7 +9,8 @@ import { CurrencyBySitePipe } from 'src/app/shared/pipes/currency-by-site.pipe';
     selector: 'app-summary',
     imports: [CommonModule, CurrencyBySitePipe],
     templateUrl: './summary.component.html',
-    styleUrl: './summary.component.scss'
+    styleUrl: './summary.component.scss',
+    standalone: true
 })
 export class SummaryComponent {
   summary$: Observable<Summary>;

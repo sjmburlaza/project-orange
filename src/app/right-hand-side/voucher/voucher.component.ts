@@ -10,7 +10,8 @@ import { Voucher } from 'src/app/shared/models/voucher.model';
     selector: 'app-voucher',
     imports: [ReactiveFormsModule, CommonModule],
     templateUrl: './voucher.component.html',
-    styleUrl: './voucher.component.scss'
+    styleUrl: './voucher.component.scss',
+    standalone: true
 })
 export class VoucherComponent {
   vf: FormGroup;

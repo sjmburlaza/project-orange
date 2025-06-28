@@ -4,7 +4,8 @@ import { Component } from '@angular/core';
     selector: 'app-rewards',
     imports: [],
     templateUrl: './rewards.component.html',
-    styleUrl: './rewards.component.scss'
+    styleUrl: './rewards.component.scss',
+    standalone: true
 })
 export class RewardsComponent {
 

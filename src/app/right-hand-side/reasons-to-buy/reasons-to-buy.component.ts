@@ -4,7 +4,8 @@ import { Component } from '@angular/core';
     selector: 'app-reasons-to-buy',
     imports: [],
     templateUrl: './reasons-to-buy.component.html',
-    styleUrl: './reasons-to-buy.component.scss'
+    styleUrl: './reasons-to-buy.component.scss',
+    standalone: true
 })
 export class ReasonsToBuyComponent {
 
