@@ -1,6 +1,8 @@
 @use 'abstracts' as *;
 
 .step-one-container {
+  display: grid;
+  row-gap: 36px;
 
   .step-one-form {
     display: flex;
@@ -10,7 +12,7 @@
 
   .postal-code {
     &__title {
-      font-size: 12px;
+      font-size: 14px;
     }
 
     &__input {
@@ -19,7 +21,7 @@
       gap: 12px;
 
       input {
-        padding: 8px 0 4px;
+        padding: 12px 0 8px;
         border: none;
         border-bottom: 1px solid black;
         font-size: 16px;
@@ -37,14 +39,25 @@
         color: white;
       }
 
+      .button--invalid {
+        background-color: gray;
+      }
+
+    }
+
+    .postal-code-validation {
+      padding: 4px 0;
+      .error-message {
+        color: red;
+      }
+  
+      .success-message {
+        color: $blue;
+      }
     }
   }
 
   .category {
-    &__title {
-      font-size: 12px;
-    }
-
     &__items {
       display: flex;
       justify-content: center;
@@ -76,22 +89,70 @@
     }
   }
 
-  .brand {
-    &__items {
-      .item {
-        input {
-          display: none;
-        }
+  .field {
+    &__title {
+      padding-bottom: 8px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+  }
 
-        label {
-          display: flex;
-          justify-content: space-between;
-        }
+  .step-one-summary {
+    background-color: $lightgray;
+    padding: 16px 24px;
 
-        label:hover {
-          background-color: gray;
-        }
+    .summary-header {
+      font-weight: bold;
+      padding-bottom: 8px;
+      border-bottom: 1px solid lightgray;
+    }
+
+    .summary-content {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 16px;
+
+      &__amount {
+        color: $blue;
       }
     }
+  }
+
+  .step-one-description {
+    .description-title {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .description-content {
+      .item {
+        display: flex;
+        gap: 24px;
+        padding: 24px 0;
+        border-bottom: 1px solid lightgray;
+        align-items: center;
+
+        &__number {
+          font-size: 24px;
+          font-weight: bold;
+        }
+
+        &__text {
+          font-size: 14px;
+        }
+      }
+
+    }
+
+    .description-note {
+      margin: 36px;
+      font-size: 14px;
+      text-align: center;
+    }
+  }
+
+  .disabled-section[disabled] {
+    opacity: 0.5;
+    pointer-events: none;
   }
 }

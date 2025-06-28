@@ -11,11 +11,11 @@ export class CurrencyBySitePipe implements PipeTransform {
     private countryService: CountryService,
   ) {}
 
-  transform(value: string | undefined): string {
+  transform(value: string | number | undefined): string {
     if (!value) return '';
 
-    const numericValue = parseFloat(value);
-    if (isNaN(numericValue)) return value;
+    const numericValue = typeof value === 'number' ? value : parseFloat(value);
+    if (isNaN(numericValue)) return String(value);
 
     const sitecode = this.countryService.countryCode;
     const currencyConfig = this.getCurrencyFormat(sitecode);

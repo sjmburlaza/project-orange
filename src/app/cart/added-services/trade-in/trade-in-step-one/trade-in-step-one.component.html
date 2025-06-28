@@ -9,31 +9,36 @@
             </div>
             <div class="postal-code__input">
               <input formControlName="postalCode" [placeholder]="field.placeholder">
-              <button (click)="checkPostalCode()">
+              <button 
+                [ngClass]="{'button--invalid': postalCode?.invalid}"
+                (click)="checkPostalCode()" 
+                [disabled]="postalCode?.invalid"
+              >
                 Check
               </button>
             </div>
-            <div
-              *ngIf="postalCode?.touched && postalCode?.invalid"
-             class="postal-code-validation"
-            >
-              <small class="error-message">Trade-in is not available in your area.</small>
+            <div class="postal-code-validation">
+              @if (postalCode?.hasError('invalidPostalCode')) {
+                <small class="error-message">Trade-in is not available in your area.</small>
+              } @else if (isPostalCodeValid) {
+                <small class="success-message">Trade-in is available in your area.</small>
+              }
             </div>
           </div>
         }
         @case ('category') {
-          <div class="category"> 
-            <div class="category__title">
+          <div class="category disabled-section" [attr.disabled]="!isPostalCodeValid ? true : null"> 
+            <div class="category__title field__title">
               {{ field.title }}
             </div>
             <div class="category__items">
-              @for (item of field.content; track $index) {
+              @for (item of field.content; track item.code) {
                 <label class="item"
-                  [class.item--selected]="item.code === stepOneForm.get('category')?.value"
+                  [ngClass]="{'item--selected': categoryField?.value === item.code}"
                   [for]="item.code"
                 >
                   <i class="item__icon" [class]="item.icon"></i>
-                  <p>{{ item.code | uppercase }}</p>
+                  <p>{{ item.name | uppercase }}</p>
                 </label>
                 <input class="item__input" 
                   type="radio" 
@@ -46,7 +51,7 @@
           </div>
         }
         @case ('brand') {
-          <div class="field">
+          <div class="field disabled-section" [attr.disabled]="!isPostalCodeValid ? true : null">
             <div class="field__title">
               {{ field.title }}
             </div>
@@ -88,4 +93,39 @@
       }
     }
   </form>
+  @if (stepOneForm.valid) {
+    <div class="step-one-summary">
+      <div class="summary-header">
+        {{ summary.brand | titlecase }} | {{ summary.device }} | {{ summary.storage }}
+      </div>
+      <div class="summary-content">
+        <div class="summary-content__label">
+          Trade In Discount
+        </div>
+        <div class="summary-content__amount">
+          {{ summary.finalAmount | currencyBySite }}
+        </div>
+      </div>
+    </div>
+  }
+  @if (description) {
+    <div class="step-one-description">
+      <div class="description-title">
+        {{ description.title }}
+      </div>
+      <div class="description-content">
+        @for (item of description.content; track $index) {
+          <div class="item">
+            <div class="item__number">
+              {{ item.number }}
+            </div>
+            <div class="item__text">
+              {{ item.text }}
+            </div>
+          </div>
+        }
+      </div>
+      <div class="description-note" [innerHTML]="description.note"></div>
+    </div>
+  }
 </div>

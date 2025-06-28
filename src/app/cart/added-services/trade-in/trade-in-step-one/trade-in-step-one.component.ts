@@ -1,7 +1,7 @@
-import { Component, inject, Input } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CartService } from 'src/app/services/cart.service';
+import { ChangeDetectorRef, Component, inject, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { TradeInService } from 'src/app/services/trade-in.service';
+import { TradeInField } from 'src/app/shared/constants/tradein.const';
 import { BrandTI, Field } from 'src/app/shared/models/tradein.model';
 
 
@@ -11,20 +11,34 @@ import { BrandTI, Field } from 'src/app/shared/models/tradein.model';
     styleUrl: './trade-in-step-one.component.scss',
     standalone: false
 })
-export class TradeInStepOneComponent {
+export class TradeInStepOneComponent implements OnInit {
   @Input() stepOneFields!: Field[];
+  @Input() description: any;
   fieldsOriginal: Field[] = [];
   stepOneForm: FormGroup;
   fields: Field[] = [];
   category = '';
-  private tradeInService = inject(TradeInService);
+  validPostalCodes: string[] = [];
+  isPostalCodeValid = false;
+  summary = {
+    brand: '',
+    device: '',
+    storage: '',
+    finalAmount: 0
+  }
 
   constructor(
     private fb: FormBuilder,
-
+    private tradeInService: TradeInService,
   ) {
     this.stepOneForm = this.fb.group({
-      postalCode: ['', Validators.required],
+      postalCode: ['', 
+        [
+          Validators.required, 
+          Validators.maxLength(4), 
+          Validators.minLength(4),
+        ]
+      ],
       category: ['', Validators.required],
       brand: ['', Validators.required],
       device: ['', Validators.required],
@@ -34,75 +48,116 @@ export class TradeInStepOneComponent {
 
   ngOnInit() {
     this.fieldsOriginal = JSON.parse(JSON.stringify(this.stepOneFields));
+    this.validPostalCodes = this.stepOneFields?.find(f => f.field === TradeInField.POSTAL_CODE)?.content;
 
-    this.getBrands('cat_smartphone');
+    const categoryInitial = this.fieldsOriginal?.find(f => f.field === TradeInField.CATEGORY)?.content[0]?.code;
 
-    this.stepOneForm.get('category')?.valueChanges.subscribe(category => {
+    this.getBrands(categoryInitial);
+    this.categoryField?.setValue(categoryInitial);
+
+    this.postalCode?.valueChanges.subscribe(() => {
+      this.isPostalCodeValid = false;
+      this.resetForm();
+      this.getBrands(categoryInitial);
+      this.categoryField?.setValue(categoryInitial);
+    });
+
+    this.categoryField?.valueChanges.subscribe(category => {
       this.category = category;
-      category = category === 'smartphone' ? 'cat_smartphone' : 'cat_tablet';
       this.getBrands(category);
+      this.resetForm();
     });
   }
 
-
-  get postalCode() {
-    return this.stepOneForm.get('postalCode');
+  resetForm(): void {
+    this.stepOneForm.patchValue({
+      brand: '',
+      device: '',
+      storage: ''
+    });
   }
 
-  checkPostalCode() {
+  get categoryField(): FormControl | null {
+    return this.stepOneForm.get(TradeInField.CATEGORY) as FormControl;
+  }
 
+  get postalCode(): FormControl | null {
+    return this.stepOneForm.get(TradeInField.POSTAL_CODE) as FormControl;
+  }
+
+  checkPostalCode(): void {
+    const code = this.postalCode?.value;
+    if (!code) return;
+    if (this.validPostalCodes.includes(code)) {
+      this.postalCode?.setErrors(null);
+      this.isPostalCodeValid = true;
+    } else {
+      this.postalCode?.setErrors({ invalidPostalCode: true });
+      this.isPostalCodeValid = false;
+    }
   }
 
   getBrands(category: string): void {
     this.fields = this.stepOneFields.slice(0, 3);
 
     this.tradeInService.getBrandsByCategory(category).subscribe((res: BrandTI[]) => {
-      const field = this.fields?.find(f => f.field === 'brand');
-      if (field) field['content'] = res;
-      const placeholder = this.fieldsOriginal?.find(f => f.field === 'brand')?.placeholder;
-      if (placeholder) this.updatePlaceholder('brand', placeholder);
+      const field = this.fields?.find(f => f.field === TradeInField.BRAND);
+      if (field) field.content = res;
+      const placeholder = this.fieldsOriginal?.find(f => f.field === TradeInField.BRAND)?.placeholder;
+      if (placeholder) this.updatePlaceholder(TradeInField.BRAND, placeholder);
     });
   }
 
   updatePlaceholder(fieldName: string, placeholder: string): void {
     const field = this.fields.find(f => f.field === fieldName);
-    if (field) field['placeholder'] = placeholder;
+    if (field) field.placeholder = placeholder;
   }
 
   onSelectItem(item: any): void {
-    console.log('item', item)
-    if (item.code.includes('brand')) {
+    if (item.code.includes(TradeInField.BRAND)) {
       this.fields = this.stepOneFields.slice(0, 4);
-      this.updatePlaceholder('brand', item.name);
+      this.updatePlaceholder(TradeInField.BRAND, item.name);
       this.getDevices(item.categoryCode, item.code);
+      this.summary.brand = item.name;
+      this.stepOneForm.patchValue({
+        device: '',
+        storage: ''
+      });
     }
 
-    if (item.code.includes('device')) {
+    if (item.code.includes(TradeInField.DEVICE)) {
       this.fields = this.stepOneFields.slice(0, 5);
-      this.updatePlaceholder('device', item.name);
+      this.updatePlaceholder(TradeInField.DEVICE, item.name);
       this.getStorages(item.code);
+      this.summary.device = item.name;
+      this.stepOneForm.patchValue({
+        storage: ''
+      });
     }
 
     if (item.code.includes('stor')) {
-      this.updatePlaceholder('storage', item.name);
+      this.updatePlaceholder(TradeInField.STORAGE, item.name);
+      this.summary.storage = item.name;
+      this.summary.finalAmount = item.value;
+      console.log('form', this.stepOneForm)
     }
   }
 
   getDevices(categoryCode: string, brandCode: string): void {
     this.tradeInService.getDevicesByCategoryAndBrand(categoryCode, brandCode).subscribe(res => {
-      const deviceField = this.fields.find(f => f.field === 'device');
-      if (deviceField) deviceField['content'] = res;
-      const placeholder = this.fieldsOriginal?.find(f => f.field === 'device')?.placeholder;
-      if (placeholder) this.updatePlaceholder('device', placeholder);
+      const deviceField = this.fields.find(f => f.field === TradeInField.DEVICE);
+      if (deviceField) deviceField.content = res;
+      const placeholder = this.fieldsOriginal?.find(f => f.field === TradeInField.DEVICE)?.placeholder;
+      if (placeholder) this.updatePlaceholder(TradeInField.DEVICE, placeholder);
     })
   }
 
   getStorages(deviceCode: string): void {
     this.tradeInService.getStoragesByDevice(deviceCode).subscribe(res => {
-      const storageField = this.fields.find(f => f.field === 'storage');
-      if (storageField) storageField['content'] = res;
-      const placeholder = this.fieldsOriginal?.find(f => f.field === 'storage')?.placeholder;
-      if (placeholder) this.updatePlaceholder('storage', placeholder);
+      const storageField = this.fields.find(f => f.field === TradeInField.STORAGE);
+      if (storageField) storageField.content = res;
+      const placeholder = this.fieldsOriginal?.find(f => f.field === TradeInField.STORAGE)?.placeholder;
+      if (placeholder) this.updatePlaceholder(TradeInField.STORAGE, placeholder);
     })
   }
 

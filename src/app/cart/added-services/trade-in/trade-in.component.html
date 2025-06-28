@@ -9,7 +9,10 @@
     <div class="step-content">
       <div class="step-content__component">
         @if (currentStep === 1) {
-          <app-trade-in-step-one [stepOneFields]="tradeIn.stepOne">
+          <app-trade-in-step-one 
+            [stepOneFields]="tradeIn.stepOne"
+            [description]="tradeIn.stepOneDescription"
+          >
           </app-trade-in-step-one>
         } @else if (currentStep === 2) {
           <app-trade-in-step-two>
@@ -23,10 +26,29 @@
       <div class="step-content__footer">
         {{ tradeIn.footerText }}
       </div>
-      <div class="step-content__buttons">
-        <button (click)="prevStep()" [disabled]="currentStep === 1">Back</button>
-        <button (click)="nextStep()" [disabled]="currentStep === steps.length">Next</button>
-      </div>
     </div>
+  </div>
+  <div class="step-content__buttons">
+    @if (currentStep === 1) {
+      <button class="button-close" (click)="close()">
+        Close
+      </button>
+    }
+    @if (currentStep > 1) {
+      <button 
+        class="button-back"
+        (click)="prevStep()"
+      >
+        Back
+      </button>
+    }
+
+    <button 
+      class="button-back"
+      (click)="nextStep()" 
+      [disabled]="currentStep === steps.length"
+    >
+      Continue
+    </button>
   </div>
 </div>

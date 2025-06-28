@@ -7,7 +7,7 @@
         (closed)="panelOpenState.set(false)"
       >
         <mat-expansion-panel-header>
-          <mat-panel-title> {{ field.placeholder }} </mat-panel-title>
+          <mat-panel-title> {{ field.placeholder | titlecase }} </mat-panel-title>
         </mat-expansion-panel-header>
         <div [formGroup]="form" class="field__items">
           @for (item of field.content; track item.code) {
@@ -18,8 +18,10 @@
                 [id]="item.code"
               >
               <label [for]="item.code">
-                <p>{{ item.name }}</p>
-                <p>{{ item.value }}</p>
+                <p class="item__name">{{ item.name | titlecase }}</p>
+                <p class="item__value">
+                  Up to <span>{{ item.value | currencyBySite }}</span>
+                </p>
               </label>
             </div>
           }

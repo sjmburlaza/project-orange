@@ -39,4 +39,8 @@ export class TradeInComponent implements OnInit {
   goToStep(index: number) {
     this.currentStep = index;
   }
+
+  close() {
+    
+  }
 }
