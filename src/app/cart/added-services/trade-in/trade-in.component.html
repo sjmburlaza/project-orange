@@ -16,10 +16,14 @@
           </app-trade-in-step-one>
         } @else if (currentStep === 2) {
           <app-trade-in-step-two
-            [stepTwoData]="tradeIn.stepTwo">
+            [stepTwoData]="tradeIn.stepTwo"
+          >
           </app-trade-in-step-two>
         } @else if (currentStep === 3) {
-          <app-trade-in-step-three></app-trade-in-step-three>
+          <app-trade-in-step-three
+            [stepThreeData]="tradeIn.stepThree"
+          >
+          </app-trade-in-step-three>
         } @else {
           <app-trade-in-step-four></app-trade-in-step-four>
         }

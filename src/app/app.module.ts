@@ -32,11 +32,6 @@ import { ProductsModule } from './products/products.module';
 import { CheckoutModule } from './checkout/checkout.module';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { EmptyCartComponent } from './cart/empty-cart/empty-cart.component';
-import { VoucherComponent } from './right-hand-side/voucher/voucher.component';
-import { CtaComponent } from './right-hand-side/cta/cta.component';
-import { RewardsComponent } from './right-hand-side/rewards/rewards.component';
-import { SummaryComponent } from './right-hand-side/summary/summary.component';
-import { ReasonsToBuyComponent } from './right-hand-side/reasons-to-buy/reasons-to-buy.component';
 import { CurrencyBySitePipe } from "./shared/pipes/currency-by-site.pipe";
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -45,6 +40,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { TradeInStepOneComponent } from './cart/added-services/trade-in/trade-in-step-one/trade-in-step-one.component';
 import { TradeInStepTwoComponent } from './cart/added-services/trade-in/trade-in-step-two/trade-in-step-two.component';
 import { TradeInStepThreeComponent } from './cart/added-services/trade-in/trade-in-step-three/trade-in-step-three.component';
@@ -106,6 +102,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         MatFormFieldModule,
         MatInputModule,
         MatExpansionModule,
+        MatTooltipModule,
         RightHandSideComponent,
         MaxLengthBlockDirective,
     ], 
