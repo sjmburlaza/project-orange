@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { REGEX_PATTERN } from 'src/app/shared/constants/regex.const';
 
 @Component({
   selector: 'app-trade-in-step-two',
@@ -17,14 +18,10 @@ export class TradeInStepTwoComponent {
         [
           Validators.required, 
           Validators.minLength(15),
-          Validators.pattern(/^\d+$/)
+          Validators.pattern(REGEX_PATTERN.DIGITS_ONLY)
         ]
       ]
     })
-  }
-
-  ngOnInit() {
-    this.imei?.valueChanges.subscribe(v => console.log('v', v))
   }
 
   get imei(): FormControl | null {

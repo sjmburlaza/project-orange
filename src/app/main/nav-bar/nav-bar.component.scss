@@ -4,9 +4,9 @@
   max-width: 1440px;
   margin-left: auto;
   margin-right: auto;
-  padding: 24px;
+  padding: 12px 24px;
   display: grid;
-  grid-template-columns: 1fr 5fr 2fr;
+  grid-template-columns: 90px 5fr 2fr;
   font-size: 14px;
   font-family: "Roboto", sans-serif;
 
@@ -16,7 +16,11 @@
   }
 
   .shop-name {
-    font-size: 24px;
+
+    img {
+      height: 56px;
+      width: auto;
+    }
   }
 
   .shop-categories {
