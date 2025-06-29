@@ -1,1 +1,35 @@
-<p>trade-in-step-two works!</p>
+@if (stepTwoData; as data) {
+  <div class="step-two-container">
+    <div class="header">
+      {{ data.text1 }}
+    </div>
+    <div class="subheader">
+      <div class="subheader__icon">
+        <i class="{{ data.icon }}"></i>
+      </div>
+      <div class="subheader__iconText">
+        {{ data.iconText }}
+      </div>
+    </div>
+    <div class="subtext">
+      {{ data.text2 }}
+    </div>
+    <form [formGroup]="stepTwoForm" class="imei-field">
+      <div class="imei-field__label">
+        {{ data.imei.label }}
+      </div>
+      <input 
+        formControlName="imei"
+        [placeholder]="data.imei.placeholder"
+        [maxLengthBlock]="15"
+      >
+      @if (imei?.dirty && imei?.value) {
+        @if (imei?.invalid) {
+          <small class="error-message">We can't seem to verify that IMEI/serial number</small>
+        } @else if (imei?.valid) {
+          <small class="success-message">Valid</small>
+        }
+      }
+    </form>
+  </div>
+}

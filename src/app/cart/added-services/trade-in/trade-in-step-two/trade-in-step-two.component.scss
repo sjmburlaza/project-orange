@@ -1,0 +1,63 @@
+@use 'abstracts' as *;
+
+.step-two-container {
+  display: grid;
+  row-gap: 24px;
+  margin-top: 12px;
+  margin-bottom: 48px;
+
+  .header, 
+  .subtext {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .subheader {
+    display: flex;
+    gap: 20px;
+
+    i {
+      font-size: 56px;
+    }
+
+    &__iconText {
+      font-size: 56px;
+      font-weight: bold;
+    }
+  }
+
+  .imei-field {
+    display: grid;
+    row-gap: 4px;
+
+    &__label {
+      font-size: 12px;
+    }
+
+    input:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    input {
+      padding: 8px 0;
+      border: none;
+      border-bottom: 1px solid black;
+      font-size: 16px;
+    }
+
+    .error-message,
+    .success-message {
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    .error-message {
+      color: $lightred;
+    }
+
+    .success-message {
+      color: $blue;
+    }
+  }
+}

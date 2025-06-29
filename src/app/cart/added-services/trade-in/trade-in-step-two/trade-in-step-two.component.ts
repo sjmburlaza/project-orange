@@ -1,11 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-    selector: 'app-trade-in-step-two',
-    templateUrl: './trade-in-step-two.component.html',
-    styleUrl: './trade-in-step-two.component.scss',
-    standalone: false
+  selector: 'app-trade-in-step-two',
+  templateUrl: './trade-in-step-two.component.html',
+  styleUrl: './trade-in-step-two.component.scss',
+  standalone: false
 })
 export class TradeInStepTwoComponent {
+  @Input() stepTwoData: any;
+  stepTwoForm: FormGroup;
+
+  constructor( private fb: FormBuilder ) {
+    this.stepTwoForm = this.fb.group({
+      imei: ['', 
+        [
+          Validators.required, 
+          Validators.minLength(15),
+          Validators.pattern(/^\d+$/)
+        ]
+      ]
+    })
+  }
+
+  ngOnInit() {
+    this.imei?.valueChanges.subscribe(v => console.log('v', v))
+  }
+
+  get imei(): FormControl | null {
+    return this.stepTwoForm.get('imei') as FormControl;
+  }
 
 }

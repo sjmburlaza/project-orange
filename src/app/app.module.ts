@@ -50,6 +50,7 @@ import { TradeInStepTwoComponent } from './cart/added-services/trade-in/trade-in
 import { TradeInStepThreeComponent } from './cart/added-services/trade-in/trade-in-step-three/trade-in-step-three.component';
 import { TradeInStepFourComponent } from './cart/added-services/trade-in/trade-in-step-four/trade-in-step-four.component';
 import { TradeInAccordionComponent } from './cart/added-services/trade-in/trade-in-accordion/trade-in-accordion.component';
+import { MaxLengthBlockDirective } from 'src/app/shared/directives/max-length-block.directive';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json')
@@ -106,6 +107,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         MatInputModule,
         MatExpansionModule,
         RightHandSideComponent,
+        MaxLengthBlockDirective,
     ], 
     providers: [
         provideAnimationsAsync(),
