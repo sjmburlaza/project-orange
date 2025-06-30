@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { QuestionBase } from '../../models/question-base';
+import { QuestionBase } from '../../../core/models/question-base';
 
 @Component({
     selector: 'app-dynamic-form-field',

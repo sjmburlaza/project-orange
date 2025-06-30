@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CartComponent } from './cart/cart.component';
-import { MainComponent } from './main/main.component';
-import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { CartComponent } from './features/cart/cart.component';
+import { MainComponent } from './features/main/main.component';
+import { ProductDetailComponent } from './features/product-detail/product-detail.component';
 
 const routes: Routes = [
   { 
@@ -11,14 +11,14 @@ const routes: Routes = [
     children: [
       {
         path: 'products',
-        loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
+        loadChildren: () => import('./features/products/products.module').then(m => m.ProductsModule)
       },
       { path: 'p/:id', component: ProductDetailComponent },
 
       { path: 'cart', component: CartComponent },
       {
         path: 'checkout',
-        loadChildren: () => import('./checkout/checkout.module').then(m => m.CheckoutModule)
+        loadChildren: () => import('./features/checkout/checkout.module').then(m => m.CheckoutModule)
       },
     ]
   },

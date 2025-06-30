@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { LocaleService } from './services/locale.service';
+import { LocaleService } from './core/services/locale.service';
 
 @Component({
     selector: 'app-root',

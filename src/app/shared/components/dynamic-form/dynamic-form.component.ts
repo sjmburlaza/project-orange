@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormGroup, ReactiveFormsModule} from '@angular/forms';
-import { QuestionControlService } from 'src/app/services/question-control.service';
+import { QuestionControlService } from 'src/app/core/services/question-control.service';
 import { DynamicFormFieldComponent } from '../dynamic-form-field/dynamic-form-field.component';
-import { QuestionBase } from '../../models/question-base';
+import { QuestionBase } from '../../../core/models/question-base';
 
 
 @Component({

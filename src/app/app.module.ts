@@ -6,20 +6,20 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CartComponent } from './cart/cart.component';
-import { RightHandSideComponent } from './right-hand-side/right-hand-side.component';
-import { MainComponent } from './main/main.component';
-import { CartItemComponent } from './cart/cart-item/cart-item.component';
-import { NavBarComponent } from './main/nav-bar/nav-bar.component';
+import { CartComponent } from './features/cart/cart.component';
+import { RightHandSideComponent } from './features/right-hand-side/right-hand-side.component';
+import { MainComponent } from './features/main/main.component';
+import { CartItemComponent } from './features/cart/cart-item/cart-item.component';
+import { NavBarComponent } from './features/main/nav-bar/nav-bar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ProductListingComponent } from './cart/cart-item/product-listing/product-listing.component';
-import { AddedServiceComponent } from './cart/cart-item/added-service/added-service.component';
-import { TradeInComponent } from './cart/added-services/trade-in/trade-in.component';
-import { TradeUpComponent } from './cart/added-services/trade-up/trade-up.component';
-import { InsuranceComponent } from './cart/added-services/insurance/insurance.component';
-import { SimPlanComponent } from './cart/added-services/sim-plan/sim-plan.component';
-import { BroadbandPlanComponent } from './cart/added-services/broadband-plan/broadband-plan.component';
-import { AddOnsComponent } from './cart/added-services/add-ons/add-ons.component';
+import { ProductListingComponent } from './features/cart/cart-item/product-listing/product-listing.component';
+import { AddedServiceComponent } from './features/cart/cart-item/added-service/added-service.component';
+import { TradeInComponent } from './features/cart/added-services/trade-in/trade-in.component';
+import { TradeUpComponent } from './features/cart/added-services/trade-up/trade-up.component';
+import { InsuranceComponent } from './features/cart/added-services/insurance/insurance.component';
+import { SimPlanComponent } from './features/cart/added-services/sim-plan/sim-plan.component';
+import { BroadbandPlanComponent } from './features/cart/added-services/broadband-plan/broadband-plan.component';
+import { AddOnsComponent } from './features/cart/added-services/add-ons/add-ons.component';
 import { DynamicFormComponent } from "./shared/components/dynamic-form/dynamic-form.component";
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
@@ -28,10 +28,10 @@ import { StoreModule } from '@ngrx/store';
 import { cartReducer } from './store/reducers/cart.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { CartEffects } from './store/effects/cart.effects';
-import { ProductsModule } from './products/products.module';
-import { CheckoutModule } from './checkout/checkout.module';
-import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { EmptyCartComponent } from './cart/empty-cart/empty-cart.component';
+import { ProductsModule } from './features/products/products.module';
+import { CheckoutModule } from './features/checkout/checkout.module';
+import { ProductDetailComponent } from './features/product-detail/product-detail.component';
+import { EmptyCartComponent } from './features/cart/empty-cart/empty-cart.component';
 import { CurrencyBySitePipe } from "./shared/pipes/currency-by-site.pipe";
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -41,11 +41,6 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { TradeInStepOneComponent } from './cart/added-services/trade-in/trade-in-step-one/trade-in-step-one.component';
-import { TradeInStepTwoComponent } from './cart/added-services/trade-in/trade-in-step-two/trade-in-step-two.component';
-import { TradeInStepThreeComponent } from './cart/added-services/trade-in/trade-in-step-three/trade-in-step-three.component';
-import { TradeInStepFourComponent } from './cart/added-services/trade-in/trade-in-step-four/trade-in-step-four.component';
-import { TradeInAccordionComponent } from './cart/added-services/trade-in/trade-in-accordion/trade-in-accordion.component';
 import { MaxLengthBlockDirective } from 'src/app/shared/directives/max-length-block.directive';
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -62,12 +57,6 @@ export function HttpLoaderFactory(http: HttpClient) {
         NavBarComponent,
         ProductListingComponent,
         AddedServiceComponent,
-        TradeInComponent,
-        TradeInAccordionComponent,
-        TradeInStepOneComponent,
-        TradeInStepTwoComponent,
-        TradeInStepThreeComponent,
-        TradeInStepFourComponent,
         TradeUpComponent,
         InsuranceComponent,
         SimPlanComponent,
@@ -104,7 +93,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         MatExpansionModule,
         MatTooltipModule,
         RightHandSideComponent,
-        MaxLengthBlockDirective,
+        TradeInComponent,
     ], 
     providers: [
         provideAnimationsAsync(),

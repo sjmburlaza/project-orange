@@ -2,7 +2,8 @@ import { Directive, HostListener, Input } from "@angular/core";
 import { NgControl } from "@angular/forms";
 
 @Directive({
-  selector: '[maxLengthBlock]'
+  selector: '[maxLengthBlock]',
+  standalone: true
 })
 export class MaxLengthBlockDirective {
   @Input('maxLengthBlock') maxLength = 0;
