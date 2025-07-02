@@ -1,98 +1,105 @@
 <div class="step-one-container">
-  <form [formGroup]="stepOneForm" class="step-one-form">
-    @for (field of fields; track $index) {
-      @switch (field.field) {
-        @case ('postalCode') {
-          <div class="postal-code">
-            <div class="postal-code__title">
-              {{ field.title }}
-            </div>
-            <div class="postal-code__input">
-              <input formControlName="postalCode" [placeholder]="field.placeholder">
-              <button 
-                [ngClass]="{'button--invalid': postalCode?.invalid}"
-                (click)="checkPostalCode()" 
-                [disabled]="postalCode?.invalid"
-              >
-                Check
-              </button>
-            </div>
-            <div class="postal-code-validation">
-              @if (postalCode?.hasError('invalidPostalCode')) {
-                <small class="error-message">Trade-in is not available in your area.</small>
-              } @else if (isPostalCodeValid) {
-                <small class="success-message">Trade-in is available in your area.</small>
-              }
-            </div>
-          </div>
-        }
-        @case ('category') {
-          <div class="category disabled-section" [attr.disabled]="!isPostalCodeValid ? true : null"> 
-            <div class="category__title field__title">
-              {{ field.title }}
-            </div>
-            <div class="category__items">
-              @for (item of field.content; track item.code) {
-                <label class="item"
-                  [ngClass]="{'item--selected': categoryField?.value === item.code}"
-                  [for]="item.code"
+  @if (fields.length) {
+    <form [formGroup]="stepOneForm" class="step-one-form">
+      @for (field of fields; track field.field) {
+        @switch (field.field) {
+          @case ('postalCode') {
+            <div class="postal-code">
+              <div class="postal-code__title">
+                {{ field.title }}
+              </div>
+              <div class="postal-code__input">
+                <input formControlName="postalCode" [placeholder]="field.placeholder">
+                <button 
+                  [ngClass]="{'button--invalid': postalCode?.invalid}"
+                  (click)="checkPostalCode()" 
+                  [disabled]="postalCode?.invalid"
                 >
-                  <i class="item__icon" [class]="item.icon"></i>
-                  <p>{{ item.name | uppercase }}</p>
-                </label>
-                <input class="item__input" 
-                  type="radio" 
-                  formControlName="category" 
-                  [value]="item.code" 
-                  [id]="item.code"
-                >
-              }
+                  Check
+                </button>
+              </div>
+              <div class="postal-code-validation">
+                @if (postalCode?.hasError('invalidPostalCode')) {
+                  <small class="error-message">Trade-in is not available in your area.</small>
+                } @else if (isPostalCodeValid) {
+                  <small class="success-message">Trade-in is available in your area.</small>
+                }
+              </div>
             </div>
-          </div>
-        }
-        @case ('brand') {
-          <div class="field disabled-section" [attr.disabled]="!isPostalCodeValid ? true : null">
-            <div class="field__title">
-              {{ field.title }}
+          }
+          @case ('category') {
+            <div class="category disabled-section" [attr.disabled]="!isPostalCodeValid ? true : null"> 
+              <div class="category__title field__title">
+                {{ field.title }}
+              </div>
+              <div class="category__items">
+                @for (item of field.content; track item.code) {
+                  <label class="item"
+                    [ngClass]="{'item--selected': categoryField?.value === item.code}"
+                    [for]="item.code"
+                    (click)="onCategorySelect()"
+                  >
+                    <i class="item__icon" [class]="item.icon"></i>
+                    <p>{{ item.name | uppercase }}</p>
+                  </label>
+                  <input class="item__input" 
+                    type="radio" 
+                    formControlName="category" 
+                    [value]="item.code" 
+                    [id]="item.code"
+                  >
+                }
+              </div>
             </div>
-            <app-trade-in-accordion 
-              [field]="field"
-              [form]="stepOneForm"
-              [category]="category"
-              (onSelectItemEvent)="onSelectItem($event)"
-            ></app-trade-in-accordion>
-          </div>
-        }
-        @case ('device') {
-          <div class="field">
-            <div class="field__title">
-              {{ field.title }}
+          }
+          @case ('brand') {
+            <div class="field disabled-section" [attr.disabled]="!isPostalCodeValid ? true : null">
+              <div class="field__title">
+                {{ field.title }}
+              </div>
+              <app-trade-in-accordion 
+                [field]="field"
+                [form]="stepOneForm"
+                [category]="category"
+                (onSelectItemEvent)="onSelectItem($event)"
+              ></app-trade-in-accordion>
             </div>
-            <app-trade-in-accordion 
-              [field]="field"
-              [form]="stepOneForm"
-              (onSelectItemEvent)="onSelectItem($event)"
-            ></app-trade-in-accordion>
-          </div>
-        }
-        @case ('storage') {
-          <div class="field">
-            <div class="field__title">
-              {{ field.title }}
-            </div>
-            <app-trade-in-accordion 
-              [field]="field"
-              [form]="stepOneForm"
-              (onSelectItemEvent)="onSelectItem($event)"
-            ></app-trade-in-accordion>
-          </div>
-        }
-        @default {
-          <p>Unknown.</p>
+          }
+          @case ('device') {
+            @if (field.content.length) {
+              <div class="field">
+                <div class="field__title">
+                  {{ field.title }}
+                </div>
+                <app-trade-in-accordion 
+                  [field]="field"
+                  [form]="stepOneForm"
+                  (onSelectItemEvent)="onSelectItem($event)"
+                ></app-trade-in-accordion>
+              </div>
+            }
+          }
+          @case ('storage') {
+            @if (field.content.length) {
+              <div class="field">
+                <div class="field__title">
+                  {{ field.title }}
+                </div>
+                <app-trade-in-accordion 
+                  [field]="field"
+                  [form]="stepOneForm"
+                  (onSelectItemEvent)="onSelectItem($event)"
+                ></app-trade-in-accordion>
+              </div>
+            }
+          }
+          @default {
+            <p>Unknown.</p>
+          }
         }
       }
-    }
-  </form>
+    </form>
+  }
   @if (stepOneForm.valid) {
     <div class="step-one-summary">
       <div class="summary-header">

@@ -17,6 +17,14 @@ export class TradeInService {
     return this.http.get<TradeIn>(`${this.API_URL}/tradeIn`);
   }
 
+  getTradeInSteps() {
+    return this.http.get(`${this.API_URL}/tradeInSteps`);
+  }
+
+  updateStepOne(stepOneData: any) {
+    return this.http.patch(`${this.API_URL}/tradeInSteps/1`, {stepOne: stepOneData});
+  }
+
   // GET /tradeInBrands?categoryCode=cat_smartphone
   getBrandsByCategory(categoryCode: string): Observable<any> {
     return this.http.get(`${this.API_URL}/tradeInBrands`, {

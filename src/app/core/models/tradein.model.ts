@@ -17,6 +17,7 @@ export interface Field {
   title: string;
   field: string;
   placeholder?: string;
+  value: string;
   content: any;
 }
 
@@ -47,7 +48,7 @@ export interface CategoryTI {
 export interface BrandTI {
   brandName: string;
   code: string;
-  value: number;
+  amount: number;
   categoryCode: string;
   name: string;
 }
@@ -59,7 +60,7 @@ export interface DeviceTI extends BrandTI {
 export interface StorageTI {
   size: string;
   code: string;
-  value: number;
+  amount: number;
   deviceCode: string;
   name: string;
 }

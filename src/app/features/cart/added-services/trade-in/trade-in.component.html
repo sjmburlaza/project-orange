@@ -9,10 +9,7 @@
     <div class="step-content">
       <div class="step-content__component">
         @if (currentStep === 1) {
-          <app-trade-in-step-one 
-            [stepOneFields]="tradeIn.stepOne"
-            [description]="tradeIn.stepOneDescription"
-          >
+          <app-trade-in-step-one #stepOneComponent>
           </app-trade-in-step-one>
         } @else if (currentStep === 2) {
           <app-trade-in-step-two

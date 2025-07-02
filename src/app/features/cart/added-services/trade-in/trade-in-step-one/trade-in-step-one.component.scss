@@ -119,6 +119,9 @@
   }
 
   .step-one-description {
+    display: grid;
+    gap: 12px;
+    
     .description-title {
       font-size: 24px;
       font-weight: bold;
