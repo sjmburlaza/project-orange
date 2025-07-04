@@ -1,31 +1,35 @@
-.st-container {
-  .item {
-    display: grid;
-    grid-template-columns: 64px 1fr 80px 80px 56px;
-    padding: 24px 0;
-    border-bottom: 1px solid lightgray;
-    align-items: center;
-
-    &__number {
-      font-size: 24px;
-      font-weight: bold;
-    }
-
-    &__question {
-      font-size: 14px;
-    }
-
-    label {
-      display: flex;
-      gap: 12px;
-      justify-content: end;
-    }
-
-    &__info {
-      justify-self: end;
-
-      i {
-        font-size: 12px;
+.step-three-container {
+  min-height: 300px;
+  
+  .form {
+    .item {
+      display: grid;
+      grid-template-columns: 64px 1fr 80px 80px 56px;
+      padding: 24px 0;
+      border-bottom: 1px solid lightgray;
+      align-items: center;
+  
+      &__number {
+        font-size: 24px;
+        font-weight: bold;
+      }
+  
+      &__question {
+        font-size: 14px;
+      }
+  
+      label {
+        display: flex;
+        gap: 12px;
+        justify-content: end;
+      }
+  
+      &__info {
+        justify-self: end;
+  
+        i {
+          font-size: 12px;
+        }
       }
     }
   }

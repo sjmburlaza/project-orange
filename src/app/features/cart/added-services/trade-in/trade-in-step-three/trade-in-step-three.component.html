@@ -1,29 +1,33 @@
-<form [formGroup]="stForm" class="st-container">
-  <div formArrayName="st">
-    @for (q of stepThreeData; let i = $index; track i) {
-      <div [formGroupName]="i" class="item">
-        <div class="item__number">
-          {{ q.code }}
-        </div>
-        <div class="item__question">
-          {{ q.question }}
-        </div>
-        <label>
-          <input type="radio" formControlName="response" value="Yes">
-          <span>Yes</span>
-        </label>
-        <label>
-          <input type="radio" formControlName="response" value="No">
-          <span>No</span>
-        </label>
-        <div class="item__info">
-          <i class="bi bi-question-circle" 
-            matTooltip="{{ q.info }}"
-            matTooltipPosition="above"
-          >
-          </i>
-        </div>
+<div class="step-three-container">
+  @if (stForm) {
+    <form [formGroup]="stForm" class="form">
+      <div formArrayName="st">
+        @for (q of stepThreeData; let i = $index; track i) {
+          <div [formGroupName]="i" class="item">
+            <div class="item__number">
+              {{ q.code }}
+            </div>
+            <div class="item__question">
+              {{ q.question }}
+            </div>
+            <label>
+              <input type="radio" formControlName="response" value="yes">
+              <span>Yes</span>
+            </label>
+            <label>
+              <input type="radio" formControlName="response" value="no">
+              <span>No</span>
+            </label>
+            <div class="item__info">
+              <i class="bi bi-question-circle" 
+                matTooltip="{{ q.info }}"
+                matTooltipPosition="above"
+              >
+              </i>
+            </div>
+          </div>
+        }
       </div>
-    }
-  </div>
-</form>
+    </form>
+  }
+</div>

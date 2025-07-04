@@ -1,1 +1,38 @@
-<p>trade-in-step-four works!</p>
+<div class="step-four-container">
+  @if (stepFourData$ | async; as data) {
+    <div class="summary">
+      <div class="summary__spec">
+          Specifications here
+      </div>
+      <div class="summary__amount">
+        <div class="amount-header">
+          {{ data.boxHeader }}
+        </div>
+        <div class="amount-subtext">
+          {{ data.boxSubtext }} XX,XXX.XX
+        </div>
+      </div>
+    </div>
+    <div class="disclaimer">
+      {{ data.disclaimer }}
+    </div>
+    <form class="tnc" [formGroup]="stForm">
+      <div class="tnc__header">
+        {{ data.tncHeader }}
+      </div>
+      <div class="tnc__item">
+        <span>*</span>
+        <input type="checkbox" formControlName="tnc1" id="tnc1">
+        <label for="tnc1" [innerHTML]="data.tncText1"></label>
+      </div>
+      <div class="tnc__item">
+        <span>*</span>
+        <input type="checkbox" formControlName="tnc2" id="tnc2">
+        <label for="tnc2" [innerHTML]="data.tncText2"></label>
+      </div>
+      <div class="tnc__required">
+        *Required field
+      </div>
+    </form>
+  }
+</div>

@@ -1,6 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { map } from 'rxjs';
+import { StepThreeField } from 'src/app/core/models/tradein.model';
+import { TradeInService } from 'src/app/core/services/trade-in.service';
 
 @Component({
   selector: 'app-trade-in-step-three',
@@ -10,21 +13,38 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   imports: [ReactiveFormsModule, MatTooltipModule]
 })
 export class TradeInStepThreeComponent implements OnInit {
-  @Input() stepThreeData: any;
+  @Output() formReady = new EventEmitter<FormGroup>();
+  stepThreeData: StepThreeField[] | undefined;
   stForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private tradeInService: TradeInService,
+  ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.tradeInService.getTradeInSteps().pipe(
+      map((steps: any) => {
+        if (steps) return steps[2]?.stepThree || [];
+      })
+    ).subscribe(res => {
+      this.stepThreeData = res;
+      this.buildForm(this.stepThreeData);
+    });
+  }
+
+  buildForm(data: StepThreeField[] = []) {
     this.stForm = this.fb.group({
       st: this.fb.array(
-        this.stepThreeData.map(() =>
+        data.map((d) =>
           this.fb.group({
-            response: ['', Validators.required]
+            response: [d.response, Validators.required]
           })
         )
       )
     })
+
+    this.formReady.emit(this.stForm);
   }
 
 }

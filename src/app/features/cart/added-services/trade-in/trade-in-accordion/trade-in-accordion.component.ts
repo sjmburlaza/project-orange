@@ -11,7 +11,7 @@ import {
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { Subject, takeUntil } from 'rxjs';
-import { Field } from 'src/app/core/models/tradein.model';
+import { StepOneField } from 'src/app/core/models/tradein.model';
 import { CurrencyBySitePipe } from 'src/app/shared/pipes/currency-by-site.pipe';
 
 @Component({
@@ -27,7 +27,7 @@ import { CurrencyBySitePipe } from 'src/app/shared/pipes/currency-by-site.pipe';
   ]
 })
 export class TradeInAccordionComponent implements OnInit {
-  @Input() field!: Field;
+  @Input() field!: StepOneField;
   @Input() form!: FormGroup;
   @Input() category = '';
   @Output() onSelectItemEvent: EventEmitter<any> = new EventEmitter();
@@ -37,13 +37,15 @@ export class TradeInAccordionComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    if (this.form && this.field.field) {
-      const control = this.form.get(this.field.field);
+    if (this.form && this.field.fieldName) {
+      const control = this.form.get(this.field.fieldName);
       if (control) {
         control.valueChanges.pipe(takeUntil(this.unsubscribe$)).subscribe(value => {
-          // console.log('valueselect', value)
           this.onSelect(value);
         })
+      }
+      if (this.field.value) {
+        this.panelOpenState.set(false);
       }
     }
   }
@@ -56,7 +58,7 @@ export class TradeInAccordionComponent implements OnInit {
 
   onSelect(value: string): void {
     if (!value) return;
-    const selectedItem = this.field.content.find((item: any) => item.code === value);
+    const selectedItem = this.field.options.find((item: any) => item.code === value);
     this.onSelectItemEvent.emit(selectedItem);
     this.panelOpenState.set(false);
   }

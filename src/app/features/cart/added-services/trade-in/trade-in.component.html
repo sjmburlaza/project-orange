@@ -1,56 +1,70 @@
-<div *ngIf="tradeIn$ | async as tradeIn" class="tradein-container">
-  <div class="stepper-container">
-    <div class="title"> {{ steps[currentStep-1].title }}</div>
-    <div class="step-indicators">
-      @for (step of steps; let i = $index; track step) {
-        <div class="step" [class.active]="i+1 === currentStep" [class.completed]="i+1 < currentStep"></div>
+<div class="tradein-container">
+  @if (tradeIn) {
+    <div class="stepper-container">
+      <div class="step-header">
+        <div class="title"> {{ steps[currentStep-1].title }}</div>
+        <div class="close" (click)="close()"><i class="bi bi-x-lg"></i></div>
+      </div>
+      @if (steps[currentStep-1].subtext; as subtext) {
+        <div class="step-subtext">{{ subtext }}</div>
       }
-    </div>
-    <div class="step-content">
-      <div class="step-content__component">
-        @if (currentStep === 1) {
-          <app-trade-in-step-one #stepOneComponent>
-          </app-trade-in-step-one>
-        } @else if (currentStep === 2) {
-          <app-trade-in-step-two
-            [stepTwoData]="tradeIn.stepTwo"
-          >
-          </app-trade-in-step-two>
-        } @else if (currentStep === 3) {
-          <app-trade-in-step-three
-            [stepThreeData]="tradeIn.stepThree"
-          >
-          </app-trade-in-step-three>
-        } @else {
-          <app-trade-in-step-four></app-trade-in-step-four>
+      <div class="step-indicators">
+        @for (step of steps; let i = $index; track step) {
+          <div class="step" [class.active]="i+1 === currentStep" [class.completed]="i+1 < currentStep"></div>
         }
       </div>
-      <div class="step-content__footer">
-        {{ tradeIn.footerText }}
+      <div class="step-content">
+        <div class="step-content__component">
+          @switch (currentStep) {
+            @case (1) {
+              <app-trade-in-step-one 
+                #stepOneComponent
+                [description]="tradeIn.stepOneDescription"
+                (formReady)="onFormReady(1, $event)"
+              >
+              </app-trade-in-step-one>
+            }
+            @case (2) {
+              <app-trade-in-step-two #stepTwoComponent (formReady)="onFormReady(2, $event)">
+              </app-trade-in-step-two>
+            }
+            @case (3) {
+              <app-trade-in-step-three #stepThreeComponent (formReady)="onFormReady(3, $event)">
+              </app-trade-in-step-three>
+            }
+            @case (4) {
+              <app-trade-in-step-four (formReady)="onFormReady(4, $event)"></app-trade-in-step-four>
+            }
+          }
+        </div>
+        <div class="step-content__footer">
+          {{ tradeIn.footerText }}
+        </div>
       </div>
     </div>
-  </div>
-  <div class="step-content__buttons">
-    @if (currentStep === 1) {
-      <button class="button-close" (click)="close()">
-        Close
-      </button>
-    }
-    @if (currentStep > 1) {
+    <div class="step-content__buttons">
+      @if (currentStep === 1) {
+        <button class="button-close" (click)="close()">
+          Close
+        </button>
+      }
+      @if (currentStep > 1) {
+        <button 
+          class="button-back"
+          (click)="prevStep()"
+        >
+          Back
+        </button>
+      }
+  
       <button 
-        class="button-back"
-        (click)="prevStep()"
+        class="button-next"
+        (click)="nextStep()" 
+        [disabled]="isButtonDisabled(currentStep)"
+        [class.disabled]="isButtonDisabled(currentStep)"
       >
-        Back
+        Continue
       </button>
-    }
-
-    <button 
-      class="button-back"
-      (click)="nextStep()" 
-      [disabled]="currentStep === steps.length"
-    >
-      Continue
-    </button>
-  </div>
+    </div>
+  }
 </div>

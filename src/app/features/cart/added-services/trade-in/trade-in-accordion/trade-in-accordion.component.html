@@ -10,10 +10,10 @@
           <mat-panel-title> {{ (field.value || field.placeholder )| titlecase }} </mat-panel-title>
         </mat-expansion-panel-header>
         <div [formGroup]="form" class="field__items">
-          @for (item of field.content; track item.code) {
+          @for (item of field.options; track item.code) {
             <label [for]="item.code" class="item">
               <input type="radio" 
-                formControlName="{{ field.field }}" 
+                formControlName="{{ field.fieldName }}" 
                 [value]="item.code" 
                 [id]="item.code"
               >

@@ -1,11 +1,47 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { map, Observable } from 'rxjs';
+import { TradeInService } from 'src/app/core/services/trade-in.service';
+
+export interface StepFour {
+  boxHeader: string;
+  boxSubtext: string;
+  disclaimer: string;
+  tncHeader: string;
+  tncText1: string;
+  tncText2: string;
+}
 
 @Component({
-    selector: 'app-trade-in-step-four',
-    templateUrl: './trade-in-step-four.component.html',
-    styleUrl: './trade-in-step-four.component.scss',
-    standalone: true
+  selector: 'app-trade-in-step-four',
+  templateUrl: './trade-in-step-four.component.html',
+  styleUrl: './trade-in-step-four.component.scss',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule]
 })
 export class TradeInStepFourComponent {
+  @Output() formReady = new EventEmitter<FormGroup>();
+  stepFourData$: Observable<StepFour> | undefined;
+  stForm!: FormGroup;
 
+  constructor(
+    private fb: FormBuilder,
+    private tradeInService: TradeInService,
+  ) {
+    this.stForm = this.fb.group({
+      tnc1: [false, Validators.required],
+      tnc2: [false, Validators.required],
+    })
+  }
+
+  ngOnInit(): void {
+    this.formReady.emit(this.stForm);
+
+    this.stepFourData$ = this.tradeInService.getTradeInSteps().pipe(
+      map((steps: any) => {
+          if (steps) return steps[3]?.stepFour;
+      })
+    );
+  }
 }

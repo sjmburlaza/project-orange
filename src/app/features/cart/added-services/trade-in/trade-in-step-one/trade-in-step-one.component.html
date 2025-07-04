@@ -1,15 +1,15 @@
 <div class="step-one-container">
   @if (fields.length) {
     <form [formGroup]="stepOneForm" class="step-one-form">
-      @for (field of fields; track field.field) {
-        @switch (field.field) {
+      @for (field of fields; track field.fieldName) {
+        @switch (field.fieldName) {
           @case ('postalCode') {
             <div class="postal-code">
               <div class="postal-code__title">
                 {{ field.title }}
               </div>
               <div class="postal-code__input">
-                <input formControlName="postalCode" [placeholder]="field.placeholder">
+                <input formControlName="postalCode" [placeholder]="field.placeholder" [maxLengthBlock]="4">
                 <button 
                   [ngClass]="{'button--invalid': postalCode?.invalid}"
                   (click)="checkPostalCode()" 
@@ -33,7 +33,7 @@
                 {{ field.title }}
               </div>
               <div class="category__items">
-                @for (item of field.content; track item.code) {
+                @for (item of field.options; track item.code) {
                   <label class="item"
                     [ngClass]="{'item--selected': categoryField?.value === item.code}"
                     [for]="item.code"
@@ -66,8 +66,8 @@
             </div>
           }
           @case ('device') {
-            @if (field.content.length) {
-              <div class="field">
+            @if (field.options.length) {
+              <div class="field disabled-section" [attr.disabled]="!isPostalCodeValid ? true : null">
                 <div class="field__title">
                   {{ field.title }}
                 </div>
@@ -80,8 +80,8 @@
             }
           }
           @case ('storage') {
-            @if (field.content.length) {
-              <div class="field">
+            @if (field.options.length) {
+              <div class="field disabled-section" [attr.disabled]="!isPostalCodeValid ? true : null">
                 <div class="field__title">
                   {{ field.title }}
                 </div>

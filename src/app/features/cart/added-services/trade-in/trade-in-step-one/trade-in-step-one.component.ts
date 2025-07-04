@@ -1,12 +1,13 @@
-import { ChangeDetectorRef, Component, inject, Input, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, inject, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TradeInService } from 'src/app/core/services/trade-in.service';
 import { TradeInField } from 'src/app/shared/constants/tradein.const';
-import { BrandTI, Field } from 'src/app/core/models/tradein.model';
+import { BrandTI, CategoryTI, DeviceTI, StepOneDescription, StepOneField, TradeInOption } from 'src/app/core/models/tradein.model';
 import { TradeInAccordionComponent } from 'src/app/features/cart/added-services/trade-in/trade-in-accordion/trade-in-accordion.component';
 import { CurrencyBySitePipe } from 'src/app/shared/pipes/currency-by-site.pipe';
 import { CommonModule } from '@angular/common';
-import { Subject, takeUntil } from 'rxjs';
+import { map, skip, Subject, takeUntil } from 'rxjs';
+import { MaxLengthBlockDirective } from 'src/app/shared/directives/max-length-block.directive';
 
 
 @Component({
@@ -19,16 +20,19 @@ import { Subject, takeUntil } from 'rxjs';
     ReactiveFormsModule, 
     CurrencyBySitePipe, 
     CommonModule,
+    MaxLengthBlockDirective, 
   ]
 })
 export class TradeInStepOneComponent implements OnInit, OnDestroy {
-  fields: Field[] = [];
-  description: any;
+  @Input() description: StepOneDescription | undefined;
+  @Output() formReady = new EventEmitter<FormGroup>();
+  fields: StepOneField[] = [];
   private unsubscribe$ = new Subject<void>();
   stepOneForm: FormGroup;
   category = '';
   categoryInitial = '';
   isPostalCodeValid = false;
+  formData = {};
   summary = {
     brand: '',
     device: '',
@@ -44,7 +48,6 @@ export class TradeInStepOneComponent implements OnInit, OnDestroy {
       postalCode: ['', 
         [
           Validators.required, 
-          Validators.maxLength(4), 
           Validators.minLength(4),
         ]
       ],
@@ -56,34 +59,45 @@ export class TradeInStepOneComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.tradeInService.getTradeIn().subscribe(res => {
-      this.description = res.stepOneDescription;
-    })
+    this.formReady.emit(this.stepOneForm);
+
     this.tradeInService.getTradeInSteps()
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((res: any) => {
-        if (res) this.fields = res[0]?.stepOne;
-        const storage = this.fields?.find(f => f.field === TradeInField.STORAGE)?.value;
+        if (res && res[0]) {
+          this.fields = res[0]?.stepOne;
+          this.summary = res[0]?.summary;
+          this.formData = res[0]?.formData;
+        }
 
-        if (!storage) {
-          this.categoryInitial = this.fields?.find(f => f.field === TradeInField.CATEGORY)?.content[0]?.code;
+        if (
+          this.formData &&
+          typeof this.formData === 'object' &&
+          Object.keys(this.formData).length > 0
+        ) {
+          console.log('hello')
+          this.stepOneForm.patchValue(this.formData);
+          this.isPostalCodeValid = true;
+          console.log('fields', this.fields)
+        } else {
+          console.log('world')
+          const categoryOptions = this.fields?.find(f => f.fieldName === TradeInField.CATEGORY)?.options;
+          this.categoryInitial = categoryOptions?.[0]?.code || '';
           this.getBrands(this.categoryInitial);
           this.categoryField?.setValue(this.categoryInitial);
           this.setFieldValue(TradeInField.CATEGORY, this.categoryInitial);
-        } else {
-          const postalCode = this.fields?.find(f => f.field === TradeInField.POSTAL_CODE)?.value;
-          const category = this.fields?.find(f => f.field === TradeInField.CATEGORY)?.value;
-          this.postalCode?.setValue(postalCode);
-          this.categoryField?.setValue(category);
-          this.isPostalCodeValid = true;
+          // this.resetDropdownForm();
         }
       });
 
     this.postalCode?.valueChanges
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe(() => {
+      .pipe(
+        skip(1),
+        takeUntil(this.unsubscribe$)
+      )
+      .subscribe(v => {
         this.isPostalCodeValid = false;
-        this.resetForm();
+        this.resetDropdownForm();
       });
   }
 
@@ -92,22 +106,20 @@ export class TradeInStepOneComponent implements OnInit, OnDestroy {
     this.setFieldValue(TradeInField.CATEGORY, category);
     this.category = category;
     this.getBrands(category);
-    this.resetForm();
-
-    const df = this.fields?.find(f => f.field === TradeInField.DEVICE);
-    const sf = this.fields?.find(f => f.field === TradeInField.STORAGE);
-    if (df) df.content = [];
-    if (sf) sf.content = [];
-
-    this.setFieldValue(TradeInField.BRAND, '');
+    this.resetDropdownForm();
   }
 
-  resetForm(): void {
+  resetDropdownForm(): void {
+    console.log('resetdropdown')
     this.stepOneForm.patchValue({
       brand: '',
       device: '',
       storage: ''
     });
+
+    this.setFieldContent(TradeInField.DEVICE, []);
+    this.setFieldContent(TradeInField.STORAGE, []);
+    this.setFieldValue(TradeInField.BRAND, '');
   }
 
   get categoryField(): FormControl | null {
@@ -119,12 +131,10 @@ export class TradeInStepOneComponent implements OnInit, OnDestroy {
   }
 
   checkPostalCode(): void {
-    const validPostalCodes = this.fields?.find(f => f.field === TradeInField.POSTAL_CODE)?.content;
+    const validPostalCodes = this.fields?.find(f => f.fieldName === TradeInField.POSTAL_CODE)?.options;
     const code = this.postalCode?.value;
 
-    if (!validPostalCodes || !code) return;
-
-    if (validPostalCodes.includes(code)) {
+    if (validPostalCodes && validPostalCodes?.length && code && validPostalCodes.includes(code)) {
       this.postalCode?.setErrors(null);
       this.isPostalCodeValid = true;
       this.setFieldValue(TradeInField.POSTAL_CODE, code);
@@ -136,27 +146,29 @@ export class TradeInStepOneComponent implements OnInit, OnDestroy {
 
   getBrands(category: string): void {
     this.tradeInService.getBrandsByCategory(category).subscribe((res: BrandTI[]) => {
-      const bf = this.fields?.find(f => f.field === TradeInField.BRAND);
-      if (bf) bf.content = res;
+      this.setFieldContent(TradeInField.BRAND, res);
     });
   }
 
   getDevices(categoryCode: string, brandCode: string): void {
     this.tradeInService.getDevicesByCategoryAndBrand(categoryCode, brandCode).subscribe(res => {
-      const deviceField = this.fields?.find(f => f.field === TradeInField.DEVICE);
-      if (deviceField) deviceField.content = res;
+      this.setFieldContent(TradeInField.DEVICE, res);
     })
   }
 
   getStorages(deviceCode: string): void {
     this.tradeInService.getStoragesByDevice(deviceCode).subscribe(res => {
-      const storageField = this.fields?.find(f => f.field === TradeInField.STORAGE);
-      if (storageField) storageField.content = res;
+      this.setFieldContent(TradeInField.STORAGE, res);
     })
   }
 
+  setFieldContent(fieldName: string, value: any) {
+    const field = this.fields?.find(f => f.fieldName === fieldName);
+    if (field) field.options = value;
+  }
+
   setFieldValue(fieldName: string, value: string): void {
-    const field = this.fields?.find(f => f.field === fieldName);
+    const field = this.fields?.find(f => f.fieldName === fieldName);
     if (field) field.value = value;
   }
 
@@ -171,9 +183,8 @@ export class TradeInStepOneComponent implements OnInit, OnDestroy {
         device: '',
         storage: ''
       });
-      const sf = this.fields?.find(f => f.field === TradeInField.STORAGE);
-      if (sf) sf.content = [];
-      
+
+      this.setFieldContent(TradeInField.STORAGE, []);
       this.setFieldValue(TradeInField.DEVICE, '');
     }
 

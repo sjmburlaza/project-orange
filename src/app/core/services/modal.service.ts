@@ -38,7 +38,7 @@ export class ModalService {
     const portal = new ComponentPortal<T>(component, null, this.injector);
     const componentRef: ComponentRef<T> = overlayRef.attach(portal);
 
-    overlayRef.backdropClick().subscribe(() => this.close(overlayRef));
+    // overlayRef.backdropClick().subscribe(() => this.close(overlayRef));
 
     this.overlayRefs.push(overlayRef);
     return componentRef;

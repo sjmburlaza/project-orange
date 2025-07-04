@@ -3,6 +3,7 @@
 .step-one-container {
   display: grid;
   row-gap: 36px;
+  min-height: 300px;
 
   .step-one-form {
     display: flex;

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TradeIn } from 'src/app/core/models/tradein.model';
+import { TradeIn, TradeInStep } from 'src/app/core/models/tradein.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,12 +17,22 @@ export class TradeInService {
     return this.http.get<TradeIn>(`${this.API_URL}/tradeIn`);
   }
 
-  getTradeInSteps() {
-    return this.http.get(`${this.API_URL}/tradeInSteps`);
+  getTradeInSteps(): Observable<TradeInStep> {
+    return this.http.get<TradeInStep>(`${this.API_URL}/tradeInSteps`);
   }
 
-  updateStepOne(stepOneData: any) {
-    return this.http.patch(`${this.API_URL}/tradeInSteps/1`, {stepOne: stepOneData});
+  updateStepOne(stepOne: any, formData: any, summary: any) {
+    return this.http.patch(`${this.API_URL}/tradeInSteps/1`, 
+      { stepOne, formData, summary }
+    );
+  }
+
+  updateStepTwo(stepTwo: any) {
+    return this.http.patch(`${this.API_URL}/tradeInSteps/2`, { stepTwo });
+  }
+
+  updateStepThree(stepThree: any) {
+    return this.http.patch(`${this.API_URL}/tradeInSteps/3`, { stepThree });
   }
 
   // GET /tradeInBrands?categoryCode=cat_smartphone
