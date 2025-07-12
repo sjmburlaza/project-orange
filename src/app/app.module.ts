@@ -17,8 +17,6 @@ import { AddedServiceComponent } from './features/cart/cart-item/added-service/a
 import { TradeInComponent } from './features/cart/added-services/trade-in/trade-in.component';
 import { TradeUpComponent } from './features/cart/added-services/trade-up/trade-up.component';
 import { InsuranceComponent } from './features/cart/added-services/insurance/insurance.component';
-import { SimPlanComponent } from './features/cart/added-services/sim-plan/sim-plan.component';
-import { BroadbandPlanComponent } from './features/cart/added-services/broadband-plan/broadband-plan.component';
 import { DynamicFormComponent } from "./shared/components/dynamic-form/dynamic-form.component";
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
@@ -40,7 +38,6 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { MaxLengthBlockDirective } from 'src/app/shared/directives/max-length-block.directive';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json')
@@ -58,8 +55,6 @@ export function HttpLoaderFactory(http: HttpClient) {
         AddedServiceComponent,
         TradeUpComponent,
         InsuranceComponent,
-        SimPlanComponent,
-        BroadbandPlanComponent,
     ],
     bootstrap: [AppComponent], 
     imports: [

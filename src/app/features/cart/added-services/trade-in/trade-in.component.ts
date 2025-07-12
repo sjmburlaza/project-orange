@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TradeInService } from 'src/app/core/services/trade-in.service';
 import { TradeIn, StepHeader, StepOneField, StepTwo } from 'src/app/core/models/tradein.model';
@@ -23,7 +23,9 @@ import { FormGroup } from '@angular/forms';
     CommonModule,
   ]
 })
-export class TradeInComponent implements OnInit {
+export class TradeInComponent {
+  private modalService = inject(ModalService);
+  private tradeInService = inject(TradeInService);
   @ViewChild(TradeInStepOneComponent) stepOneComponent?: TradeInStepOneComponent;
   @ViewChild(TradeInStepTwoComponent) stepTwoComponent?: TradeInStepTwoComponent;
   @ViewChild(TradeInStepThreeComponent) stepThreeComponent?: TradeInStepThreeComponent;
@@ -32,22 +34,16 @@ export class TradeInComponent implements OnInit {
   tradeIn: TradeIn | undefined;
   steps: StepHeader[] = [];
   forms: { [step: number]: FormGroup } = {};
-  formStatuses: { [step: number]: string } = {};
+  formStatuses: Record<number, string> = {};
   stepOneData: StepOneField[] | undefined;
   stepTwoData: StepTwo | undefined;
 
-  constructor(
-    private modalService: ModalService,
-    private tradeInService: TradeInService,
-  ) {
+  constructor() {
     this.tradeIn$ = this.tradeInService.getTradeIn();
     this.tradeIn$.subscribe(res => {
       this.tradeIn = res;
       this.steps = res.stepsHeader
     });
-  }
-
-  ngOnInit() {
   }
 
   onFormReady(step: number, form: FormGroup) {

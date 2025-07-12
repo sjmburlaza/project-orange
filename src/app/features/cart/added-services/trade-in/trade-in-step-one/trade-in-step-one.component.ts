@@ -1,12 +1,12 @@
-import { ChangeDetectorRef, Component, EventEmitter, inject, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TradeInService } from 'src/app/core/services/trade-in.service';
 import { TradeInField } from 'src/app/shared/constants/tradein.const';
-import { BrandTI, CategoryTI, DeviceTI, StepOneDescription, StepOneField, TradeInOption } from 'src/app/core/models/tradein.model';
+import { BrandTI, StepOneDescription, StepOneField } from 'src/app/core/models/tradein.model';
 import { TradeInAccordionComponent } from 'src/app/features/cart/added-services/trade-in/trade-in-accordion/trade-in-accordion.component';
 import { CurrencyBySitePipe } from 'src/app/shared/pipes/currency-by-site.pipe';
 import { CommonModule } from '@angular/common';
-import { map, skip, Subject, takeUntil } from 'rxjs';
+import { skip, Subject, takeUntil } from 'rxjs';
 import { MaxLengthBlockDirective } from 'src/app/shared/directives/max-length-block.directive';
 
 
@@ -24,6 +24,8 @@ import { MaxLengthBlockDirective } from 'src/app/shared/directives/max-length-bl
   ]
 })
 export class TradeInStepOneComponent implements OnInit, OnDestroy {
+  private fb = inject(FormBuilder);
+  private tradeInService = inject(TradeInService);
   @Input() description: StepOneDescription | undefined;
   @Output() formReady = new EventEmitter<FormGroup>();
   fields: StepOneField[] = [];
@@ -40,10 +42,7 @@ export class TradeInStepOneComponent implements OnInit, OnDestroy {
     finalAmount: 0
   };
 
-  constructor(
-    private fb: FormBuilder,
-    private tradeInService: TradeInService,
-  ) {
+  constructor() {
     this.stepOneForm = this.fb.group({
       postalCode: ['', 
         [
@@ -95,7 +94,7 @@ export class TradeInStepOneComponent implements OnInit, OnDestroy {
         skip(1),
         takeUntil(this.unsubscribe$)
       )
-      .subscribe(v => {
+      .subscribe(() => {
         this.isPostalCodeValid = false;
         this.resetDropdownForm();
       });

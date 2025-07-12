@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { map } from 'rxjs';
@@ -13,14 +13,12 @@ import { TradeInService } from 'src/app/core/services/trade-in.service';
   imports: [ReactiveFormsModule, MatTooltipModule]
 })
 export class TradeInStepThreeComponent implements OnInit {
+  private fb = inject(FormBuilder);
+  private tradeInService = inject(TradeInService);
   @Output() formReady = new EventEmitter<FormGroup>();
   stepThreeData: StepThreeField[] | undefined;
   stForm!: FormGroup;
 
-  constructor(
-    private fb: FormBuilder,
-    private tradeInService: TradeInService,
-  ) {}
 
   ngOnInit(): void {
     this.tradeInService.getTradeInSteps().pipe(

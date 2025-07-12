@@ -1,17 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { map, Observable } from 'rxjs';
+import { StepFour } from 'src/app/core/models/tradein.model';
 import { TradeInService } from 'src/app/core/services/trade-in.service';
-
-export interface StepFour {
-  boxHeader: string;
-  boxSubtext: string;
-  disclaimer: string;
-  tncHeader: string;
-  tncText1: string;
-  tncText2: string;
-}
 
 @Component({
   selector: 'app-trade-in-step-four',
@@ -20,15 +12,14 @@ export interface StepFour {
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule]
 })
-export class TradeInStepFourComponent {
+export class TradeInStepFourComponent implements OnInit {
+  private fb = inject(FormBuilder);
+  private tradeInService = inject(TradeInService);
   @Output() formReady = new EventEmitter<FormGroup>();
   stepFourData$: Observable<StepFour> | undefined;
   stForm!: FormGroup;
 
-  constructor(
-    private fb: FormBuilder,
-    private tradeInService: TradeInService,
-  ) {
+  constructor() {
     this.stForm = this.fb.group({
       tnc1: [false, Validators.required],
       tnc2: [false, Validators.required],

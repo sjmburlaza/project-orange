@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, inject, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map, takeUntil } from 'rxjs/operators';
-import { StepTwo, TradeInStep } from 'src/app/core/models/tradein.model';
+import { StepTwo } from 'src/app/core/models/tradein.model';
 import { TradeInService } from 'src/app/core/services/trade-in.service';
 import { REGEX_PATTERN } from 'src/app/shared/constants/regex.const';
 import { MaxLengthBlockDirective } from 'src/app/shared/directives/max-length-block.directive';
@@ -20,15 +20,14 @@ import { MaxLengthBlockDirective } from 'src/app/shared/directives/max-length-bl
   ]
 })
 export class TradeInStepTwoComponent implements OnInit, OnDestroy {
+  private fb = inject(FormBuilder);
+  private tradeInService = inject(TradeInService);
   @Output() formReady = new EventEmitter<FormGroup>();
   private unsubscribe$ = new Subject<void>();
   stepTwoData: StepTwo | undefined;
   stepTwoForm: FormGroup;
 
-  constructor( 
-    private fb: FormBuilder,
-    private tradeInService: TradeInService,
-  ) {
+  constructor() {
     this.stepTwoForm = this.fb.group({
       imei: ['', 
         [

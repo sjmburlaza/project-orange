@@ -3,6 +3,7 @@ import {
   Component, 
   EventEmitter, 
   Input, 
+  OnChanges, 
   OnInit, 
   Output, 
   signal, 
@@ -26,15 +27,14 @@ import { CurrencyBySitePipe } from 'src/app/shared/pipes/currency-by-site.pipe';
     ReactiveFormsModule,
   ]
 })
-export class TradeInAccordionComponent implements OnInit {
+export class TradeInAccordionComponent implements OnInit, OnChanges {
   @Input() field!: StepOneField;
   @Input() form!: FormGroup;
   @Input() category = '';
   @Output() onSelectItemEvent: EventEmitter<any> = new EventEmitter();
   private unsubscribe$ = new Subject<void>();
   readonly panelOpenState = signal(true);
-
-  constructor() {}
+  
 
   ngOnInit(): void {
     if (this.form && this.field.fieldName) {
