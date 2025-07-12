@@ -1,0 +1,124 @@
+@use 'abstracts' as *;
+
+.addons-container {
+  // width: 100%;
+  width: 760px;
+  height: 100vh;
+  max-height: 760px;
+  background-color: white;
+
+  .header {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    justify-content: space-between;
+    row-gap: 16px;
+    padding: 24px;
+
+    &__title {
+      display: flex;
+      gap: 16px;
+
+      .title-text {
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .items-added {
+        height: 24px;
+        font-size: 14px;
+        background-color: $blue;
+        color: white;
+        align-content: center;
+        padding: 0 12px;
+        border-radius: 12px;
+      }
+    }
+
+    &__close-btn {
+      justify-self: end;
+
+      i {
+        font-size: 24px;
+      }
+    }
+
+
+  }
+
+  .content {
+    height: 400px;
+    overflow: scroll;
+
+    &__header {
+      display: flex;
+      padding: 0 24px;
+
+      &__cat {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        padding: 0 12px;
+        gap: 12px;
+      }
+
+      button {
+        font-size: 20px;
+        font-weight: bold;
+        border: none;
+        background-color: transparent;
+      }
+
+      .category {
+        // width: 200px;
+      }
+
+    }
+
+    &__products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+      padding: 24px 32px;
+    }
+  }
+
+  .footer {
+    padding: 24px;
+
+    &__summary {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+
+      .product-summary {
+        &__header {
+          font-weight: bold;
+        }
+      }
+
+      .addons-summary {
+        display: flex;
+        justify-content: space-between;
+
+        &__amount {
+          justify-self: end;
+        }
+
+        .label-savings,
+        .amount-savings {
+          color: $blue;
+        }
+
+        .label-selected-tems,
+        .amount-selected-items {
+          font-size: 16px;
+          font-weight: bold;
+        }
+      }
+    }
+
+    &__controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

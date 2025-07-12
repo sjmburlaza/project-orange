@@ -1,1 +1,91 @@
-<p>add-ons works!</p>
+<div class="addons-container">
+  @if (addOns) {
+    <div class="header">
+      <div class="header__title">
+        <div class="title-text">
+          Add-ons
+        </div>
+        <div class="items-added">
+          {{ itemsAdded }} items added
+        </div>
+      </div>
+      <div class="header__close-btn" (click)="close()">
+        <i class="bi bi-x-lg"></i>
+      </div>
+      <div class="header__subtitle">
+        Choose from our hand picked range of products below.
+      </div>
+    </div>
+    <div class="content">
+      <div class="content__header">
+        <div class="arrow-btn">
+          <!-- @if (addOnStart > 0) { -->
+            <button (click)="goBack()">
+              <i class="bi bi-arrow-left-circle"></i>
+            </button>
+          <!-- } -->
+        </div>
+
+        <div class="content__header__cat">
+          @for (item of addOnsCategories; track item.category.id) {
+            <button class="category" (click)="onSelectCategory(item)">
+              {{ item.category.name }}
+            </button>
+          }
+        </div>
+        <button class="arrow-btn" (click)="goNext()">
+          <i class="bi bi-arrow-right-circle"></i>
+        </button>
+      </div>
+      <div class="content__products">
+        @for (product of categoryProducts; track product.id) {
+          <app-product-card></app-product-card>
+        }
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer__summary">
+        <div class="product-summary">
+          <div class="product-summary__header">
+            Add-ons for
+          </div>
+          <div class="product-summary__content">
+            {{ mainProductSummary }} Product summary here >>>
+          </div>
+        </div>
+        <div class="addons-summary">
+          <div class="addons-summary__label">
+            <div class="label-price">
+              Add-on price
+            </div>
+            <div class="label-savings">
+              Add-on savings
+            </div>
+            <div class="label-selected-items">
+              Selected items {{ selectedItemsQty }}
+            </div>
+          </div>
+          <div class="addons-summary__amount">
+            <div class="amount-price">
+              {{ addOnPrice }}
+            </div>
+            <div class="amount-savings">
+              {{ addOnSavings }}
+            </div>
+            <div class="amount-selected-items">
+              {{ selectedItemsAmount }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer__controls">
+        <button class="close-btn">
+          Close
+        </button>
+        <button class="confirm-btn">
+          Confirm
+        </button>
+      </div>
+    </div>
+  }
+</div>

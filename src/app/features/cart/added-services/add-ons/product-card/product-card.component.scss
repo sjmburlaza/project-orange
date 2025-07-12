@@ -1,0 +1,11 @@
+@use 'abstracts' as *;
+
+.product-card-container {
+  height: 340px;
+  // flex: 1 1 300px;
+  // max-width: 100%;
+  // box-sizing: border-box;
+  padding: 1rem;
+  border: 1px solid gray;
+  border-radius: 12px;
+}
