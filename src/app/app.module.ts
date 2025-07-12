@@ -19,7 +19,6 @@ import { TradeUpComponent } from './features/cart/added-services/trade-up/trade-
 import { InsuranceComponent } from './features/cart/added-services/insurance/insurance.component';
 import { SimPlanComponent } from './features/cart/added-services/sim-plan/sim-plan.component';
 import { BroadbandPlanComponent } from './features/cart/added-services/broadband-plan/broadband-plan.component';
-import { AddOnsComponent } from './features/cart/added-services/add-ons/add-ons.component';
 import { DynamicFormComponent } from "./shared/components/dynamic-form/dynamic-form.component";
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
@@ -61,7 +60,6 @@ export function HttpLoaderFactory(http: HttpClient) {
         InsuranceComponent,
         SimPlanComponent,
         BroadbandPlanComponent,
-        AddOnsComponent,
     ],
     bootstrap: [AppComponent], 
     imports: [

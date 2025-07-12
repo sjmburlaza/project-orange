@@ -1,9 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { ModalService } from 'src/app/core/services/modal.service';
 import { Service } from 'src/app/core/models/cart.model';
 import { InsuranceComponent } from '../../added-services/insurance/insurance.component';
 import { TradeInComponent } from '../../added-services/trade-in/trade-in.component';
 import { TradeUpComponent } from '../../added-services/trade-up/trade-up.component';
+import { AddOnsComponent } from '../../added-services/add-ons/add-ons.component';
 
 @Component({
     selector: 'app-added-service',
@@ -12,11 +13,10 @@ import { TradeUpComponent } from '../../added-services/trade-up/trade-up.compone
     standalone: false
 })
 export class AddedServiceComponent {
+  private modalService = inject(ModalService);
   @Input() service!: Service;
   @Input() sku!: string;
   @Output() deleteServiceEvent: EventEmitter<string> = new EventEmitter<string>();
-
-  constructor(private modalService: ModalService) {}
 
   deleteService(serviceId: string) {
     if (serviceId) {
@@ -30,6 +30,9 @@ export class AddedServiceComponent {
     switch(code) {
       case 'insurance':
         modalRef = this.modalService.openWithComponent(InsuranceComponent);
+        break;
+      case 'addOns':
+        modalRef = this.modalService.openWithComponent(AddOnsComponent);
         break;
       case 'tradeIn':
         modalRef = this.modalService.openWithComponent(TradeInComponent);
